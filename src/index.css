@@ -1,3 +1,4 @@
+@config "./tailwind.config.js";
 @import "tailwindcss";
 
 /* Collection name: colorPrimitives */
@@ -180,6 +181,7 @@
 
 /* Collection name: colorUsage */
 /* Mode: Mode 1 */
+
 :root {
   --background-neutral-primary: var(--greyscale-0);
   --background-neutral-secondary: var(--greyscale---10);

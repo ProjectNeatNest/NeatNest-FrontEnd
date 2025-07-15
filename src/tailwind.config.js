@@ -1,6 +1,8 @@
 // tailwind.config.js
+
+
 export default {
-  content: ['./src/**/*.tsx'], // ajusta a tu proyecto
+  content: ['./src/**/*.tsx', 'index.html'], // ajusta a tu proyecto
   theme: {
     extend: {
       backgroundColor: {
