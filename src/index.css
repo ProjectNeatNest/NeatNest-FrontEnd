@@ -1,6 +1,9 @@
 @config "./tailwind.config.js";
 @import "tailwindcss";
 
+@import "@fontsource-variable/nunito";
+@import '@fontsource-variable/arima';
+
 /* Collection name: colorPrimitives */
 /* Mode: Light */
 :root {
@@ -243,23 +246,224 @@
   --border-icons: var(--text-neutral-primary);
 }
 
-/* Collection name: radius */
-/* Mode: Mode 1 */
-:root {
-  --xxs: 2;
-  --xs: 4;
-  --s: 8;
-  --m: 12;
-  --l: 20;
-  --xl: 30;
-  --full: 999999;
+/* Text-Styles from Figma */
+
+@theme {
+  --font-nunito: 'Nunito Variable', sans-serif;
+  --font-arima: 'Arima Variable', system-ui;
 }
 
-/* Collection name: strokeWidth */
-/* Mode: Mode 1 */
-:root {
-  --xs: 0.5;
-  --s: 1;
-  --m: 2;
-  --l: 4;
+.body-xsmall-regular-12 {
+  font-family: 'Nunito Variable', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 140%;
+  /* @apply font-nunito text-[0.75rem] font-normal leading-[140%] tracking-[0]; */
 }
+
+.body-xsmall-regularUppercase-12 {
+  font-family: 'Nunito Variable', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+  /* @apply font-nunito text-[0.75rem] font-normal leading-[140%] tracking-[0.04em] uppercase; */
+}
+
+.body-xsmall-semibold-12 {
+  font-family: 'Nunito Variable', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 140%;
+  /* @apply font-nunito text-[0.75rem] font-semibold leading-[140%] tracking-[0]; */
+}
+
+.body-small-regular-14 {
+  font-family: 'Nunito Variable', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 140%;
+  /* @apply font-nunito text-[0.875rem] font-normal leading-[140%]; */
+}
+
+.body-small-semibold-14 {
+  font-family: 'Nunito Variable', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 140%;
+  /* @apply font-nunito text-[0.875rem] font-semibold leading-[140%]; */
+}
+
+.body-medium-regular-16 {
+  font-family: 'Nunito Variable', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 140%;
+  /* @apply font-nunito text-[1rem] font-normal leading-[140%]; */
+}
+
+.body-medium-semibold-16 {
+  font-family: 'Nunito Variable', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 140%;
+  /* @apply font-nunito text-[1rem] font-semibold leading-[140%]; */
+}
+
+.body-medium-bold-16 {
+  font-family: 'Nunito Variable', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 140%;
+  /* @apply font-nunito text-[1rem] font-bold leading-[140%]; */
+}
+
+.body-italic-regular-16 {
+  font-family: 'Nunito Variable', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 140%;
+  font-style: italic;
+  /* @apply font-nunito text-[1rem] font-normal italic leading-[140%]; */
+}
+
+.body-large-regular-18 {
+  font-family: 'Nunito Variable', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 140%;
+  /* @apply font-nunito text-[1.125rem] font-normal leading-[140%]; */
+}
+
+.body-large-bold-18 {
+  font-family: 'Nunito Variable', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 140%;
+  /* @apply font-nunito text-[1.125rem] font-bold leading-[140%]; */
+}
+
+.body-large-italic-18 {
+  font-family: 'Nunito Variable', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 140%;
+  font-style: italic;
+  /* @apply font-nunito text-[1.125rem] font-normal italic leading-[140%]; */
+}
+
+.title-xsmall-regular-20 {
+  font-family: 'Nunito Variable', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 120%;
+  /* @apply font-nunito text-[1.25rem] font-normal leading-[120%]; */
+}
+
+.title-xsmall-semibold-20 {
+  font-family: 'Nunito Variable', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 120%;
+  /* @apply font-nunito text-[1.25rem] font-semibold leading-[120%]; */
+}
+
+.title-small-regular-24 {
+  font-family: 'Arima Variable', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 120%;
+  /* @apply font-arima text-[1.5rem] font-semibold leading-[120%]; */
+}
+
+.title-small-semibold-24 {
+  font-family: 'Arima Variable', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 120%;
+  /* @apply font-arima text-[1.5rem] font-semibold leading-[120%]; */
+}
+
+.title-medium-regular-32 {
+  font-family: 'Arima Variable', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 120%;
+  /* @apply font-arima text-[2rem] font-normal leading-[120%]; */
+}
+
+.title-medium-light-32 {
+  font-family: 'Arima Variable', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 120%;
+  /* @apply font-arima text-[2rem] font-light leading-[120%]; */
+}
+
+.title-medium-regular-32 {
+  font-family: 'Arima Variable', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 120%;
+  /* @apply font-arima text-[2rem] font-normal leading-[120%]; */
+}
+
+.title-medium-semibold-32 {
+  font-family: 'Arima Variable', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 120%;
+  /* @apply font-arima text-[2rem] font-semibold leading-[120%]; */
+}
+
+.title-large-light-40 {
+  font-family: 'Arima Variable', serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 120%;
+  /* @apply font-arima text-[2.5rem] font-light leading-[120%]; */
+}
+
+.title-large-semibold-40 {
+  font-family: 'Arima Variable', serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 120%;
+  /* @apply font-arima text-[2.5rem] font-semibold leading-[120%]; */
+}
+
+.title-xlarge-light-48 {
+  font-family: 'Arima Variable', serif;
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 120%;
+  /* @apply font-arima text-[3rem] font-light leading-[120%]; */
+}
+
+.title-xlarge-semibold-48 {
+  font-family: 'Arima Variable', serif;
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 120%;
+  /* @apply font-arima text-[3rem] font-semibold leading-[120%]; */
+
+}
+
+.title-2xlarge-light-64 {
+  font-family: 'Arima Variable', serif;
+  font-size: 4rem;
+  font-weight: 300;
+  line-height: 120%;
+  /* @apply font-arima text-[4rem] font-light leading-[120%]; */
+}
+
+.title-2xlarge-semibold-64 {
+  font-family: 'Arima Variable', serif;
+  font-size: 4rem;
+  font-weight: 600;
+  line-height: 120%;
+  /* @apply font-arima text-[4rem] font-semibold leading-[120%]; */
+}
+
+
