@@ -1,6 +1,3 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
 # 🚫 Bloquear commits en la rama main
 branch="$(git symbolic-ref --short HEAD)"
 
