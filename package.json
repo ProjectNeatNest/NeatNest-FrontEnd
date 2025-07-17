@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource-variable/arima": "^5.2.6",
+    "@fontsource-variable/nunito": "^5.2.6",
     "@hookform/resolvers": "^5.1.1",
     "@tailwindcss/vite": "^4.1.11",
     "motion": "^12.23.0",
