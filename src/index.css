@@ -1,101 +1,101 @@
 @config "./tailwind.config.js";
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@import "@fontsource-variable/nunito";
+@import '@fontsource-variable/nunito';
 @import '@fontsource-variable/arima';
 
 /* Collection name: colorPrimitives */
 /* Mode: Light */
 :root {
-  --red---10: #ffeeef;
-  --red---20: #ffc8cb;
-  --red---30: #ffa2a7;
-  --red---40: #ff7c82;
-  --red---50: #ff565e;
-  --red---60: #dd4149;
-  --red---70: #bb2f36;
-  --red---80: #991f25;
-  --red---90: #771318;
-  --red---100: #550a0e;
-  --orange---10: #fff6ee;
-  --orange---20: #ffe2ca;
-  --orange---30: #ffcda5;
-  --orange---40: #ffb981;
-  --orange---50: #ffa55c;
-  --orange---60: #dd8a46;
-  --orange---70: #bb7034;
-  --orange---80: #995824;
-  --orange---90: #774217;
-  --orange---100: #552d0d;
-  --yellow---10: #fffcf2;
-  --yellow---20: #fff5ce;
-  --yellow---30: #ffeda9;
-  --yellow---40: #ffe684;
-  --yellow---50: #e2ca6f;
-  --yellow---60: #c5af5b;
-  --yellow---70: #a89449;
-  --yellow---80: #8a7a38;
-  --yellow---90: #6d602a;
-  --yellow---100: #50461c;
-  --green---10: #ecfff6;
-  --green---20: #c1ffe1;
-  --green---30: #97ffcc;
-  --green---40: #6cffb8;
-  --green---50: #3ff69e;
-  --green---60: #2ad482;
-  --green---70: #2db376;
-  --green---80: #0c9050;
-  --green---90: #036e3a;
-  --green---100: #004c27;
-  --blue---10: #e9f5ff;
-  --blue---20: #b9e1ff;
-  --blue---30: #89ccff;
-  --blue---40: #59b7ff;
-  --blue---50: #29a2ff;
-  --blue---60: #1787dd;
-  --blue---70: #096ebb;
-  --blue---80: #005799;
-  --blue---90: #004377;
-  --blue---100: #003055;
-  --purple---10: #f7f4ff;
-  --purple---20: #e2d2ff;
-  --purple---30: #ccb1ff;
-  --purple---40: #b08bf6;
-  --purple---50: #9774d9;
-  --purple---60: #7f5fbc;
-  --purple---70: #684c9f;
-  --purple---80: #533a82;
-  --purple---90: #3e2a64;
-  --purple---100: #2b1c47;
-  --pink---10: #fff1fb;
-  --pink---20: #ffc7ef;
-  --pink---30: #ff9de3;
-  --pink---40: #ff74d7;
-  --pink---50: #ec63c5;
-  --pink---60: #cf50ab;
-  --pink---70: #b23e91;
-  --pink---80: #952f78;
-  --pink---90: #77225f;
-  --pink---100: #5a1647;
-  --greyscale---10: #fdfffe;
-  --greyscale---20: #edfff6;
-  --greyscale---30: #d6ebe1;
-  --greyscale---40: #bed5ca;
-  --greyscale---50: #a6beb3;
-  --greyscale---60: #90a79c;
-  --greyscale---70: #7a9186;
-  --greyscale---80: #647a70;
-  --greyscale---90: #50635a;
-  --greyscale---100: #3c4d45;
-  --greyscale-0: #ffffff;
-  --greyscale-999: #000000;
-  --greyscale-white: #ffffff;
-  --greyscale-black: #000000;
+    --red---10: #ffeeef;
+    --red---20: #ffc8cb;
+    --red---30: #ffa2a7;
+    --red---40: #ff7c82;
+    --red---50: #ff565e;
+    --red---60: #dd4149;
+    --red---70: #bb2f36;
+    --red---80: #991f25;
+    --red---90: #771318;
+    --red---100: #550a0e;
+    --orange---10: #fff6ee;
+    --orange---20: #ffe2ca;
+    --orange---30: #ffcda5;
+    --orange---40: #ffb981;
+    --orange---50: #ffa55c;
+    --orange---60: #dd8a46;
+    --orange---70: #bb7034;
+    --orange---80: #995824;
+    --orange---90: #774217;
+    --orange---100: #552d0d;
+    --yellow---10: #fffcf2;
+    --yellow---20: #fff5ce;
+    --yellow---30: #ffeda9;
+    --yellow---40: #ffe684;
+    --yellow---50: #e2ca6f;
+    --yellow---60: #c5af5b;
+    --yellow---70: #a89449;
+    --yellow---80: #8a7a38;
+    --yellow---90: #6d602a;
+    --yellow---100: #50461c;
+    --green---10: #ecfff6;
+    --green---20: #c1ffe1;
+    --green---30: #97ffcc;
+    --green---40: #6cffb8;
+    --green---50: #3ff69e;
+    --green---60: #2ad482;
+    --green---70: #2db376;
+    --green---80: #0c9050;
+    --green---90: #036e3a;
+    --green---100: #004c27;
+    --blue---10: #e9f5ff;
+    --blue---20: #b9e1ff;
+    --blue---30: #89ccff;
+    --blue---40: #59b7ff;
+    --blue---50: #29a2ff;
+    --blue---60: #1787dd;
+    --blue---70: #096ebb;
+    --blue---80: #005799;
+    --blue---90: #004377;
+    --blue---100: #003055;
+    --purple---10: #f7f4ff;
+    --purple---20: #e2d2ff;
+    --purple---30: #ccb1ff;
+    --purple---40: #b08bf6;
+    --purple---50: #9774d9;
+    --purple---60: #7f5fbc;
+    --purple---70: #684c9f;
+    --purple---80: #533a82;
+    --purple---90: #3e2a64;
+    --purple---100: #2b1c47;
+    --pink---10: #fff1fb;
+    --pink---20: #ffc7ef;
+    --pink---30: #ff9de3;
+    --pink---40: #ff74d7;
+    --pink---50: #ec63c5;
+    --pink---60: #cf50ab;
+    --pink---70: #b23e91;
+    --pink---80: #952f78;
+    --pink---90: #77225f;
+    --pink---100: #5a1647;
+    --greyscale---10: #fdfffe;
+    --greyscale---20: #edfff6;
+    --greyscale---30: #d6ebe1;
+    --greyscale---40: #bed5ca;
+    --greyscale---50: #a6beb3;
+    --greyscale---60: #90a79c;
+    --greyscale---70: #7a9186;
+    --greyscale---80: #647a70;
+    --greyscale---90: #50635a;
+    --greyscale---100: #3c4d45;
+    --greyscale-0: #ffffff;
+    --greyscale-999: #000000;
+    --greyscale-white: #ffffff;
+    --greyscale-black: #000000;
 }
 
 /* Collection name: colorPrimitives */
 /* Mode: Dark */
-:root {
+/* :root {
   --red---10: #550a0e;
   --red---20: #771318;
   --red---30: #991f25;
@@ -180,77 +180,69 @@
   --greyscale-999: #ffffff;
   --greyscale-white: #ffffff;
   --greyscale-black: #000000;
-}
+} */
 
 /* Collection name: colorUsage */
 /* Mode: Mode 1 */
 
 :root {
-  --background-neutral-primary: var(--greyscale-0);
-  --background-neutral-secondary: var(--greyscale---10);
-  --background-neutral-tertiary: var(--greyscale---20);
-  --background-neutral-inverse-primary: var(--greyscale---100);
-  --background-neutral-inverse-secondary: var(--greyscale---90);
-  --background-neutral-inverse-tertiary: var(--greyscale---80);
-  --background-brand-primary: var(--green---50);
-  --background-brand-secondary: var(--green---30);
-  --background-brand-tertiary: var(--green---10);
-  --background-neutral-disabled: var(--greyscale---30);
-  --background-semantic-success-subtle: var(--green---10);
-  --background-semantic-success-bold: var(--green---60);
-  --background-semantic-warning-subtle: var(--orange---10);
-  --background-semantic-warning-bold: var(--orange---60);
-  --background-semantic-error-subtle: var(--red---10);
-  --background-semantic-error-bold: var(--red---60);
-  --background-semantic-info-subtle: var(--yellow---10);
-  --background-semantic-info-bold: var(--yellow---60);
-  --text-neutral-primary: var(--greyscale---100);
-  --text-neutral-secondary: var(--greyscale---80);
-  --text-neutral-tertiary: var(--greyscale---70);
-  --text-neutral-disabled: var(--greyscale---50);
-  --text-neutral-inverse-primary: var(--greyscale---10);
-  --text-neutral-inverse-secondary: var(--greyscale---20);
-  --text-neutral-inverse-tertiary: var(--greyscale---30);
-  --text-brand-primary: var(--green---50);
-  --text-semantic-success-primary: var(--green---70);
-  --text-semantic-success-inverse: var(--green---10);
-  --text-brand-inverse: var(--green---10);
-  --text-semantic-warning-primary: var(--orange---70);
-  --text-semantic-warning-inverse: var(--orange---10);
-  --text-semantic-error-primary: var(--red---70);
-  --text-semantic-error-inverse: var(--red---10);
-  --text-semantic-info-primary: var(--yellow---70);
-  --text-semantic-info-inverse: var(--yellow---10);
-  --border-neutral-primary: var(--greyscale---30);
-  --border-neutral-secondary: var(--greyscale---50);
-  --border-neutral-inverse-primary: var(--greyscale---90);
-  --border-neutral-inverse-secondary: var(--greyscale---70);
-  --border-brand-primary: var(--green---60);
-  --border-brand-inverse: var(--green---20);
-  --border-semantic-success-primary: var(--green---80);
-  --border-semantic-success-inverse: var(--green---20);
-  --border-semantic-warning-primary: var(--yellow---80);
-  --border-semantic-warning-inverse: var(--orange---20);
-  --border-semantic-error-primary: var(--red---80);
-  --border-semantic-error-inverse: var(--red---20);
-  --border-semantic-info-primary: var(--blue---80);
-  --border-semantic-info-inverse: var(--blue---20);
-  --backgroundareas-pink: var(--pink---30);
-  --backgroundareas-red: var(--red---30);
-  --backgroundareas-yellow: var(--yellow---30);
-  --backgroundareas-orange: var(--orange---30);
-  --backgroundareas-purple: var(--purple---30);
-  --backgroundareas-green: var(--green---30);
-  --backgroundareas-blue: var(--blue---30);
-  --backgroundareas-gray: var(--greyscale---30);
-  --border-icons: var(--text-neutral-primary);
+    --background-neutral-primary: var(--greyscale-10);
+    --background-neutral-secondary: var(--greyscale---20);
+    --background-neutral-tertiary: var(--greyscale---30);
+    --background-neutral-inverse-primary: var(--greyscale---100);
+    --background-neutral-inverse-secondary: var(--greyscale---90);
+    --background-neutral-inverse-tertiary: var(--greyscale---80);
+    --background-brand-primary: var(--green---50);
+    --background-brand-secondary: var(--green---30);
+    --background-brand-tertiary: var(--green---10);
+    --background-neutral-disabled: var(--greyscale---30);
+    --background-semantic-success-subtle: var(--green---10);
+    --background-semantic-success-bold: var(--green---60);
+    --background-semantic-warning-subtle: var(--orange---10);
+    --background-semantic-warning-bold: var(--orange---60);
+    --background-semantic-error-subtle: var(--red---10);
+    --background-semantic-error-bold: var(--red---60);
+    --background-semantic-info-subtle: var(--yellow---10);
+    --background-semantic-info-bold: var(--yellow---60);
+    --text-neutral-primary: var(--greyscale---100);
+    --text-neutral-secondary: var(--greyscale---80);
+    --text-neutral-tertiary: var(--greyscale---70);
+    --text-neutral-disabled: var(--greyscale---50);
+    --text-neutral-inverse-primary: var(--greyscale---10);
+    --text-neutral-inverse-secondary: var(--greyscale---20);
+    --text-neutral-inverse-tertiary: var(--greyscale---30);
+    --text-brand-primary: var(--green---50);
+    --text-semantic-success-primary: var(--green---70);
+    --text-semantic-success-inverse: var(--green---10);
+    --text-brand-inverse: var(--green---10);
+    --text-semantic-warning-primary: var(--orange---70);
+    --text-semantic-warning-inverse: var(--orange---10);
+    --text-semantic-error-primary: var(--red---70);
+    --text-semantic-error-inverse: var(--red---10);
+    --text-semantic-info-primary: var(--yellow---70);
+    --text-semantic-info-inverse: var(--yellow---10);
+    --border-neutral-primary: var(--greyscale---30);
+    --border-neutral-secondary: var(--greyscale---50);
+    --border-neutral-inverse-primary: var(--greyscale---90);
+    --border-neutral-inverse-secondary: var(--greyscale---70);
+    --border-brand-primary: var(--green---60);
+    --border-brand-inverse: var(--green---20);
+    --border-semantic-success-primary: var(--green---80);
+    --border-semantic-success-inverse: var(--green---20);
+    --border-semantic-warning-primary: var(--yellow---80);
+    --border-semantic-warning-inverse: var(--orange---20);
+    --border-semantic-error-primary: var(--red---80);
+    --border-semantic-error-inverse: var(--red---20);
+    --border-semantic-info-primary: var(--blue---80);
+    --border-semantic-info-inverse: var(--blue---20);
+    --border-icons: var(--text-neutral-primary);
 }
 
 /* Text-Styles from Figma */
 
 @theme {
-  --font-nunito: 'Nunito Variable', sans-serif;
-  --font-arima: 'Arima Variable', system-ui;
+    --font-nunito: 'Nunito Variable', sans-serif;
+    --font-arima: 'Arima Variable', system-ui;
 }
 
 /* .body-xsmall-regular-12 {
@@ -465,5 +457,3 @@
   line-height: 120%;
   @apply font-arima text-[4rem] font-semibold leading-[120%];
 } */
-
-
