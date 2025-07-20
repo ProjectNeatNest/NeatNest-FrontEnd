@@ -6,7 +6,7 @@ interface Props {
     className?: string;
     type?: 'submit' | 'button' | 'reset';
     children?: ReactNode;
-    buttonVariant?: 'primary' | 'secondary';
+    buttonVariant?: 'primary' | 'secondary' | 'tertiary';
     textVariant?: 'body-large-regular' | 'body-large-bold';
     icon?: ReactNode;
 }
@@ -16,24 +16,37 @@ const buttonVariants = {
     inline-flex justify-center items-center gap-[0.5rem]
     px-4 py-2
     rounded-xl
-    shadow-xs
+    shadow-sm
     bg-brand-primary
     hover:bg-brand-secondary hover:shadow-sm
-    focus:bg-brand-secondary focus:shadow-none
-    focus:outline-2 focus:outline-brand-primary
-    focus-visible:outline-2 focus-visible:outline-brand-primary
+    border border-transparent
+    focus:bg-brand-secondary focus:border-2 focus:border-brand-primary
+    focus-visible:border-2 focus-visible:border-brand-primary
   `,
+
     secondary: `
     inline-flex justify-center items-center gap-[0.5rem]
     px-4 py-2
     rounded-xl
-    shadow-xs
+    shadow-sm
     bg-neutral-secondary
-    outline-2 outline-brand-primary
     hover:bg-neutral-tertiary hover:shadow-sm
-    focus:bg-neutral-tertiary focus:outline-3
-    focus-visible:outline-3
+    border border-transparent
+    focus:bg-neutral-tertiary focus:border-2 focus:border-brand-primary
+    focus-visible:border-2 focus-visible:border-brand-primary
   `,
+
+    tertiary: `
+    inline-flex justify-center items-center gap-[0.5rem]
+    px-4 py-2
+    rounded-xl
+    shadow-sm
+    bg-neutral-primary
+    hover:bg-neutral-secondary hover:shadow-sm
+    border border-transparent
+    focus:bg-neutral-tertiary focus:border-2 focus:border-brand-primary
+    focus-visible:border-2 focus-visible:border-brand-primary
+    `,
 };
 
 export default function Button(props: Props) {
@@ -50,6 +63,7 @@ export default function Button(props: Props) {
     const variantDefault = {
         primary: 'body-large-bold',
         secondary: 'body-large-regular',
+        tertiary: 'body-large-regular',
     } as const;
 
     const finalTextVariant = textVariant || variantDefault[buttonVariant];
@@ -57,8 +71,12 @@ export default function Button(props: Props) {
 
     return (
         <button type={type} className={classes} {...rest}>
-            {icon && <span>{icon}</span>}
-            <BodyText as="span" variant={finalTextVariant}>
+            {icon && <span className="text-neutral-primary">{icon}</span>}
+            <BodyText
+                as="span"
+                variant={finalTextVariant}
+                className="text-neutral-primary"
+            >
                 {children}
             </BodyText>
         </button>
