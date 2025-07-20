@@ -25,7 +25,7 @@ export default function InputField(props: Props) {
     const id = useId();
 
     const classes = twMerge(
-        'text-neutral-primary focus:text-neutral-primary focus:bg-transparent body-large-regular focus:border-1 focus:border-brand-primary focus-visible:border-brand-primary placeholder:text-neutral-tertiary',
+        'text-neutral-primary placeholder:text-neutral-tertiary body-large-regular focus:border focus:border-brand-primary focus:rounded-md focus-visible:border-2 focus-visible:border-brand-primary focus-visible:rounded-md focus:outline-none',
         className
     );
 
