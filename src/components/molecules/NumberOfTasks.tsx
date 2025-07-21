@@ -20,7 +20,7 @@ export default function NumberOfTasks(props: Props) {
                     {completed}
                 </Title>
                 <BodyText as="span" variant="body-small-regular">
-                    /{total}
+                    /{total} tareas
                 </BodyText>
             </div>
         </>
