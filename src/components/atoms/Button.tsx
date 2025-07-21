@@ -22,6 +22,7 @@ const buttonVariants = {
     border border-transparent
     focus:bg-brand-secondary focus:border-2 focus:border-brand-primary
     focus-visible:border-2 focus-visible:border-brand-primary
+    select-none
   `,
 
     secondary: `
@@ -34,6 +35,7 @@ const buttonVariants = {
     border border-transparent
     focus:bg-neutral-tertiary focus:border-2 focus:border-brand-primary
     focus-visible:border-2 focus-visible:border-brand-primary
+    select-none
   `,
 
     tertiary: `
@@ -46,6 +48,7 @@ const buttonVariants = {
     border border-transparent
     focus:bg-neutral-tertiary focus:border-2 focus:border-brand-primary
     focus-visible:border-2 focus-visible:border-brand-primary
+    select-none
     `,
 };
 
