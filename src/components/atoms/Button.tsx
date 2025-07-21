@@ -40,7 +40,7 @@ const buttonVariants = {
 
     tertiary: `
     inline-flex justify-center items-center gap-[0.5rem]
-    px-4 py-2
+    px-2 py-2
     rounded-xl
     shadow-sm
     bg-neutral-primary
