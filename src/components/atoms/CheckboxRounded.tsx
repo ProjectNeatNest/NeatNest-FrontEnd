@@ -4,7 +4,7 @@ import { PiCheckLight } from 'react-icons/pi';
 export default function CheckboxRounded() {
     const id = useId();
     return (
-        <div className="group">
+        <div className="select-none group">
             <input type="checkbox" id={id} className="hidden" />
             <label
                 htmlFor={id}
