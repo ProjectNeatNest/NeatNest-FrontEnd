@@ -6,7 +6,8 @@ interface Props {
 }
 
 export default function Logo(props: Props) {
-    const { size = 'large', className = 'text-neutral-primary' } = props;
+    const { size = 'large', className = 'select-none text-neutral-primary' } =
+        props;
     const variant =
         size === '2xlarge' ? 'title-2xlarge-light' : 'title-large-light';
 
