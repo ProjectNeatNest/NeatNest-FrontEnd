@@ -6,14 +6,14 @@ export default function Footer() {
             <BodyText
                 as="span"
                 variant="body-small-regular"
-                className="text-neutral-secondary"
+                className="text-center text-neutral-secondary"
             >
                 Created by NARL with 💚
             </BodyText>
             <BodyText
                 as="span"
                 variant="body-small-regular"
-                className="text-neutral-secondary"
+                className="text-center text-neutral-secondary"
             >
                 2025
             </BodyText>
