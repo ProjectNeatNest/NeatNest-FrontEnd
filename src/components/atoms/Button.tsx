@@ -32,7 +32,7 @@ const buttonVariants = {
     shadow-sm
     bg-neutral-secondary
     hover:bg-neutral-tertiary hover:shadow-sm
-    border border-transparent
+    border border-2 border-brand-primary
     focus:bg-neutral-tertiary focus:border-2 focus:border-brand-primary
     focus-visible:border-2 focus-visible:border-brand-primary
     select-none
@@ -40,7 +40,7 @@ const buttonVariants = {
 
     tertiary: `
     inline-flex justify-center items-center gap-[0.5rem]
-    px-4 py-2
+    px-2 py-2
     rounded-xl
     shadow-sm
     bg-neutral-primary
