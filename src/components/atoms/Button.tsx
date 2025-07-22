@@ -1,8 +1,8 @@
-import type { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 import BodyText from '../typography/BodyText';
 
-interface Props {
+interface Props extends ComponentPropsWithoutRef<'button'> {
     className?: string;
     type?: 'submit' | 'button' | 'reset';
     children?: ReactNode;
