@@ -1,13 +1,16 @@
+import { Outlet } from 'react-router';
+
+import Footer from '../components/molecules/Footer';
 import Header from '../components/molecules/Header';
-import TaskItem from '../components/molecules/TaskItem';
 
 export default function MainLayout() {
     return (
-        <>
-        <Header/>
+        <div className="flex flex-col min-h-screen bg-neutral-primary">
+            <Header />
             <main className="overflow-hidden">
-                <TaskItem taskName="Limpiar polvo" />
+                <Outlet />
             </main>
-        </>
+            <Footer />
+        </div>
     );
 }
