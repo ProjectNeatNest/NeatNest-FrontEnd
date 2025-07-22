@@ -17,7 +17,7 @@ export default function UserProvider(props: Props) {
     };
 
     const logoutUser = () => {
-        setUser(user);
+        setUser(null);
     };
 
     const context = { user, loginUser, logoutUser };
