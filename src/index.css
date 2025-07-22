@@ -245,6 +245,13 @@
     --font-arima: 'Arima Variable', system-ui;
 }
 
+.custom-hamburger .hamburger-react > div {
+  height: 1.5px !important; /* Estilo light */
+  background-color: text-neutral-primary !important; /* Tu color deseado */
+  border-radius: 9999px;
+}
+
+
 /* .body-xsmall-regular-12 {
   font-family: 'Nunito Variable', sans-serif;
   font-size: 0.75rem;

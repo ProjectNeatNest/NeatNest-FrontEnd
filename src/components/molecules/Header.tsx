@@ -1,4 +1,3 @@
-import { PiListLight } from 'react-icons/pi';
 import Button from '../atoms/Button';
 import Logo from '../atoms/Logo';
 import useToggleMenu from '../../hooks/useToggleMenu';
@@ -6,6 +5,7 @@ import { Link } from 'react-router';
 import Menu from './Menu';
 import { AnimatePresence } from 'motion/react';
 import MenuSidebar from './MenuSideBar';
+import Hamburger from 'hamburger-react';
 
 export default function Header() {
     const [isOpenSideBar, toggleSideBar] = useToggleMenu(false);
@@ -25,11 +25,13 @@ export default function Header() {
 
                 <Button
                     buttonVariant="tertiary"
-                    className="px-2 py-2 shadow-none aspect-square"
+                    className="px-2 py-2 shadow-none aspect-square md:hidden"
                     onClick={toggleSideBar}
                     aria-label="open menu"
                 >
-                    <PiListLight size={32} />
+                    <div className='custom-hamburger'>
+                    <Hamburger size={32} rounded />
+                    </div>
                 </Button>
             </header>
         </>
