@@ -14,7 +14,7 @@ export default function MenuLink(props: Props) {
     const appearanceClasses = {
         primaryButton: `
     inline-flex justify-center items-center gap-[0.5rem]
-    text-[1.125rem] font-bold font-nunito
+    text-[1rem] font-bold font-nunito
     px-4 py-2
     rounded-xl
     shadow-sm
@@ -28,7 +28,7 @@ export default function MenuLink(props: Props) {
 
         secondaryButton: `
     inline-flex justify-center items-center gap-[0.5rem]
-    text-[1.125rem] font-normal font-nunito
+    text-[1rem] font-normal font-nunito
     px-4 py-2
     rounded-xl
     shadow-sm

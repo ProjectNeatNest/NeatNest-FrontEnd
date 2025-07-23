@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-type HTMLTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'p' | 'li'
+type HTMLTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'li';
 
-interface Props{
+interface Props {
     children: ReactNode;
     className?: string;
     as: HTMLTag;
@@ -24,7 +24,7 @@ interface Props{
 }
 
 export default function Title(props: Props) {
-const { children, className, variant, as: Tag, ...rest } = props;
+    const { children, className, variant, as: Tag, ...rest } = props;
 
     const titleStyles = {
         'title-xsmall-regular': 'text-[1.25rem] font-normal font-nunito',
@@ -43,16 +43,12 @@ const { children, className, variant, as: Tag, ...rest } = props;
     };
     const sharedClasses = 'font-arima leading-[120%]';
 
-    const classes = twMerge(
-        sharedClasses,
-        titleStyles[variant],
-        className
-    );
+    const classes = twMerge(sharedClasses, titleStyles[variant], className);
     return (
         <>
             <Tag className={classes} {...rest}>
                 {children}
             </Tag>
         </>
-    )
+    );
 }
