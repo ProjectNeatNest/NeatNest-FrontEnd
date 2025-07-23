@@ -2,11 +2,19 @@ import { PiEnvelopeLight, PiLockLight } from 'react-icons/pi';
 import InputField from '../atoms/InputField';
 import Button from '../atoms/Button';
 import BodyText from '../typography/BodyText';
+import { twMerge } from 'tailwind-merge';
 
-export default function LoginForm() {
+interface Props {
+    className?: string;
+}
+
+export default function LoginForm(props: Props) {
+    const { className } = props;
+
+    const classes = twMerge('flex flex-col', className);
     return (
-        <form className="flex flex-col items-center justify-center w-full gap-4">
-            <div className="flex flex-col gap-2">
+        <form className={classes}>
+            <div className="flex flex-col w-full gap-2">
                 <InputField
                     type="email"
                     leftIcon={<PiEnvelopeLight size={24} />}
