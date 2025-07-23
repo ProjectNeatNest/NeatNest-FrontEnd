@@ -21,7 +21,7 @@ export default function TaskItem(props: Props) {
                 <CheckboxRounded />
                 <div className="flex flex-col gap-1 transition-opacity opacity-100 group-has-checked:opacity-50">
                     <BodyText
-                        as="h3"
+                        as="p"
                         variant="body-large-bold"
                         className="text-neutral-primary group-has-checked:line-through"
                     >
