@@ -25,14 +25,14 @@ export default function InputField(props: Props) {
     const id = useId();
 
     const classes = twMerge(
-        'text-neutral-primary placeholder:text-neutral-tertiary body-large-regular focus:border focus:border-brand-primary focus:rounded-md focus-visible:border-2 focus-visible:border-brand-primary focus-visible:rounded-md focus:outline-none',
+        'w-full text-neutral-primary placeholder:text-neutral-tertiary body-large-regular focus:border focus:border-brand-primary focus:rounded-md focus-visible:border-2 focus-visible:border-brand-primary focus-visible:rounded-md focus:outline-none',
         className
     );
 
     return (
         <>
-            <div className="flex flex-col gap-1 font-nunito bg-neutral-primary">
-                <div className="flex gap-2 px-4 py-2 rounded-md shadow-md bg-neutral-primary">
+            <div className="flex flex-col w-full gap-1 rounded-md font-nunito">
+                <div className="flex w-full gap-2 px-4 py-2 rounded-md shadow-md bg-neutral-primary">
                     {leftIcon && (
                         <BodyText
                             as="span"
@@ -43,7 +43,7 @@ export default function InputField(props: Props) {
                         </BodyText>
                     )}
 
-                    <div className="flex flex-col">
+                    <div className="flex flex-col w-full">
                         {label && (
                             <label htmlFor={id}>
                                 <BodyText
