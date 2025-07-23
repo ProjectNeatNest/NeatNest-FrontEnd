@@ -1,14 +1,35 @@
 import { PiEnvelopeLight, PiLockLight } from 'react-icons/pi';
+
+import { twMerge } from 'tailwind-merge';
 import InputField from '../atoms/InputField';
 import Button from '../atoms/Button';
 import BodyText from '../typography/BodyText';
-import { twMerge } from 'tailwind-merge';
+import useUserContext from '../../hooks/useUserContext';
+import { useNavigate } from 'react-router';
 
 interface Props {
     className?: string;
 }
 
+interface loginFormValues {
+    email: string;
+    password: string;
+}
+
 export default function LoginForm(props: Props) {
+    //TODO hacer la lógica de validación del loginForm y conectarlo al backend para que haga la petición
+    // const { register, handleSubmit, formState } = useForm<loginFormValues>({
+    //     mode: 'onChange'
+    // });
+    // const { errors } = formState;
+
+    // const {loginUser} = useUserContext();
+    // const navigate = useNavigate();
+
+    // function onSubmit(data:loginFormValues) {
+    //     const
+    // }
+
     const { className } = props;
 
     const classes = twMerge('flex flex-col', className);
