@@ -1,12 +1,12 @@
-import type { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-type HTMLTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'p' | 'li';
+type HTMLTag = 'span' | 'p' | 'li' | 'strong' | 'em' | 'a';
 
-interface Props {
+type Props<T extends HTMLTag = 'span'> = {
     children: ReactNode;
     className?: string;
-    as: HTMLTag;
+    as?: T;
     variant:
         | 'body-xsmall-regular'
         | 'body-xsmall-regular-UpperCase'
@@ -20,10 +20,12 @@ interface Props {
         | 'body-large-regular'
         | 'body-large-bold'
         | 'body-large-italic';
-}
+} & ComponentPropsWithoutRef<T>;
 
-export default function BodyText(props: Props) {
-    const { children, className, variant, as: Tag, ...rest } = props;
+export default function BodyText<T extends HTMLTag = 'span'>(props: Props<T>) {
+    const { children, className, variant, as, ...rest } = props;
+
+    const Tag = as || 'span';
 
     const TextBodyStyles = {
         'body-xsmall-regular': 'text-[0.75rem] font-normal',
@@ -45,8 +47,10 @@ export default function BodyText(props: Props) {
 
     return (
         <>
-            <Tag className={classes} {...rest}>
-                {children}{' '}
+            <Tag className={classes} {...(rest as any)}>
+                {' '}
+                {/* eslint-disable-line */}
+                {children}
             </Tag>
         </>
     );
