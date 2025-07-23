@@ -31,8 +31,8 @@ export default function InputField(props: Props) {
 
     return (
         <>
-            <div className="flex flex-col gap-1 font-nunito">
-                <div className="flex gap-2 px-4 py-2 shadow-md bg-neutral-primary w-fit">
+            <div className="flex flex-col gap-1 font-nunito bg-neutral-primary">
+                <div className="flex gap-2 px-4 py-2 rounded-md shadow-md bg-neutral-primary">
                     {leftIcon && (
                         <BodyText
                             as="span"
