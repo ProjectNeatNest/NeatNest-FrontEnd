@@ -7,7 +7,7 @@ interface Props extends ComponentPropsWithoutRef<'button'> {
     type?: 'submit' | 'button' | 'reset';
     children?: ReactNode;
     buttonVariant?: 'primary' | 'secondary' | 'tertiary';
-    textVariant?: 'body-large-regular' | 'body-large-bold';
+    textVariant?: 'body-medium-regular' | 'body-medium-bold';
     icon?: ReactNode;
 }
 
@@ -64,9 +64,9 @@ export default function Button(props: Props) {
     } = props;
 
     const variantDefault = {
-        primary: 'body-large-bold',
-        secondary: 'body-large-regular',
-        tertiary: 'body-large-regular',
+        primary: 'body-medium-bold',
+        secondary: 'body-medium-regular',
+        tertiary: 'body-medium-regular',
     } as const;
 
     const finalTextVariant = textVariant || variantDefault[buttonVariant];
