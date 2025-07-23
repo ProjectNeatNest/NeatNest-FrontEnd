@@ -186,7 +186,7 @@
 /* Mode: Mode 1 */
 
 :root {
-    --background-neutral-primary: var(--greyscale-10);
+    --background-neutral-primary: var(--greyscale---10);
     --background-neutral-secondary: var(--greyscale---20);
     --background-neutral-tertiary: var(--greyscale---30);
     --background-neutral-inverse-primary: var(--greyscale---100);
