@@ -12,8 +12,10 @@ export default function UserProvider(props: Props) {
 
     const [user, setUser] = useState<User | null>(null);
 
-    const loginUser = (user: User) => {
+    const loginUser = (user: User, token: string) => {
         setUser(user);
+        localStorage.setItem('movie-tracker-user', JSON.stringify(user));
+        localStorage.setItem('movie-tracker-token', token);
     };
 
     const logoutUser = () => {
