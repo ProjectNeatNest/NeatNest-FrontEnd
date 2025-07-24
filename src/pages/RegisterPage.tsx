@@ -1,6 +1,6 @@
-import RegisterForm from '../components/organisms/RegisterForm';
 import BodyText from '../components/typography/BodyText';
 import Title from '../components/typography/Title';
+import RegisterForm from '../components/organisms/RegisterForm';
 
 export default function RegisterPage() {
     return (
