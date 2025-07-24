@@ -245,6 +245,11 @@
     --font-arima: 'Arima Variable', system-ui;
 
     --background-image-rafiki: url(/rafiki.svg);
+    --background-image-bedroom: url(/bedroom.svg);
+    --background-image-house: url(/house.svg);
+    --background-image-house2: url(/house2.svg);
+    --background-image-library: url(/library.svg);
+    --background-image-studio: url(/studio.svg);
 }
 
 .custom-hamburger .hamburger-react > div {
