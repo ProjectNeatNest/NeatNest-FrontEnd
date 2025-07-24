@@ -12,12 +12,15 @@ export default function UserProvider(props: Props) {
 
     const [user, setUser] = useState<User | null>(null);
 
-    const loginUser = (user: User) => {
+    const loginUser = (user: User, token: string) => {
         setUser(user);
+        localStorage.setItem('neat-nest-user', JSON.stringify(user));
+        localStorage.setItem('neat-nest-token', token);
     };
 
     const logoutUser = () => {
         setUser(null);
+        localStorage.removeItem('neat-nest-user');
     };
 
     const context = { user, loginUser, logoutUser };
