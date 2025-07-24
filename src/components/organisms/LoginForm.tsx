@@ -1,4 +1,5 @@
 import { PiEnvelopeLight, PiLockLight } from 'react-icons/pi';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { twMerge } from 'tailwind-merge';
 import InputField from '../atoms/InputField';
@@ -6,6 +7,9 @@ import Button from '../atoms/Button';
 import BodyText from '../typography/BodyText';
 import useUserContext from '../../hooks/useUserContext';
 import { useNavigate } from 'react-router';
+import { useForm } from 'react-hook-form';
+import { logInUser } from '../../services/logInUser';
+import { loginSchema } from '../../schemas/userSchemas';
 
 interface Props {
     className?: string;
@@ -18,35 +22,45 @@ interface loginFormValues {
 
 export default function LoginForm(props: Props) {
     //TODO hacer la lógica de validación del loginForm y conectarlo al backend para que haga la petición
-    // const { register, handleSubmit, formState } = useForm<loginFormValues>({
-    //     mode: 'onChange'
-    // });
-    // const { errors } = formState;
+    const { register, handleSubmit, formState } = useForm<loginFormValues>({
+        resolver: zodResolver(loginSchema),
+        mode: 'onChange',
+    });
+    const { errors } = formState;
 
-    // const {loginUser} = useUserContext();
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
+    const { loginUser } = useUserContext();
 
-    // function onSubmit(data:loginFormValues) {
-    //     const
-    // }
+    async function onSubmit(data: loginFormValues) {
+        const response = await logInUser(data.email, data.password);
+
+        if (!response) return;
+        navigate('/');
+        loginUser(response.user, response.token);
+    }
 
     const { className } = props;
 
     const classes = twMerge('flex flex-col', className);
+
     return (
-        <form className={classes}>
+        <form className={classes} onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col w-full gap-2">
                 <InputField
                     type="email"
                     leftIcon={<PiEnvelopeLight size={24} />}
                     label="Email"
                     placeholder="Tu email"
+                    errorMessage={errors.email?.message}
+                    {...register('email')}
                 />
                 <InputField
                     type="password"
                     leftIcon={<PiLockLight size={24} />}
                     label="Contraseña"
                     placeholder="Tu contraseña"
+                    errorMessage={errors.password?.message}
+                    {...register('password')}
                 />
             </div>
             <Button buttonVariant="primary">Iniciar sesión</Button>
