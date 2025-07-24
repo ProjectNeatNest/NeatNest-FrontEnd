@@ -4,7 +4,7 @@ import Title from '../components/typography/Title';
 
 export default function RegisterPage() {
     return (
-        <div className="flex flex-col items-center gap-8 bg-cover md:w-2/3">
+        <div className="flex flex-col items-center gap-8 bg-center bg-no-repeat bg-cover md:w-2/3 md:bg-contain bg-house2">
             <div className="flex flex-col justify-center gap-2">
                 <Title
                     as="h2"
@@ -16,7 +16,7 @@ export default function RegisterPage() {
                 <BodyText
                     as="p"
                     variant="body-large-regular"
-                    className="text-neutral-secondary"
+                    className="text-neutral-primary"
                 >
                     Únete a nuestra plataforma para gestionar fácilmente las
                     tareas del día a día en casa. Comparte responsabilidades,
