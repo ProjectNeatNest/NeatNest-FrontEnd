@@ -13,7 +13,7 @@ interface Props {
 export default function MenuLink(props: Props) {
     const appearanceClasses = {
         primaryButton: `
-    inline-flex justify-center items-center gap-[0.5rem]
+    inline-flex justify-center items-center gap-2
     text-[1rem] font-bold font-nunito
     px-4 py-2
     rounded-xl
@@ -27,7 +27,7 @@ export default function MenuLink(props: Props) {
   `,
 
         secondaryButton: `
-    inline-flex justify-center items-center gap-[0.5rem]
+    inline-flex justify-center items-center gap-2
     text-[1rem] font-normal font-nunito
     px-4 py-2
     rounded-xl
@@ -41,7 +41,7 @@ export default function MenuLink(props: Props) {
   `,
 
         navLink: `
-        text-neutral-primary text-[1rem] font-normal font-arima hover:underline
+        text-neutral-primary text-[1rem] font-normal font-arima hover:underline flex gap-1 items-center
     `,
     };
 
