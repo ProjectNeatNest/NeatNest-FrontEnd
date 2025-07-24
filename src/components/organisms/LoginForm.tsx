@@ -1,14 +1,14 @@
 import { PiEnvelopeLight, PiLockLight } from 'react-icons/pi';
 import { zodResolver } from '@hookform/resolvers/zod';
-
 import { twMerge } from 'tailwind-merge';
+import { useNavigate } from 'react-router';
+import { useForm } from 'react-hook-form';
+
 import InputField from '../atoms/InputField';
 import Button from '../atoms/Button';
 import BodyText from '../typography/BodyText';
 import useUserContext from '../../hooks/useUserContext';
-import { useNavigate } from 'react-router';
-import { useForm } from 'react-hook-form';
-import { logInUser } from '../../services/logInUser';
+import { logInUserRequest } from '../../services/logInUserRequest';
 import { loginSchema } from '../../schemas/userSchemas';
 
 interface Props {
@@ -21,7 +21,7 @@ interface loginFormValues {
 }
 
 export default function LoginForm(props: Props) {
-    //TODO hacer la lógica de validación del loginForm y conectarlo al backend para que haga la petición
+    //TODO Conectarlo al backend para que haga la petición
     const { register, handleSubmit, formState } = useForm<loginFormValues>({
         resolver: zodResolver(loginSchema),
         mode: 'onChange',
@@ -32,7 +32,7 @@ export default function LoginForm(props: Props) {
     const { loginUser } = useUserContext();
 
     async function onSubmit(data: loginFormValues) {
-        const response = await logInUser(data.email, data.password);
+        const response = await logInUserRequest(data.email, data.password);
 
         if (!response) return;
         navigate('/');
