@@ -25,14 +25,16 @@ export default function InputField(props: Props) {
     const id = useId();
 
     const classes = twMerge(
-        'w-full text-neutral-primary placeholder:text-neutral-tertiary body-large-regular focus:border focus:border-brand-primary focus:rounded-md focus-visible:border-2 focus-visible:border-brand-primary focus-visible:rounded-md focus:outline-none',
+        `w-full text-neutral-primary placeholder:text-neutral-tertiary body-large-regular focus:border focus:border-brand-primary focus:rounded-md focus-visible:border-2 focus-visible:border-brand-primary focus-visible:rounded-md focus:outline-none ${errorMessage ? 'focus:border-error-primary focus-visible:border-error-primary' : ''}`,
         className
     );
 
     return (
         <>
             <div className="flex flex-col w-full gap-1 rounded-md font-nunito">
-                <div className="flex w-full gap-2 px-4 py-2 rounded-md shadow-md bg-neutral-primary">
+                <div
+                    className={`flex w-full gap-2 px-4 py-2 rounded-md shadow-md bg-neutral-primary ${errorMessage ? 'border-2 border-error-primary' : ''}`}
+                >
                     {leftIcon && (
                         <BodyText
                             as="span"
