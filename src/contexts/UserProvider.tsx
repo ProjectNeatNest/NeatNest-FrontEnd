@@ -14,12 +14,13 @@ export default function UserProvider(props: Props) {
 
     const loginUser = (user: User, token: string) => {
         setUser(user);
-        localStorage.setItem('movie-tracker-user', JSON.stringify(user));
-        localStorage.setItem('movie-tracker-token', token);
+        localStorage.setItem('neat-nest-user', JSON.stringify(user));
+        localStorage.setItem('neat-nest-token', token);
     };
 
     const logoutUser = () => {
         setUser(null);
+        localStorage.removeItem('neat-nest-user');
     };
 
     const context = { user, loginUser, logoutUser };
