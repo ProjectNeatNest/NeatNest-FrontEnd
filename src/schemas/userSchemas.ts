@@ -8,9 +8,9 @@ export const registerSchema = z
             .min(3, 'Al menos 3 caracteres')
             .max(20, 'Máximo 3 caracteres'),
         email: z
-            .email()
+            .email('Email inválido')
             .min(1, 'El email es obligatorio')
-            .min(3, 'Al menos 3 caracteres characters long')
+            .min(3, 'Al menos 3 caracteres')
             .max(100, 'Máximo 100 caracteres'),
         password: z
             .string('Se requiere una contraseña de tipo string')
@@ -25,7 +25,7 @@ export const registerSchema = z
         name: z
             .string()
             .min(1, 'El nombre es obligatorio')
-            .min(2, 'Al menos 2 caracteres.')
+            .min(2, 'El nombre debe tener al menos 2 caracteres.')
             .max(35, 'Máximo 35 caracteres')
             .regex(
                 /^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]{1,35}$/,
