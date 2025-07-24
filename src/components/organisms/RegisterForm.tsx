@@ -39,11 +39,11 @@ export default function RegisterForm(props: Props) {
 
     const { className } = props;
 
-    const classes = twMerge('flex flex-col', className);
+    const classes = twMerge('flex flex-col gap-4', className);
 
     return (
         <form className={classes} onSubmit={handleSubmit(onSubmit)}>
-            <fieldset className="flex flex-col w-full gap-4 ">
+            <fieldset className="flex flex-col w-full gap-2 ">
                 <InputField
                     type="text"
                     label="Nombre *"
