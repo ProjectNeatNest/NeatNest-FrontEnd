@@ -25,6 +25,7 @@ export default async function registerUserRequest(
         }
 
         toast.success(backendData.message);
+        return backendData.data;
     } catch (error) {
         if (error instanceof Error) toast.error(error.message);
     }
