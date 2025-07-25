@@ -106,7 +106,9 @@ export default function RegisterForm(props: Props) {
                     {...register('confirmPassword')}
                 />
             </fieldset>
-            <Button buttonVariant="primary">Registrarme</Button>
+            <Button type="submit" buttonVariant="primary">
+                Registrarme
+            </Button>
             <div>
                 <BodyText
                     as="span"

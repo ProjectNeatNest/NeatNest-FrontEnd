@@ -2,6 +2,7 @@ import { Outlet } from 'react-router';
 
 import Footer from '../components/molecules/Footer';
 import Header from '../components/molecules/Header';
+import { ToastContainer } from 'react-toastify';
 
 export default function MainLayout() {
     return (
@@ -11,6 +12,7 @@ export default function MainLayout() {
                 <Outlet />
             </main>
             <Footer />
+            <ToastContainer />
         </div>
     );
 }

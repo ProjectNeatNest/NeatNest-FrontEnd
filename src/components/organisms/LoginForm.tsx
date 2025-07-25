@@ -63,7 +63,9 @@ export default function LoginForm(props: Props) {
                     {...register('password')}
                 />
             </div>
-            <Button buttonVariant="primary">Iniciar sesión</Button>
+            <Button type="submit" buttonVariant="primary">
+                Iniciar sesión
+            </Button>
             <div>
                 <BodyText
                     as="span"

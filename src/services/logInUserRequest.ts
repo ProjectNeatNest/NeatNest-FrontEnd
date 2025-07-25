@@ -6,7 +6,7 @@ export async function logInUserRequest(
     email: string,
     password: string
 ): Promise<LogInResponse | undefined> {
-    const baseURL = import.meta.env.VITE_BASE_URL;
+    const baseURL = import.meta.env.VITE_SERVER_BASE_URL;
     try {
         const response = await axios.post(`${baseURL}/users/login`, {
             email,
