@@ -8,7 +8,7 @@ export default function MainLayout() {
     return (
         <div className="flex flex-col min-h-screen bg-neutral-primary">
             <Header />
-            <main className="p-6 md:px-32">
+            <main className="p-6 md:px-32 grid place-items-center">
                 <Outlet />
             </main>
             <Footer />
