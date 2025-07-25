@@ -10,7 +10,11 @@ interface Props {
 export default function UserProvider(props: Props) {
     const { children } = props;
 
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<User | null>(() => {
+        const userLS = localStorage.getItem('neat-nest-user');
+        if (!userLS) return null;
+        return JSON.parse(userLS);
+    });
 
     const loginUser = (user: User, token: string) => {
         setUser(user);
