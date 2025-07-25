@@ -1,11 +1,28 @@
 import { twMerge } from 'tailwind-merge';
 import InputField from '../atoms/InputField';
-import { PiCheckCircleLight } from 'react-icons/pi';
+import { PiCheckCircleLight, PiDresserLight } from 'react-icons/pi';
 import Button from '../atoms/Button';
+import SelectorField from '../atoms/SelectorField';
+import type { Area } from '../../config/types';
 
 interface Props {
     className?: string;
 }
+
+const DBareas: Area[] = [
+    {
+        area_id: 1,
+        name: 'Cocina',
+        housing_id: 1,
+        created_at: '25/07/2025',
+    },
+    {
+        area_id: 2,
+        name: 'Baño',
+        housing_id: 1,
+        created_at: '25/07/2025',
+    },
+];
 
 export default function TaskForm(props: Props) {
     const { className } = props;
@@ -22,12 +39,10 @@ export default function TaskForm(props: Props) {
                     placeholder="Escribe la tarea"
                     required
                 />
-                <InputField
-                    type="text"
-                    label="Zona de trabajo"
-                    leftIcon={<PiCheckCircleLight size={24} />}
-                    placeholder="Escribe el nombre de la zona"
-                    required
+                <SelectorField
+                    areasDB={DBareas}
+                    leftIcon={<PiDresserLight size={24} />}
+                    labelText="Zona de trabajo"
                 />
                 <InputField
                     type="text"
