@@ -14,7 +14,7 @@ import { getItemFromLocalStorage } from './services/getItemFromLocalStorage';
 import NewTaskPage from './pages/NewTaskPage';
 
 async function privateRouteLoader() {
-    const user = getItemFromLocalStorage<User>('user');
+    const user = getItemFromLocalStorage<User>('neat-nest-user');
 
     if (!user) {
         return redirect('/login');
@@ -22,7 +22,7 @@ async function privateRouteLoader() {
 }
 
 async function publicRouteLoader() {
-    const user = getItemFromLocalStorage<User>('user');
+    const user = getItemFromLocalStorage<User>('neat-nest-user');
 
     if (user) {
         return redirect('/profile');
@@ -66,7 +66,7 @@ export const router = createBrowserRouter([
             {
                 path: '/tasks/new',
                 element: <NewTaskPage />,
-                loader: publicRouteLoader,
+                loader: privateRouteLoader,
             },
         ],
     },

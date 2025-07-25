@@ -16,7 +16,7 @@ export default function Menu(props: Props) {
     const classes = `items-center gap-6 ${directionClasses} ${hiddenClasses}`;
     return (
         <nav className={classes}>
-            {!user && (
+            {user && (
                 <MenuLink
                     to="/"
                     leftIcon={<PiListChecksLight size={24} />}
@@ -25,7 +25,7 @@ export default function Menu(props: Props) {
                     Mis tareas
                 </MenuLink>
             )}
-            {!user && (
+            {user && (
                 <MenuLink
                     to="/profile"
                     leftIcon={<PiUserCircleLight size={24} />}
