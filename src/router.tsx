@@ -11,6 +11,7 @@ import MyProfilePage from './pages/MyProfilePage';
 import UserViewPage from './pages/UserViewPage';
 
 import { getItemFromLocalStorage } from './services/getItemFromLocalStorage';
+import NewTaskPage from './pages/NewTaskPage';
 
 async function privateRouteLoader() {
     const user = getItemFromLocalStorage<User>('user');
@@ -60,6 +61,12 @@ export const router = createBrowserRouter([
                 path: '/users/:userId/housings/:housingId',
                 element: <UserViewPage />,
                 loader: privateRouteLoader,
+            },
+
+            {
+                path: '/tasks/new',
+                element: <NewTaskPage />,
+                loader: publicRouteLoader,
             },
         ],
     },

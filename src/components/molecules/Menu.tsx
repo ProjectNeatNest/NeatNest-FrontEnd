@@ -1,3 +1,4 @@
+import { PiListChecksLight, PiUserCircleLight } from 'react-icons/pi';
 import useUserContext from '../../hooks/useUserContext';
 import MenuLink from '../atoms/MenuLink';
 
@@ -12,11 +13,26 @@ export default function Menu(props: Props) {
     const directionClasses = direction === 'vertical' ? 'flex-col' : '';
     const hiddenClasses = isHidden ? 'hidden md:flex' : 'flex';
 
-    const classes = `items-center gap-4 ${directionClasses} ${hiddenClasses}`;
+    const classes = `items-center gap-6 ${directionClasses} ${hiddenClasses}`;
     return (
         <nav className={classes}>
-            {user && <MenuLink to="/">Mis tareas</MenuLink>}
-            {user && <MenuLink to="/profile">Mi perfil</MenuLink>}
+            {!user && (
+                <MenuLink
+                    to="/"
+                    leftIcon={<PiListChecksLight size={24} />}
+                    className="gap-2"
+                >
+                    Mis tareas
+                </MenuLink>
+            )}
+            {!user && (
+                <MenuLink
+                    to="/profile"
+                    leftIcon={<PiUserCircleLight size={24} />}
+                >
+                    Mi perfil
+                </MenuLink>
+            )}
             {!user && (
                 <MenuLink to="/login" appearance="secondaryButton">
                     Iniciar sesión
