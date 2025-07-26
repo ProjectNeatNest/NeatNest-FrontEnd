@@ -9,6 +9,7 @@ import type {
 import type { Area } from '../../config/types';
 import type { ReactNode } from 'react';
 import BodyText from '../typography/BodyText';
+import CustomDropdownIndicator from '../atoms/CustomDropDownIndicator';
 
 interface Props {
     areasDB: Area[];
@@ -24,20 +25,30 @@ type OptionType = {
 const customStyles: StylesConfig<OptionType, false, GroupBase<OptionType>> = {
     control: (base, props: ControlProps<OptionType, false>) => ({
         ...base,
-        backgroundColor: props.isFocused ? '#eef' : '#fff',
+        backgroundColor: props.isFocused ? '#c1ffe1' : '#fdfffe',
+        borderColor: props.isFocused ? '#2ad482' : '#d6ebe1',
+        boxShadow: props.isFocused ? '0 0 0 1px #2ad482' : 'none', // <-- AÑADIDO
         fontFamily: "'Nunito Variable', sans-serif'",
+        transition: 'all 0.2s ease',
+        '&:hover': {
+            borderColor: '#2ad482',
+        },
     }),
     option: (base, props: OptionProps<OptionType, false>) => ({
         ...base,
         backgroundColor: props.isSelected
-            ? '#2684FF'
+            ? '#3ff69e'
             : props.isFocused
-              ? '#e6f0ff'
+              ? '#ecfff6'
               : undefined,
-        color: props.isSelected ? 'white' : 'black',
+        color: props.isSelected ? '#3c4d45' : '#3c4d45',
         fontFamily: "'Nunito Variable', sans-serif'",
     }),
-    // puedes añadir más componentes tipados como placeholder, singleValue, etc.
+    placeholder: (base) => ({
+        ...base,
+        color: '#90a79c', // tu color personalizado aquí
+        fontFamily: "'Nunito Variable', sans-serif",
+    }),
 };
 
 export default function SelectorField(props: Props) {
@@ -74,11 +85,15 @@ export default function SelectorField(props: Props) {
                         </BodyText>
                     )}
                     <Select
+                        placeholder="Seleccionar zona"
                         styles={customStyles}
                         options={areasDB.map((area) => ({
                             label: area.name,
                             value: area.name,
                         }))}
+                        components={{
+                            DropdownIndicator: CustomDropdownIndicator,
+                        }}
                         // onChange={handleSelectChange}
                     />
                 </div>
