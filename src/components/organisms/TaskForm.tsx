@@ -64,7 +64,7 @@ export default function TaskForm(props: Props) {
                     required
                 />
             </div>
-            <Button buttonVariant="primary">Guardar</Button>
+            <Button buttonVariant="primary">Guardar y continuar</Button>
         </form>
     );
 }

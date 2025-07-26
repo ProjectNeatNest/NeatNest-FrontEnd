@@ -5,7 +5,10 @@ import TaskForm from '../components/organisms/TaskForm';
 export default function NewTaskPage() {
     return (
         <div className="flex flex-col gap-6">
-            <CreateHeading leftIcon={<PiCheckCircleLight size={24} />}>
+            <CreateHeading
+                leftIcon={<PiCheckCircleLight size={24} />}
+                deleteButton={true}
+            >
                 Crear tarea
             </CreateHeading>
             <TaskForm />

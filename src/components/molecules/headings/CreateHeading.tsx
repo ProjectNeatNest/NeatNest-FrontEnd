@@ -9,10 +9,11 @@ interface Props {
     leftIcon?: ReactNode;
     className?: string;
     children: ReactNode;
+    deleteButton?: boolean;
 }
 
 export default function CreateHeading(props: Props) {
-    const { leftIcon, className, children } = props;
+    const { leftIcon, className, deleteButton = true, children } = props;
     const classes = twMerge(
         'text-neutral-primary grid grid-cols-[auto_1fr_auto] items-center gap-2',
         className
@@ -27,9 +28,14 @@ export default function CreateHeading(props: Props) {
                 <Title as="h2" variant="title-medium-light">
                     {children}
                 </Title>
-                <Button buttonVariant="secondary" className="p-2 rounded-full">
-                    <PiTrashLight size={24} />
-                </Button>
+                {deleteButton && (
+                    <Button
+                        buttonVariant="secondary"
+                        className="p-2 rounded-full"
+                    >
+                        <PiTrashLight size={24} />
+                    </Button>
+                )}
             </header>
         </>
     );
