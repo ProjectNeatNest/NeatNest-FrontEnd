@@ -14,3 +14,10 @@ export interface LogInResponse {
     user: User;
     token: string;
 }
+
+export interface Area {
+    area_id: number;
+    name: string;
+    housing_id: number;
+    created_at: string;
+}
