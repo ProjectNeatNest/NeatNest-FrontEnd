@@ -21,3 +21,14 @@ export interface Area {
     housing_id: number;
     created_at: string;
 }
+
+export interface Task {
+    task_id: number;
+    name: string;
+    area: Area;
+    created_at: string;
+    duration: string;
+    user: User;
+    limit_date: string | null;
+    is_completed: boolean;
+}
