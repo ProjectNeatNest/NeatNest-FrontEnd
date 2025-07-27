@@ -250,6 +250,8 @@
     --background-image-house2: url(/house2.svg);
     --background-image-library: url(/library.svg);
     --background-image-studio: url(/studio.svg);
+    --background-image-create-house: url(/create-house.svg);
+    --background-image-todo: url(/todo.svg);
 }
 
 .custom-hamburger .hamburger-react > div {
