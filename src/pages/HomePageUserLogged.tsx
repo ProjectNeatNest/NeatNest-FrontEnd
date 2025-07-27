@@ -1,20 +1,40 @@
-import TasksList from "../components/molecules/ElementLists/TasksList";
-import type { Task } from "../config/types";
-import useUserContext from "../hooks/useUserContext";
-
-
+import AreasList from '../components/molecules/ElementLists/AreasList';
+import TasksList from '../components/molecules/ElementLists/TasksList';
+import HomePageUserHeading from '../components/molecules/headings/HomePageUserHeading';
+import type { Area, Housing, Task } from '../config/types';
+import useUserContext from '../hooks/useUserContext';
 
 export default function HomePageUserLogged() {
-    
-    const { user } = useUserContext()
-    
-    const testListArray: Task[] = [
+    const { user } = useUserContext();
+
+    const testHousing: Housing = {
+        housing_id: 1,
+        name: 'Mi pisito',
+        created_at: '27/07',
+    };
+
+    const testAreaListArray: Area[] = [
+        {
+            area_id: 1,
+            name: 'Cocina',
+            housing_id: 1,
+            created_at: '27/07',
+        },
+        {
+            area_id: 2,
+            name: 'Baño',
+            housing_id: 1,
+            created_at: '27/07',
+        },
+    ];
+
+    const testTaskListArray: Task[] = [
         {
             task_id: 1,
-            name: 'lavar los platos',
+            name: 'Lavar los platos',
             area: {
-                area_id:1,
-                name: 'cocina',
+                area_id: 1,
+                name: 'Cocina',
                 housing_id: 1,
                 created_at: '27/07',
             },
@@ -23,11 +43,14 @@ export default function HomePageUserLogged() {
             user: user,
             limit_date: null,
             is_completed: false,
-        }
-    ]
-    return <>
+        },
+    ];
 
-        <TasksList tasks={testListArray}></TasksList>
-    
-    </>;
+    return (
+        <div className="grid grid-cols-1 gap-6 bg-center bg-no-repeat bg-cover md:w-2/3 md:bg-contain bg-rafiki">
+            <HomePageUserHeading housing={testHousing} />
+            <AreasList areas={testAreaListArray}></AreasList>
+            <TasksList tasks={testTaskListArray}></TasksList>
+        </div>
+    );
 }

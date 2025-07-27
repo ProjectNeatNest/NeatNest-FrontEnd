@@ -202,8 +202,8 @@
     --background-semantic-warning-bold: var(--orange---60);
     --background-semantic-error-subtle: var(--red---10);
     --background-semantic-error-bold: var(--red---60);
-    --background-semantic-info-subtle: var(--yellow---10);
-    --background-semantic-info-bold: var(--yellow---60);
+    --background-semantic-info-subtle: var(--blue---10);
+    --background-semantic-info-bold: var(--blue---60);
     --text-neutral-primary: var(--greyscale---100);
     --text-neutral-secondary: var(--greyscale---80);
     --text-neutral-tertiary: var(--greyscale---70);
@@ -219,8 +219,8 @@
     --text-semantic-warning-inverse: var(--orange---10);
     --text-semantic-error-primary: var(--red---70);
     --text-semantic-error-inverse: var(--red---10);
-    --text-semantic-info-primary: var(--yellow---70);
-    --text-semantic-info-inverse: var(--yellow---10);
+    --text-semantic-info-primary: var(--blue---70);
+    --text-semantic-info-inverse: var(--blue---10);
     --border-neutral-primary: var(--greyscale---30);
     --border-neutral-secondary: var(--greyscale---50);
     --border-neutral-inverse-primary: var(--greyscale---90);
@@ -229,9 +229,9 @@
     --border-brand-inverse: var(--green---20);
     --border-semantic-success-primary: var(--green---80);
     --border-semantic-success-inverse: var(--green---20);
-    --border-semantic-warning-primary: var(--yellow---80);
+    --border-semantic-warning-primary: var(--blue---80);
     --border-semantic-warning-inverse: var(--orange---20);
-    --border-semantic-error-primary: var(--red---80);
+    --border-semantic-error-primary: var(--red---60);
     --border-semantic-error-inverse: var(--red---20);
     --border-semantic-info-primary: var(--blue---80);
     --border-semantic-info-inverse: var(--blue---20);

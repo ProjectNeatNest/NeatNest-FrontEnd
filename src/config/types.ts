@@ -15,6 +15,12 @@ export interface LogInResponse {
     token: string;
 }
 
+export interface Housing {
+    housing_id: number;
+    name: string;
+    created_at: string;
+}
+
 export interface Area {
     area_id: number;
     name: string;

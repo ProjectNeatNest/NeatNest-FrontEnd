@@ -24,6 +24,7 @@ export default function CustomNavLink(props: Props) {
             focus:bg-brand-secondary focus:border-2 focus:border-brand-primary
             focus-visible:border-2 focus-visible:border-brand-primary
             select-none
+            text-neutral-primary
   `,
 
         secondaryButton: `
@@ -38,6 +39,7 @@ export default function CustomNavLink(props: Props) {
             focus:bg-neutral-tertiary focus:border-2 focus:border-brand-primary
             focus-visible:border-2 focus-visible:border-brand-primary
             select-none
+            text-neutral-primary
   `,
 
         navLink: `
@@ -53,9 +55,9 @@ export default function CustomNavLink(props: Props) {
         <>
             <div className={classes}>
                 {leftIcon && (
-                    <span className="text-neutral-primary">{leftIcon}</span>
+                    <span>{leftIcon}</span>
                 )}
-                <NavLink className="" to={to}>
+                <NavLink to={to}>
                     {children}
                 </NavLink>
             </div>
