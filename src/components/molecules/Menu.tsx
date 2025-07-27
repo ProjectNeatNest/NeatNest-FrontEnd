@@ -1,6 +1,6 @@
 import { PiListChecksLight, PiUserCircleLight } from 'react-icons/pi';
 import useUserContext from '../../hooks/useUserContext';
-import MenuLink from '../atoms/MenuLink';
+import CustomNavLink from '../atoms/CustomNavLink';
 
 interface Props {
     isHidden?: boolean;
@@ -17,31 +17,31 @@ export default function Menu(props: Props) {
     return (
         <nav className={classes}>
             {user && (
-                <MenuLink
+                <CustomNavLink
                     to="/"
                     leftIcon={<PiListChecksLight size={24} />}
                     className="gap-2"
                 >
                     Mis tareas
-                </MenuLink>
+                </CustomNavLink>
             )}
             {user && (
-                <MenuLink
+                <CustomNavLink
                     to="/profile"
                     leftIcon={<PiUserCircleLight size={24} />}
                 >
                     Mi perfil
-                </MenuLink>
+                </CustomNavLink>
             )}
             {!user && (
-                <MenuLink to="/login" appearance="secondaryButton">
+                <CustomNavLink to="/login" appearance="secondaryButton">
                     Iniciar sesión
-                </MenuLink>
+                </CustomNavLink>
             )}
             {!user && (
-                <MenuLink to="/register" appearance="primaryButton">
+                <CustomNavLink to="/register" appearance="primaryButton">
                     Registrarme
-                </MenuLink>
+                </CustomNavLink>
             )}
         </nav>
     );
