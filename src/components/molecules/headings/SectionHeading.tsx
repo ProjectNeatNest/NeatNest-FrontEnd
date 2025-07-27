@@ -9,11 +9,15 @@ interface Props {
     className?: string;
     children: ReactNode;
     buttonLabel: string;
+    linkTo: string;
 }
 
 export default function SectionHeading(props: Props) {
-    const { className, buttonLabel, children } = props;
-    const classes = twMerge('grid grid-cols-[1fr_auto]', className);
+    const { className, buttonLabel, linkTo, children } = props;
+    const classes = twMerge(
+        'grid grid-cols-[1fr_auto] items-center',
+        className
+    );
 
     return (
         <header className={classes}>
@@ -25,7 +29,7 @@ export default function SectionHeading(props: Props) {
                 {children}
             </Title>
             <CustomNavLink
-                to="/areas/new"
+                to={linkTo}
                 appearance="primaryButton"
                 leftIcon={<PiPlusLight size={24} />}
             >
