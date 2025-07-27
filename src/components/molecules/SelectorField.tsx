@@ -9,7 +9,7 @@ import type {
 import type { Area } from '../../config/types';
 import type { ReactNode } from 'react';
 import BodyText from '../typography/BodyText';
-import CustomDropdownIndicator from '../atoms/CustomDropDownIndicator';
+import CustomDropdownIndicator from '../atoms/CustomDropdownIndicator';
 
 interface Props {
     areasDB: Area[];
