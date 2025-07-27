@@ -11,13 +11,14 @@ interface Props {
 }
 
 export default function TasksList(props: Props) {
-    const { tasks, className } = props;
+    const { tasks, className, isLoading } = props;
     const classes = twMerge('grid grid-cols-1 gap-3', className);
-    const isLoading = true;
 
     return (
-        <section>
-            <SectionHeading buttonLabel="tarea">Mis tareas</SectionHeading>
+        <section className="flex flex-col gap-4 w-full">
+            <SectionHeading buttonLabel="tarea" linkTo="/tasks/new">
+                Mis tareas
+            </SectionHeading>
             <div className={classes}>
                 {isLoading && (
                     <img src="/Loading.gif" alt="Loading spinner"></img>
