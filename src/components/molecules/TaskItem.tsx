@@ -1,60 +1,59 @@
 import { PiXLight } from 'react-icons/pi';
+import type { Task } from '../../config/types';
 import CheckboxRounded from '../atoms/CheckboxRounded';
 import BodyText from '../typography/BodyText';
+import { Link } from 'react-router';
 
 interface Props {
-    taskName: string;
-    createdDate?: string;
-    area?: string;
-    duration?: string;
-    userName?: string;
-    limitDate?: string;
+    task: Task;
 }
 
 export default function TaskItem(props: Props) {
-    const { taskName, createdDate, area, duration, limitDate, userName } =
-        props;
 
+    const { task } = props
+     
     return (
         <>
             <div className="bg-neutral-secondary px-3 py-1.5 grid grid-cols-[auto_1fr_auto] items-center gap-2.5 shadow-md group transform transition-transform duration-300 ease-in-out hover:scale-102 rounded-xl">
                 <CheckboxRounded />
+                <Link to={`/tasks/${task.task_id}`}>
                 <div className="flex flex-col gap-1 transition-opacity opacity-100 group-has-checked:opacity-50">
                     <BodyText
                         as="p"
                         variant="body-large-bold"
                         className="text-neutral-primary group-has-checked:line-through"
                     >
-                        {taskName}
+                        {task.name}
                     </BodyText>
                     <div className="flex justify-between text-neutral-secondary">
-                        {userName && (
+                        {task.user && (
                             <BodyText as="span" variant="body-xsmall-regular">
-                                {userName}
+                                {task.user.name}
                             </BodyText>
                         )}
-                        {area && (
+                        {task.area && (
                             <BodyText as="span" variant="body-xsmall-regular">
-                                {area}
+                                {task.area.name}
                             </BodyText>
                         )}
-                        {duration && (
+                        {task.duration && (
                             <BodyText as="span" variant="body-xsmall-regular">
-                                Duración: {duration}
+                                Duración: {task.duration}
                             </BodyText>
                         )}
-                        {limitDate && (
+                        {task.limit_date && (
                             <BodyText as="span" variant="body-xsmall-regular">
-                                Antes de: {limitDate}
+                                Antes de: {task.limit_date}
                             </BodyText>
                         )}
-                        {createdDate && (
+                        {task.created_at && (
                             <BodyText as="span" variant="body-xsmall-regular">
-                                Creado: {createdDate}
+                                Creado: {task.created_at}
                             </BodyText>
                         )}
                     </div>
                 </div>
+                </Link>
                 <button type="button" aria-label="Delete task">
                     <PiXLight size={32} />
                 </button>
