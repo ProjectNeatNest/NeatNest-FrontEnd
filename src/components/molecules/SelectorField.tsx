@@ -6,13 +6,12 @@ import type {
     GroupBase,
 } from 'react-select';
 
-import type { Area } from '../../config/types';
 import type { ReactNode } from 'react';
 import BodyText from '../typography/BodyText';
 import CustomDropdownIndicator from '../atoms/CustomDropdownIndicator';
 
 interface Props {
-    areasDB: Area[];
+    options: string[];
     leftIcon?: ReactNode;
     labelText?: string;
 }
@@ -52,7 +51,7 @@ const customStyles: StylesConfig<OptionType, false, GroupBase<OptionType>> = {
 };
 
 export default function SelectorField(props: Props) {
-    const { areasDB, leftIcon, labelText } = props;
+    const { options, leftIcon, labelText } = props;
 
     // const handleSelectChange = (
     //     option: { labelText: string } | null
@@ -87,9 +86,9 @@ export default function SelectorField(props: Props) {
                     <Select
                         placeholder="Seleccionar zona"
                         styles={customStyles}
-                        options={areasDB.map((area) => ({
-                            label: area.name,
-                            value: area.name,
+                        options={options.map((option) => ({
+                            label: option,
+                            value: option,
                         }))}
                         components={{
                             DropdownIndicator: CustomDropdownIndicator,

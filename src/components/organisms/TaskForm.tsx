@@ -45,7 +45,7 @@ export default function TaskForm(props: Props) {
                     required
                 />
                 <SelectorField
-                    areasDB={DBareas}
+                    options={DBareas.map(area => area.name)}
                     leftIcon={<PiDresserLight size={24} />}
                     labelText="Zona de trabajo"
                 />
