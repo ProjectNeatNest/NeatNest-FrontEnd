@@ -6,13 +6,17 @@ export default async function myRequest<T, K = null>(
     data?: K
 ): Promise<T> {
     const baseURL = import.meta.env.VITE_SERVER_BASE_URL;
+    const token = localStorage.getItem('neat-nest-token');
+
+    const headers: HeadersInit = {'Content-type': 'application/json'}
+    if (token) {
+        headers['Authorization'] = `Bearer ${token}`
+    }
 
     try {
         const response = await fetch(`${baseURL}${url}`, {
             method: method,
-            headers: {
-                'Content-type': 'application/json',
-            },
+            headers: headers,
             body: data? JSON.stringify(data):undefined,
         });
 

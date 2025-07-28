@@ -1,9 +1,9 @@
+import { useNavigate } from 'react-router';
 import { twMerge } from 'tailwind-merge';
 import { PiEnvelopeLight, PiLockLight, PiUserLight } from 'react-icons/pi';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router';
 
 import InputField from '../atoms/InputField';
 import BodyText from '../typography/BodyText';

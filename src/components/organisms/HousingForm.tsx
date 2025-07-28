@@ -1,23 +1,26 @@
-import { PiHouseLineLight, PiPlusLight, PiUsersLight } from 'react-icons/pi';
-import InputField from '../atoms/InputField';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router';
+import { useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { PiHouseLineLight, PiPlusLight, PiUsersLight } from 'react-icons/pi';
+
+import type { DefaultArea } from '../../config/types';
+
 import Button from '../atoms/Button';
 import BodyText from '../typography/BodyText';
 import CheckboxListItem from '../molecules/CheckboxListItem';
 import myRequest from '../../services/myRequest';
-import type { DefaultArea } from '../../config/types';
-import { useEffect, useState } from 'react';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { housingSchema } from '../../schemas/housingSchema';
-import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router';
 
+import InputField from '../atoms/InputField';
+import EmailItem from '../molecules/emailItem';
 interface Props {
     className?: string;
 }
 
 interface HousingFormValues {
-    housingName: string;
+    name: string;
     cohabitantEmail?: string;
 }
 
@@ -32,11 +35,26 @@ export default function HousingForm(props: Props) {
         mode: 'onChange',
     });
 
+    const [cohabitants, setCohabitants] = useState<string[]>([]);
+    //? ******** Añadir un handle para el botón añadir
+    //Nuevo estado para el input de conviviente.
+    const [cohabitantInput, setCohabitantInput] = useState('');
+    //Handler para el input controlado
+    function handleCohabitantChange(e: React.ChangeEvent<HTMLInputElement>) {
+        setCohabitantInput(e.target.value);
+    }
+    //Handler para añadir el conviviente
+    function handleAddCohabitant() {
+        //Solo añade si no hay error y el campo no está vacío.
+        if (!errors.cohabitantEmail && cohabitantInput.trim() !== '' && !cohabitants.includes(cohabitantInput)) {
+            setCohabitants([...cohabitants, cohabitantInput.trim()]);
+        }
+    }
+
     const { errors } = formState;
 
     async function onSubmit(data: HousingFormValues) {
-        const backendData = await myRequest('/housings', 'POST', data);
-       
+        await myRequest('/housings', 'POST', data);
 
         navigate('/');
     }
@@ -44,9 +62,10 @@ export default function HousingForm(props: Props) {
     useEffect(() => {
         myRequest<DefaultArea[]>('/defaultAreas', 'GET')
             .then((areas) => {
+                console.log(areas);
                 setDefaultAreas(areas);
             })
-            .catch((algo) => console.log('❌', algo));
+            .catch((error) => console.log('❌', error));
     }, []);
 
     const classes = twMerge('flex flex-col gap-6', className);
@@ -59,27 +78,47 @@ export default function HousingForm(props: Props) {
                     label="Nombre de la vivienda *"
                     leftIcon={<PiHouseLineLight size={24} />}
                     placeholder="El nombre de tu vivienda"
-                    errorMessage={errors.housingName?.message}
-                    {...register('housingName')}
+                    errorMessage={errors.name?.message}
+                    {...register('name')}
                     required
                 />
-                <div className="flex">
-                    <InputField
-                        type="text"
-                        label="Añadir conviviente (opcional)"
-                        leftIcon={<PiUsersLight size={24} />}
-                        placeholder="Escribe el email del conviviente"
-                        errorMessage={errors.cohabitantEmail?.message}
-                        {...register('cohabitantEmail')}
-                    />
-                    <Button
-                        buttonVariant="secondary"
-                        icon={<PiPlusLight size={24} />}
-                    >
-                        Añadir
-                    </Button>
-                </div>
             </div>
+            <div className="flex">
+                <InputField
+                    type="text"
+                    label="Añadir conviviente (opcional)"
+                    leftIcon={<PiUsersLight size={24} />}
+                    placeholder="Escribe el email del conviviente"
+                    errorMessage={errors.cohabitantEmail?.message}
+                    onChangeCapture={handleCohabitantChange}
+                    {...register('cohabitantEmail')}
+                />
+                <Button
+                    buttonVariant="secondary"
+                    icon={<PiPlusLight size={24} />}
+                    className="h-[68px]"
+                    onClick={handleAddCohabitant}
+                >
+                    Añadir
+                </Button>
+            </div>
+            {cohabitants.length > 0 && (
+                <div className="flex gap-1 wrap">
+                    {cohabitants.map((hab, i) => (
+                        <EmailItem
+                            key={i}
+                            onDelete={() => {
+                                setCohabitants(
+                                    cohabitants.filter((_, idx) => idx !== i)
+                                );
+                            }}
+                        >
+                            {hab}
+                        </EmailItem>
+                    ))}
+                </div>
+            )}
+
             <div className="flex flex-col gap-2">
                 <BodyText
                     as="p"
