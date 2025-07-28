@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import BodyText from '../typography/BodyText';
 
 export default function Footer() {
@@ -8,7 +9,21 @@ export default function Footer() {
                 variant="body-small-regular"
                 className="text-center text-neutral-secondary"
             >
-                Created by NARL with 💚
+                Created by{' '}
+                <Link
+                    to="https://github.com/NastyaRosa"
+                    className="text-success-primary"
+                >
+                    Nasty
+                </Link>{' '}
+                &{' '}
+                <Link
+                    to="https://github.com/agomezal96"
+                    className="text-success-primary"
+                >
+                    Andy
+                </Link>{' '}
+                with 💚
             </BodyText>
             <BodyText
                 as="span"

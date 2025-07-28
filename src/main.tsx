@@ -6,7 +6,7 @@ import { router } from './router.tsx';
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
-    <StrictMode>
+    // <StrictMode>
             <RouterProvider router={router} />
-    </StrictMode>
+    // </StrictMode>
 );

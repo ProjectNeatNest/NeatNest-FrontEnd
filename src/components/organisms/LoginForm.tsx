@@ -21,7 +21,6 @@ interface loginFormValues {
 }
 
 export default function LoginForm(props: Props) {
-    //TODO Conectarlo al backend para que haga la petición
     const { register, handleSubmit, formState } = useForm<loginFormValues>({
         resolver: zodResolver(loginSchema),
         mode: 'onChange',

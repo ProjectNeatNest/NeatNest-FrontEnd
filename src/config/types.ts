@@ -28,6 +28,8 @@ export interface Area {
     created_at: string;
 }
 
+export type DefaultArea = Omit<Area, 'housing_id'>;
+
 export interface Task {
     task_id: number;
     name: string;

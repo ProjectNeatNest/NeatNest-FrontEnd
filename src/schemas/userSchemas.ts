@@ -6,7 +6,7 @@ export const registerSchema = z
             .string()
             .min(1, 'Se requiere nombre de usuario')
             .min(3, 'Al menos 3 caracteres')
-            .max(20, 'Máximo 3 caracteres'),
+            .max(20, 'Máximo 20 caracteres'),
         email: z
             .email('Email inválido')
             .min(1, 'El email es obligatorio')

@@ -4,7 +4,8 @@ import TaskForm from '../../components/organisms/TaskForm';
 
 export default function NewTaskPage() {
     return (
-        <div className="flex flex-col gap-6 bg-center bg-no-repeat bg-cover md:w-1/3 md:bg-contain bg-todo">
+        <div className="flex justify-center w-full bg-no-repeat bg-size-[auto_100%] bg-center md:bg-position-[120%] bg-todo">
+            <div className='flex flex-col w-2/3 gap-6'>
             <CreateHeading
                 leftIcon={<PiCheckCircleLight size={24} />}
                 deleteButton={false}
@@ -13,5 +14,6 @@ export default function NewTaskPage() {
             </CreateHeading>
             <TaskForm />
         </div>
+            </div>
     );
 }

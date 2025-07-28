@@ -1,11 +1,16 @@
 import { useId } from 'react';
 import { PiCheckLight } from 'react-icons/pi';
 
-export default function CheckboxSquare() {
+interface Props {
+    name?: string;
+}
+
+export default function CheckboxSquare(props: Props) {
+    const { name = '' } = props;
     const id = useId();
     return (
         <div className="select-none group">
-            <input type="checkbox" id={id} className="hidden" />
+            <input type="checkbox" id={id} className="hidden" name={name} />
             <label
                 htmlFor={id}
                 className="flex items-center justify-center border-2 shadow-xs rounded-xs size-6 bg-neutral-tertiary border-brand-primary"

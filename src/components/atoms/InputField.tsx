@@ -33,7 +33,7 @@ export default function InputField(props: Props) {
         <>
             <div className="flex flex-col w-full gap-1 rounded-md font-nunito">
                 <div
-                    className={`flex w-full gap-2 px-4 py-2 rounded-md shadow-md bg-neutral-primary ${errorMessage ? 'border-2 border-error-primary' : ''}`}
+                    className={`flex w-full gap-2 px-4 py-2 rounded-md shadow-md bg-neutral-primary border border-neutral-100 ${errorMessage ? 'border-2 border-error-primary' : ''}`}
                 >
                     {leftIcon && (
                         <BodyText

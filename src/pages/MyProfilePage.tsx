@@ -7,7 +7,7 @@ export default function MyProfilePage() {
     const { logoutUser } = useUserContext();
 
     return (
-        <div className=''>
+        <div className='bg-center bg-no-repeat bg-cover md:w-2/3 md:bg-contain bg-bedroom'>
             <Button
                 buttonVariant="secondary"
                 icon={<PiSignOutLight size={24} />}
