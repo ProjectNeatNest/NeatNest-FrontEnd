@@ -1,10 +1,10 @@
 import { toast } from 'react-toastify';
 
-export default async function myRequest(
+export default async function myRequest<T, K>(
     url: string,
     method: 'POST' | 'GET' | 'PUT' | 'PATCH' | 'DELETE',
-    data?: T
-) {
+    data: T
+): Promise<K | undefined> {
     const baseURL = import.meta.env.VITE_SERVER_BASE_URL;
 
     try {
@@ -29,3 +29,5 @@ export default async function myRequest(
         if (error instanceof Error) toast.error(error.message);
     }
 }
+
+
