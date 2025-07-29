@@ -1,15 +1,23 @@
+import { useEffect } from 'react';
 import AreasList from '../components/molecules/ElementLists/AreasList';
 import TasksList from '../components/molecules/ElementLists/TasksList';
 import HomePageUserHeading from '../components/molecules/headings/HomePageUserHeading';
 import type { Area, Housing, Task } from '../config/types';
 import useHousingContext from '../hooks/useHousingContext';
+import useRequest from '../hooks/useRequest';
 import useUserContext from '../hooks/useUserContext';
+import Spinner from '../components/Spinner';
 
 export default function HomePageUserLogged() {
-
-    const { housing } = useHousingContext()
+    const { housing, addHousing } = useHousingContext();
     const { user } = useUserContext();
 
+    const { requestData: userHousings, isLoading } =
+        useRequest<Housing[]>('/housings');
+    
+    if(userHousings && !housing) {
+        addHousing(userHousings[0])
+    }
     // const testHousing: Housing = {
     //     housing_id: 1,
     //     name: 'Mi pisito',
@@ -49,11 +57,15 @@ export default function HomePageUserLogged() {
         },
     ];
 
+
     return (
         <div className="grid grid-cols-1 gap-6 bg-center bg-no-repeat bg-cover md:w-2/3 md:bg-contain bg-rafiki">
-            <HomePageUserHeading housing={housing} />
-            <AreasList areas={testAreaListArray}></AreasList>
-            <TasksList tasks={testTaskListArray}></TasksList>
+            {isLoading && <Spinner />}
+            {!isLoading && <>
+                <HomePageUserHeading housing={housing} />
+                <AreasList areas={testAreaListArray}></AreasList>
+                <TasksList tasks={testTaskListArray}></TasksList>
+            </>}
         </div>
     );
 }
