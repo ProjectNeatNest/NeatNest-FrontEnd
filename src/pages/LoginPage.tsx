@@ -4,7 +4,7 @@ import Title from '../components/typography/Title';
 
 export default function LoginPage() {
     return (
-        <div className="flex flex-col items-center gap-8 bg-center bg-no-repeat bg-cover md:bg-contain bg-house">
+        <div className="flex flex-col items-center gap-8 bg-center bg-no-repeat bg-cover md:bg-contain bg-house lg:w-2/3">
             <div className="flex flex-col justify-center gap-2">
                 <Title
                     as="h2"

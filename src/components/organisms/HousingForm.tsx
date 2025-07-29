@@ -1,20 +1,23 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { PiHouseLineLight, PiPlusLight, PiUsersLight } from 'react-icons/pi';
 
-import type { DefaultArea } from '../../config/types';
+import type { Housing } from '../../config/types';
 
 import Button from '../atoms/Button';
-import BodyText from '../typography/BodyText';
-import CheckboxListItem from '../molecules/CheckboxListItem';
-import myRequest from '../../services/myRequest';
+// import BodyText from '../typography/BodyText';
+// import CheckboxListItem from '../molecules/CheckboxListItem';
+// import useRequest from '../../hooks/useRequest';
 import { housingSchema } from '../../schemas/housingSchema';
 
 import InputField from '../atoms/InputField';
-import EmailItem from '../molecules/emailItem';
+import EmailItem from '../molecules/EmailItem';
+// import Spinner from '../Spinner';
+import myRequest from '../../services/myRequest';
+import useHousingContext from '../../hooks/useHousingContext';
 interface Props {
     className?: string;
 }
@@ -27,46 +30,56 @@ interface HousingFormValues {
 export default function HousingForm(props: Props) {
     const { className } = props;
 
-    const [defaultAreas, setDefaultAreas] = useState<DefaultArea[]>([]);
+    // const { requestData: defaultAreas, isLoading: areAreasLoading } =
+    //     useRequest<DefaultArea[]>('/defaultAreas', 'GET');
     const navigate = useNavigate();
 
-    const { register, handleSubmit, formState } = useForm<HousingFormValues>({
-        resolver: zodResolver(housingSchema),
-        mode: 'onChange',
-    });
+    const { register, handleSubmit, formState, watch, resetField } =
+        useForm<HousingFormValues>({
+            resolver: zodResolver(housingSchema),
+            mode: 'onChange',
+        });
+    const { errors } = formState;
 
     const [cohabitants, setCohabitants] = useState<string[]>([]);
-    //? ******** Añadir un handle para el botón añadir
-    //Nuevo estado para el input de conviviente.
-    const [cohabitantInput, setCohabitantInput] = useState('');
-    //Handler para el input controlado
-    function handleCohabitantChange(e: React.ChangeEvent<HTMLInputElement>) {
-        setCohabitantInput(e.target.value);
-    }
+
+    const { addHousing } = useHousingContext();
+
+    const cohabitantInputValue = watch('cohabitantEmail') || '';
+
     //Handler para añadir el conviviente
-    function handleAddCohabitant() {
+    async function handleAddCohabitant() {
         //Solo añade si no hay error y el campo no está vacío.
-        if (!errors.cohabitantEmail && cohabitantInput.trim() !== '' && !cohabitants.includes(cohabitantInput)) {
-            setCohabitants([...cohabitants, cohabitantInput.trim()]);
+        if (
+            !errors.cohabitantEmail &&
+            cohabitantInputValue.trim() !== '' &&
+            !cohabitants.includes(cohabitantInputValue)
+        ) {
+            setCohabitants([...cohabitants, cohabitantInputValue.trim()]);
+            resetField('cohabitantEmail');
         }
     }
 
-    const { errors } = formState;
-
     async function onSubmit(data: HousingFormValues) {
-        await myRequest('/housings', 'POST', data);
+        interface NewHousing {
+            name: string;
+            cohabitants: string[];
+        }
 
+        const newHousing = {
+            name: data.name,
+            cohabitants: cohabitants,
+            // defaultAreas: {},
+        };
+        const newHousingBackend = await myRequest<Housing, NewHousing>(
+            '/housings',
+            'POST',
+            newHousing
+        );
+
+        addHousing(newHousingBackend);
         navigate('/');
     }
-
-    useEffect(() => {
-        myRequest<DefaultArea[]>('/defaultAreas', 'GET')
-            .then((areas) => {
-                console.log(areas);
-                setDefaultAreas(areas);
-            })
-            .catch((error) => console.log('❌', error));
-    }, []);
 
     const classes = twMerge('flex flex-col gap-6', className);
 
@@ -90,7 +103,6 @@ export default function HousingForm(props: Props) {
                     leftIcon={<PiUsersLight size={24} />}
                     placeholder="Escribe el email del conviviente"
                     errorMessage={errors.cohabitantEmail?.message}
-                    onChangeCapture={handleCohabitantChange}
                     {...register('cohabitantEmail')}
                 />
                 <Button
@@ -119,7 +131,7 @@ export default function HousingForm(props: Props) {
                 </div>
             )}
 
-            <div className="flex flex-col gap-2">
+            {/* <div className="flex flex-col gap-2">
                 <BodyText
                     as="p"
                     variant="body-large-regular"
@@ -129,15 +141,17 @@ export default function HousingForm(props: Props) {
                 </BodyText>
 
                 <ul className="grid grid-cols-3 gap-2">
-                    {defaultAreas.map((area, i) => (
-                        <li key={i}>
-                            <CheckboxListItem>{area.name}</CheckboxListItem>
-                        </li>
-                    ))}
+                    {areAreasLoading && <Spinner />}
+                    {defaultAreas &&
+                        defaultAreas.map((area, i) => (
+                            <li key={i}>
+                                <CheckboxListItem>{area.name}</CheckboxListItem>
+                            </li>
+                        ))}
 
-                    {/* Si no hay default areas, poner un mensaje */}
                 </ul>
-            </div>
+            </div> */}
+
             <Button buttonVariant="primary" type="submit">
                 Guardar y continuar
             </Button>
