@@ -14,7 +14,7 @@ export default function HousingList(props: Props) {
     const navigate = useNavigate();
 
     return (
-        <section>
+        <section className='flex flex-wrap gap-2 '>
             {housings.map((housing) => (
                 <Button
                     buttonVariant="tertiary"
