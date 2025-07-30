@@ -42,7 +42,7 @@ if (!housing) return;
             housing_id: housing?.housing_id
         };
 
-        await myRequest<Area, NewArea>('/areas', 'POST', newArea);
+        await myRequest<Area, NewArea>(`/housings/${housing.housing_id}/areas`, 'POST', newArea);
         navigate('/');
     }
 
