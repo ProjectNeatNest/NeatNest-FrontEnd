@@ -7,13 +7,14 @@ import MainLayout from './layouts/MainLayout';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import MyProfilePage from './pages/MyProfilePage';
 import UserViewPage from './pages/UserViewPage';
 import { getItemFromLocalStorage } from './services/getItemFromLocalStorage';
 import NewHousingPage from './pages/CreationPages/NewHousingPage';
 import NewTaskPage from './pages/CreationPages/NewTaskPage';
 import NewAreaPage from './pages/CreationPages/NewAreaPage';
 import NotFoundPage from './pages/NotFoundPage';
+import MyHousingsPage from './pages/MyHousingsPage';
+import MyTasksPage from './pages/MyTasksPage';
 
 async function privateRouteLoader() {
     const user = getItemFromLocalStorage<User>('neat-nest-user');
@@ -54,8 +55,14 @@ export const router = createBrowserRouter([
             },
 
             {
-                path: '/profile',
-                element: <MyProfilePage />,
+                path: '/my-housings',
+                element: <MyHousingsPage />,
+                loader: privateRouteLoader,
+            },
+
+                        {
+                path: '/my-tasks',
+                element: <MyTasksPage />,
                 loader: privateRouteLoader,
             },
 

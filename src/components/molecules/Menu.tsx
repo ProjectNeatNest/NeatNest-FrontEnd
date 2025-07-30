@@ -1,6 +1,11 @@
-import { PiListChecksLight, PiUserCircleLight } from 'react-icons/pi';
+import {
+    PiHouseLineLight,
+    PiListChecksLight,
+    PiSignOutLight,
+} from 'react-icons/pi';
 import useUserContext from '../../hooks/useUserContext';
 import CustomNavLink from '../atoms/CustomNavLink';
+import Button from '../atoms/Button';
 
 interface Props {
     isHidden?: boolean;
@@ -8,7 +13,7 @@ interface Props {
 }
 
 export default function Menu(props: Props) {
-    const { user } = useUserContext();
+    const { user, logoutUser } = useUserContext();
     const { isHidden = false, direction = 'horizontal' } = props;
     const directionClasses = direction === 'vertical' ? 'flex-col' : '';
     const hiddenClasses = isHidden ? 'hidden md:flex' : 'flex';
@@ -18,7 +23,7 @@ export default function Menu(props: Props) {
         <nav className={classes}>
             {user && (
                 <CustomNavLink
-                    to="/"
+                    to="/my-tasks"
                     leftIcon={<PiListChecksLight size={24} />}
                     className="gap-2"
                 >
@@ -27,12 +32,23 @@ export default function Menu(props: Props) {
             )}
             {user && (
                 <CustomNavLink
-                    to="/profile"
-                    leftIcon={<PiUserCircleLight size={24} />}
+                    to="/my-housings"
+                    leftIcon={<PiHouseLineLight size={24} />}
                 >
-                    Mi perfil
+                    Mis viviendas
                 </CustomNavLink>
             )}
+
+            {
+                <Button
+                    buttonVariant="secondary"
+                    icon={<PiSignOutLight size={24} />}
+                    onClick={logoutUser}
+                >
+                    Cerrar sesión
+                </Button>
+            }
+
             {!user && (
                 <CustomNavLink to="/login" appearance="secondaryButton">
                     Iniciar sesión
