@@ -2,6 +2,7 @@ import {
     PiHouseLineLight,
     PiListChecksLight,
     PiSignOutLight,
+    PiUsersLight,
 } from 'react-icons/pi';
 import useUserContext from '../../hooks/useUserContext';
 import CustomNavLink from '../atoms/CustomNavLink';
@@ -30,6 +31,16 @@ export default function Menu(props: Props) {
                     Mis tareas
                 </CustomNavLink>
             )}
+
+            {user && (
+                <CustomNavLink
+                    to="/cohabitants"
+                    leftIcon={<PiUsersLight size={24} />}
+                >
+                    Habitantes
+                </CustomNavLink>
+            )}
+
             {user && (
                 <CustomNavLink
                     to="/my-housings"

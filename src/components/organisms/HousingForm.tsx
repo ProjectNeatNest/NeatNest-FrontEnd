@@ -11,20 +11,18 @@ import Button from '../atoms/Button';
 // import BodyText from '../typography/BodyText';
 // import CheckboxListItem from '../molecules/CheckboxListItem';
 // import useRequest from '../../hooks/useRequest';
-import { housingSchema } from '../../schemas/housingSchema';
+import {
+    housingSchema,
+    type HousingFormValues,
+} from '../../schemas/housingSchema';
 
 import InputField from '../atoms/InputField';
-import EmailItem from '../molecules/EmailItem';
+import RemovableItem from '../molecules/RemovableItem';
 // import Spinner from '../Spinner';
 import myRequest from '../../services/myRequest';
 import useHousingContext from '../../hooks/useHousingContext';
 interface Props {
     className?: string;
-}
-
-interface HousingFormValues {
-    name: string;
-    cohabitantEmail?: string;
 }
 
 export default function HousingForm(props: Props) {
@@ -78,7 +76,7 @@ export default function HousingForm(props: Props) {
         );
 
         addHousing(newHousingBackend);
-        navigate('/');
+        navigate('/my-tasks');
     }
 
     const classes = twMerge('flex flex-col gap-6', className);
@@ -117,7 +115,7 @@ export default function HousingForm(props: Props) {
             {cohabitants.length > 0 && (
                 <div className="flex gap-1 wrap">
                     {cohabitants.map((hab, i) => (
-                        <EmailItem
+                        <RemovableItem
                             key={i}
                             onDelete={() => {
                                 setCohabitants(
@@ -126,7 +124,7 @@ export default function HousingForm(props: Props) {
                             }}
                         >
                             {hab}
-                        </EmailItem>
+                        </RemovableItem>
                     ))}
                 </div>
             )}

@@ -43,7 +43,7 @@ if (!housing) return;
         };
 
         await myRequest<Area, NewArea>(`/housings/${housing.housing_id}/areas`, 'POST', newArea);
-        navigate('/');
+        navigate('/my-tasks');
     }
 
     const { className } = props;

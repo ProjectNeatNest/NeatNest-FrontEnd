@@ -7,3 +7,7 @@ export const housingSchema = z.object({
         .max(20, 'Máximo 20 caracteres'),
     cohabitantEmail: z.email('Email inválido').optional().or(z.literal('')),
 });
+
+export const cohabitantSchema = housingSchema.pick({ cohabitantEmail: true });
+
+export type HousingFormValues = z.infer<typeof housingSchema>

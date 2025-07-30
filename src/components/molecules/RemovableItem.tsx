@@ -6,7 +6,7 @@ interface Props {
     onDelete: () => void;
 }
 
-export default function EmailItem(props: Props) {
+export default function RemovableItem(props: Props) {
     const { children, onDelete } = props;
 
     return (
