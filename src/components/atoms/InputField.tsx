@@ -3,7 +3,7 @@ import BodyText from '../typography/BodyText';
 import { twMerge } from 'tailwind-merge';
 
 interface Props extends ComponentPropsWithoutRef<'input'> {
-    type: 'text' | 'email' | 'password';
+    type: 'text' | 'email' | 'password' | 'date' | 'number';
     className?: string;
     label?: ReactNode;
     errorMessage?: string;

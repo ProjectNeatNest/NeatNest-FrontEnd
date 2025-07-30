@@ -9,9 +9,10 @@ import type {
 import type { ReactNode } from 'react';
 import BodyText from '../typography/BodyText';
 import CustomDropdownIndicator from '../atoms/CustomDropdownIndicator';
+import type { Area } from '../../config/types';
 
 interface Props {
-    options: string[];
+    options: Area[];
     leftIcon?: ReactNode;
     labelText?: string;
 }
@@ -51,7 +52,7 @@ const customStyles: StylesConfig<OptionType, false, GroupBase<OptionType>> = {
 };
 
 export default function SelectorField(props: Props) {
-    const { options, leftIcon, labelText } = props;
+    const { options, leftIcon, labelText, ...rest } = props;
 
     // const handleSelectChange = (
     //     option: { labelText: string } | null
@@ -87,12 +88,13 @@ export default function SelectorField(props: Props) {
                         placeholder="Seleccionar zona"
                         styles={customStyles}
                         options={options.map((option) => ({
-                            label: option,
-                            value: option,
+                            label: option.name,
+                            value: option.area_id.toString(),
                         }))}
                         components={{
                             DropdownIndicator: CustomDropdownIndicator,
                         }}
+                        {...rest}
                         // onChange={handleSelectChange}
                     />
                 </div>

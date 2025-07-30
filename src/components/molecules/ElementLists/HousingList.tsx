@@ -20,7 +20,7 @@ export default function HousingList(props: Props) {
                     buttonVariant="tertiary"
                     onClick={() => {
                         addHousing(housing);
-                        navigate('/');
+                        navigate('/my-tasks');
                     }}
                 >
                     {housing.name}
