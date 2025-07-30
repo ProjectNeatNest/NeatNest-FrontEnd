@@ -47,7 +47,7 @@ export const registerSchema = z
             .regex(
                 /^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]{1,35}$/,
                 'El segundo apellido no puede contener números o caracteres especiales'
-            ),
+            ).or(z.literal('')),
     })
     .refine((values) => values.password === values.confirmPassword, {
         error: 'Las contraseñas no coinciden',

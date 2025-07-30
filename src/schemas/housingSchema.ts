@@ -5,5 +5,5 @@ export const housingSchema = z.object({
         .string()
         .min(1, 'Se requiere nombre de la vivienda')
         .max(20, 'Máximo 20 caracteres'),
-    cohabitantEmail: z.email('Email inválido').optional(),
+    cohabitantEmail: z.email('Email inválido').optional().or(z.literal('')),
 });
