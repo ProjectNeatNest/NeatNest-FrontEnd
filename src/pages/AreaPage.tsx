@@ -27,7 +27,7 @@ export default function AreaPage(props: Props) {
 
 
     const classes = twMerge(
-        'flex flex-col gap-6 bg-center bg-no-repeat bg-cover md:w-1/3 md:bg-contain bg-library',
+        'flex flex-col gap-3 bg-center bg-no-repeat bg-cover md:w-1/3 md:bg-contain bg-library',
         className
     );
     return (
