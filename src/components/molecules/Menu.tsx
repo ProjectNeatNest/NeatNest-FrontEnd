@@ -50,7 +50,7 @@ export default function Menu(props: Props) {
                 </CustomNavLink>
             )}
 
-            {
+            {user && (
                 <Button
                     buttonVariant="secondary"
                     icon={<PiSignOutLight size={24} />}
@@ -58,7 +58,7 @@ export default function Menu(props: Props) {
                 >
                     Cerrar sesión
                 </Button>
-            }
+            )}
 
             {!user && (
                 <CustomNavLink to="/login" appearance="secondaryButton">
