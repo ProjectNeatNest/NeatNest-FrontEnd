@@ -13,6 +13,7 @@ import useHousingContext from '../../hooks/useHousingContext';
 
 interface Props {
     className?: string;
+    areaName?: string;
 }
 
 interface AreaFormValues {
@@ -23,11 +24,10 @@ export default function AreaForm(props: Props) {
     const { housing } = useHousingContext();
     const navigate = useNavigate();
 
-    const { register, handleSubmit, formState } =
-        useForm<AreaFormValues>({
-            resolver: zodResolver(areaSchema),
-            mode: 'onChange',
-        });
+    const { register, handleSubmit, formState } = useForm<AreaFormValues>({
+        resolver: zodResolver(areaSchema),
+        mode: 'onChange',
+    });
 
     const { errors } = formState;
 
@@ -35,18 +35,22 @@ export default function AreaForm(props: Props) {
         interface NewArea {
             name: string;
         }
-if (!housing) return;
+        if (!housing) return;
 
         const newArea = {
             name: data.name,
-            housing_id: housing?.housing_id
+            housing_id: housing?.housing_id,
         };
 
-        await myRequest<Area, NewArea>(`/housings/${housing.housing_id}/areas`, 'POST', newArea);
+        await myRequest<Area, NewArea>(
+            `/housings/${housing.housing_id}/areas`,
+            'POST',
+            newArea
+        );
         navigate('/my-tasks');
     }
 
-    const { className } = props;
+    const { className, areaName } = props;
     const classes = twMerge('flex flex-col gap-6', className);
 
     return (
@@ -56,7 +60,11 @@ if (!housing) return;
                     type="text"
                     label="Nombre de la zona"
                     leftIcon={<PiDresserLight size={24} />}
-                    placeholder="El nombre de la zona"
+                    placeholder='Escribe el nombre de la zona'
+                    defaultValue={
+                        areaName ? areaName : 'Escribe el nombre de la zona'
+
+                    }
                     errorMessage={errors.name?.message}
                     {...register('name')}
                     required

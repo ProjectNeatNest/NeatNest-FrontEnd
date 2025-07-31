@@ -15,6 +15,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import MyHousingsPage from './pages/MyHousingsPage';
 import MyTasksPage from './pages/MyTasksPage';
 import CohabitantsPage from './pages/CohabitantsPage';
+import AreaPage from './pages/AreaPage';
 
 async function privateRouteLoader() {
     const user = getItemFromLocalStorage<User>('neat-nest-user');
@@ -87,6 +88,13 @@ export const router = createBrowserRouter([
                 element: <NewAreaPage />,
                 loader: privateRouteLoader,
             },
+
+            {
+                path: '/areas/:areaId',
+                element: <AreaPage />,
+                loader: privateRouteLoader,
+            },
+
             {
                 path: '*',
                 element: <NotFoundPage />,

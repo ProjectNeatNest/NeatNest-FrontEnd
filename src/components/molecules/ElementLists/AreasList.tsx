@@ -4,6 +4,7 @@ import type { Area } from '../../../config/types';
 import SectionHeading from '../headings/SectionHeading';
 import AreaItem from '../AreaItem';
 import Spinner from '../../Spinner';
+import { NavLink } from 'react-router';
 
 interface Props {
     areas: Area[];
@@ -26,12 +27,13 @@ export default function AreasList(props: Props) {
                     areas.map((area) => {
                         const id = area.area_id;
                         return (
-                            <AreaItem
-                                key={id}
-                                area={area}
-                                completedTasks={2}
-                                totalTasks={7}
-                            ></AreaItem>
+                            <NavLink key={id} to={`/areas/${area.area_id}`}>
+                                <AreaItem
+                                    area={area}
+                                    completedTasks={2}
+                                    totalTasks={7}
+                                ></AreaItem>
+                            </NavLink>
                         );
                     })}
             </div>
