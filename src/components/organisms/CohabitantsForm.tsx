@@ -3,15 +3,15 @@ import { useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { twMerge } from 'tailwind-merge';
+import { PiPlusLight, PiUsersLight } from 'react-icons/pi';
 import {
     cohabitantSchema,
     type HousingFormValues,
-} from '../../schemas/housingSchema';
-import InputField from '../atoms/InputField';
-import Button from '../atoms/Button';
-import { PiPlusLight, PiUsersLight } from 'react-icons/pi';
-import type { Housing } from '../../config/types';
-import myRequest from '../../services/myRequest';
+} from '@/schemas/housingSchema';
+import Button from '#/atoms/Button';
+import type { Housing } from '@/config/types';
+import InputField from '#/atoms/InputField';
+import myRequest from '@/services/myRequest';
 
 interface Props {
     className?: string;
