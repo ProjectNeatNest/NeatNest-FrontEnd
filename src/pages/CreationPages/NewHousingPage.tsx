@@ -12,7 +12,7 @@ export default function NewHousingPage() {
             >
                 Crear vivienda
             </CreateHeading>
-            <HousingForm />
+            <HousingForm showCohabitantsInput={true} />
         </div>
     );
 }

@@ -23,10 +23,11 @@ import myRequest from '../../services/myRequest';
 import useHousingContext from '../../hooks/useHousingContext';
 interface Props {
     className?: string;
+    showCohabitantsInput: boolean;
 }
 
 export default function HousingForm(props: Props) {
-    const { className } = props;
+    const { className, showCohabitantsInput = true } = props;
 
     // const { requestData: defaultAreas, isLoading: areAreasLoading } =
     //     useRequest<DefaultArea[]>('/defaultAreas', 'GET');
@@ -94,7 +95,7 @@ export default function HousingForm(props: Props) {
                     required
                 />
             </div>
-            <div className="flex">
+            {showCohabitantsInput && <div className="flex">
                 <InputField
                     type="text"
                     label="Añadir conviviente (opcional)"
@@ -111,7 +112,7 @@ export default function HousingForm(props: Props) {
                 >
                     Añadir
                 </Button>
-            </div>
+            </div>}
             {cohabitants.length > 0 && (
                 <div className="flex gap-1 wrap">
                     {cohabitants.map((hab, i) => (

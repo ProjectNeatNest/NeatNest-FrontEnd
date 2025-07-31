@@ -10,9 +10,9 @@ import HousingList from '../components/molecules/ElementLists/HousingList';
 import Spinner from '../components/Spinner';
 import CustomNavLink from '../components/atoms/CustomNavLink';
 import Title from '../components/typography/Title';
+import { Link } from 'react-router';
 
 export default function MyHousingsPage() {
-
     const { housing } = useHousingContext();
 
     const { requestData: userHousings, isLoading } =
@@ -32,7 +32,10 @@ export default function MyHousingsPage() {
                     variant="title-small-regular"
                     className="text-neutral-primary"
                 >
-                    Ahora estás viviendo en {housing.name}
+                    Ahora estás viviendo en{' '}
+                    <Link className='underline' to={`/housings/${housing.housing_id}`}>
+                        {housing.name}
+                    </Link>
                 </Title>
             )}
             <BodyText
