@@ -52,12 +52,10 @@ export default function Menu(props: Props) {
 
             {user && (
                 <Button
-                    buttonVariant="secondary"
+                    buttonVariant="tertiary"
                     icon={<PiSignOutLight size={24} />}
                     onClick={logoutUser}
-                >
-                    Cerrar sesión
-                </Button>
+                ></Button>
             )}
 
             {!user && (

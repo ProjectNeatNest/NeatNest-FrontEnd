@@ -13,14 +13,14 @@ export default function HousingPage(props: Props) {
 
     const { housing } = useHousingContext();
 
-    const classes = twMerge('', className);
+    const classes = twMerge('flex flex-col gap-6 bg-center bg-no-repeat bg-cover md:w-1/3 md:bg-contain bg-house2', className);
     return (
         <div className={classes}>
             <CreateHeading
                 leftIcon={<PiHouseLineLight size={24} />}
                 deleteButton={true}
             >
-                Editar housing
+                Editar vivienda
             </CreateHeading>
 
             {housing && <HousingForm showCohabitantsInput={false} />}
