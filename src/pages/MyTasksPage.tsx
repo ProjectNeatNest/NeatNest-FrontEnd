@@ -33,7 +33,7 @@ export default function MyTasksPage() {
     ];
 
     return (
-        <div className="grid grid-cols-1 gap-6 bg-center bg-no-repeat bg-cover md:w-2/3 md:bg-contain bg-rafiki">
+        <div className="grid grid-cols-1 gap-3 bg-center bg-no-repeat bg-cover md:w-2/3 md:bg-contain bg-rafiki">
             {housing && areas && (
                 <>
                     <HomePageUserHeading housing={housing} />

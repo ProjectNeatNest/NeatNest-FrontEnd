@@ -19,7 +19,7 @@ export default function MyHousingsPage() {
         useRequest<Housing[]>('/housings');
 
     return (
-        <div className="flex flex-col gap-4 bg-center bg-no-repeat bg-cover md:w-2/3 md:bg-contain bg-bedroom">
+        <div className="flex flex-col gap-3 bg-center bg-no-repeat bg-cover md:w-2/3 md:bg-contain bg-bedroom">
             <CreateHeading
                 leftIcon={<PiHouseLineLight size={24} />}
                 deleteButton={false}
