@@ -53,14 +53,10 @@ export default function CustomNavLink(props: Props) {
 
     return (
         <>
-            <div className={classes}>
-                {leftIcon && (
-                    <span>{leftIcon}</span>
-                )}
-                <NavLink to={to}>
-                    {children}
-                </NavLink>
-            </div>
+            <NavLink to={to} className={classes}>
+                {leftIcon && <span>{leftIcon}</span>}
+                {children}
+            </NavLink>
         </>
     );
 }
