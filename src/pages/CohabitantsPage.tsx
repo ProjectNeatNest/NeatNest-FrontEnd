@@ -15,6 +15,7 @@ export default function CohabitantsPage() {
     const [housingUsers, setHousingUsers] = useState<User[]>([]);
 
     async function getHousingUsersData() {
+        if(!housing) return;
         const data = await myRequest<User[]>(
             `/housings/${housing?.housing_id}/users`,
             'GET'

@@ -10,21 +10,6 @@ export default function MyTasksPage() {
     const { housing } = useHousingContext();
     const { user } = useUserContext();
 
-    // TODO: Esto debería ir al housingContext
-    // const { requestData: userHousings, isLoading: isHousingLoading } =
-    //     useRequest<Housing[]>('/housings');
-
-    // if(userHousings && !housing) {
-    //     addHousing(userHousings[0])
-    // }
-    // const testHousing: Housing = {
-    //     housing_id: 1,
-    //     name: 'Mi pisito',
-    //     created_at: '27/07',
-    // };
-    //TODO=========================================
-
-
     const { requestData: areas, isLoading: areAreasLoading } = useRequest<
         Area[]
     >(`/housings/${housing?.housing_id}/areas`);
