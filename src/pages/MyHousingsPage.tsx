@@ -1,4 +1,5 @@
 import { PiHouseLineLight, PiPlusLight } from 'react-icons/pi';
+import { Link } from 'react-router';
 
 import type { Housing } from '../config/types';
 
@@ -10,7 +11,6 @@ import HousingList from '../components/molecules/ElementLists/HousingList';
 import Spinner from '../components/Spinner';
 import CustomNavLink from '../components/atoms/CustomNavLink';
 import Title from '../components/typography/Title';
-import { Link } from 'react-router';
 
 export default function MyHousingsPage() {
     const { housing } = useHousingContext();

@@ -16,6 +16,9 @@ export default function AreaPage(props: Props) {
 
     const { areaId } = useParams();
 
+    // TODO
+    // const { user}
+
     const { housing } = useHousingContext();
     console.log(housing);
 
@@ -23,7 +26,6 @@ export default function AreaPage(props: Props) {
         `/housings/${housing?.housing_id}/areas/${areaId}`
     );
 
-    console.log(area);
 
 
     const classes = twMerge(

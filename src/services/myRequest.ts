@@ -1,10 +1,17 @@
 import { toast } from 'react-toastify';
 
+interface Options<K> {
+    method: 'POST' | 'GET' | 'PUT' | 'PATCH' | 'DELETE';
+    data?: K;
+    hasToasts?: boolean;
+}
+
 export default async function myRequest<T, K = null>(
     url: string,
-    method: 'POST' | 'GET' | 'PUT' | 'PATCH' | 'DELETE',
-    data?: K
+    options: Options<K>
+    
 ): Promise<T> {
+    const { method = 'GET', data, hasToasts = true } = options;
     const baseURL = import.meta.env.VITE_SERVER_BASE_URL;
     const token = localStorage.getItem('neat-nest-token');
 
@@ -26,11 +33,11 @@ export default async function myRequest<T, K = null>(
             throw new Error(backendData.error)
         }
 
-        toast.success(backendData.message);
+        if (hasToasts) toast.success(backendData.message);
         return backendData.data;
     } catch (error) {
         if (error instanceof Error) {
-            toast.error(error.message);
+            if (hasToasts) toast.error(error.message);
             throw new Error(error.message);
         }
         throw new Error('An Error occurred');

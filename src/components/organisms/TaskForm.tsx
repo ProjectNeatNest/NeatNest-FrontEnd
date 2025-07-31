@@ -1,37 +1,31 @@
 import { twMerge } from 'tailwind-merge';
 import InputField from '../atoms/InputField';
-import Select, { type ControlProps, type GroupBase, type OptionProps, type StylesConfig } from 'react-select';
 
 import {
     PiCalendarDotLight,
     PiCheckCircleLight,
-    PiDresserLight,
     PiTimerLight,
 } from 'react-icons/pi';
 import Button from '../atoms/Button';
-import SelectorField from '../molecules/SelectorField';
 import type { Area } from '../../config/types';
 import { useForm, Controller } from 'react-hook-form';
 import useHousingContext from '../../hooks/useHousingContext';
 import useRequest from '../../hooks/useRequest';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { taskSchema, type TaskFormValues } from '../../schemas/taskSchema';
-import CustomDropdownIndicator from '../atoms/CustomDropdownIndicator';
 
-// const DBareas: Area[] = [
-//     {
-//         area_id: 1,
-//         name: 'Cocina',
-//         housing_id: 1,
-//         created_at: '25/07/2025',
-//     },
-//     {
-//         area_id: 2,
-//         name: 'Baño',
-//         housing_id: 1,
-//         created_at: '25/07/2025',
-//     },
-// ];
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select';
+import BodyText from '../typography/BodyText';
+import myRequest from '@/services/myRequest';
+import CheckboxRounded from '../atoms/CheckboxRounded';
 
 interface Props {
     className?: string;
@@ -51,48 +45,10 @@ export default function TaskForm(props: Props) {
             resolver: zodResolver(taskSchema),
             mode: 'onChange',
         });
+
     const { errors } = formState;
 
-    type OptionType = {
-        value: string;
-        label: string;
-    };
-
-    const customStyles: StylesConfig<
-        OptionType,
-        false,
-        GroupBase<OptionType>
-    > = {
-        control: (base, props: ControlProps<OptionType, false>) => ({
-            ...base,
-            backgroundColor: props.isFocused ? '#c1ffe1' : '#fdfffe',
-            borderColor: props.isFocused ? '#2ad482' : '#d6ebe1',
-            boxShadow: props.isFocused ? '0 0 0 1px #2ad482' : 'none', // <-- AÑADIDO
-            fontFamily: "'Nunito Variable', sans-serif'",
-            transition: 'all 0.2s ease',
-            '&:hover': {
-                borderColor: '#2ad482',
-            },
-        }),
-        option: (base, props: OptionProps<OptionType, false>) => ({
-            ...base,
-            backgroundColor: props.isSelected
-                ? '#3ff69e'
-                : props.isFocused
-                  ? '#ecfff6'
-                  : undefined,
-            color: props.isSelected ? '#3c4d45' : '#3c4d45',
-            fontFamily: "'Nunito Variable', sans-serif'",
-        }),
-        placeholder: (base) => ({
-            ...base,
-            color: '#90a79c', // tu color personalizado aquí
-            fontFamily: "'Nunito Variable', sans-serif",
-        }),
-    };
-
     async function onSubmit(data: TaskFormValues) {
-        return console.log(data);
         if (!housing) return;
 
         const newTask = {
@@ -101,6 +57,9 @@ export default function TaskForm(props: Props) {
             limit_date: data.limitDate,
             duration: data.duration,
         };
+        const backendResponse = await myRequest(`/housings/${housing.housing_id}/areas/${data.areaId}/tasks`, { method: 'POST', data: newTask });
+        console.log(backendResponse);
+        
     }
 
     const classes = twMerge('flex flex-col gap-6', className);
@@ -114,32 +73,40 @@ export default function TaskForm(props: Props) {
                     leftIcon={<PiCheckCircleLight size={24} />}
                     placeholder="Escribe la tarea"
                     required
+                    errorMessage={errors.name?.message}
                     {...register('name')}
                 />
+
+                <CheckboxRounded onChange={(isChecked) => console.log(isChecked)} />
+
                 <Controller
                     control={control}
                     name="areaId"
                     render={({ field }) => (
-                        <Select
-                            placeholder="Seleccionar zona"
-                            styles={customStyles}
-                            options={areas?.map((area) => ({
-                                label: area.name,
-                                value: area.area_id.toString(),
-                            }))}
-                            components={{
-                                DropdownIndicator: CustomDropdownIndicator,
-                            }}
-                            onChange={(value) => field.onChange(value)}
-                        />
+                        <Select onValueChange={field.onChange}>
+                            <SelectTrigger className={`w-full shadow-md ${errors.areaId ? 'border-2 border-error-primary' : ''}`}>
+                                <SelectValue placeholder="Selecciona una zona" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                {areas?.map((area) => (
+                                    <SelectItem
+                                        key={area.area_id}
+                                        value={area.area_id.toString()}
+                                    >
+                                        {area.name}
+                                    </SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
                     )}
                 />
-                {/* <SelectorField
-                        options={areas || []}
-                        leftIcon={<PiDresserLight size={24} />}
-                        labelText="Zona de trabajo"
-                        {...register('areaId')}
-                    /> */}
+                {errors.areaId && <BodyText
+                                        as="span"
+                                        variant="body-xsmall-regular-UpperCase"
+                                        className="text-error-primary"
+                                    >
+                                        {errors.areaId.message}
+                                    </BodyText>}
 
                 <InputField
                     type="number"

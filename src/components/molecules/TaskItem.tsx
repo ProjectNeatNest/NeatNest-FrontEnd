@@ -6,10 +6,11 @@ import { Link } from 'react-router';
 
 interface Props {
     task: Task;
+    onDelete: () => void;    
 }
 
 export default function TaskItem(props: Props) {
-    const { task } = props;
+    const { task, onDelete } = props;
 
     return (
         <>
@@ -72,6 +73,7 @@ export default function TaskItem(props: Props) {
                     type="button"
                     aria-label="Delete task"
                     className="text-neutral-secondary"
+                    onClick={onDelete}
                 >
                     <PiXLight size={32} />
                 </button>

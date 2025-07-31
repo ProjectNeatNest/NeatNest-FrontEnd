@@ -5,7 +5,7 @@ export const taskSchema = z.object({
         .string()
         .min(1, 'Se requiere nombre de la zona')
         .max(200, 'Máximo 200 caracteres'),
-    areaId: z.string(),
+    areaId: z.string({error: 'Es obligatorio asignarle una zona'}),
     duration: z.string().min(1, 'Se requiere escribir una duración'),
     limitDate: z.string(),
 });
