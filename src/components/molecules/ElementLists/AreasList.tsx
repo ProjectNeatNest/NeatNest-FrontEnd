@@ -17,7 +17,7 @@ export default function AreasList(props: Props) {
 
     const classes = twMerge('flex justify-start  gap-4 w-full', className);
     return (
-        <section className="flex flex-col w-full gap-4">
+        <section className="flex flex-col w-full gap-2">
             <SectionHeading buttonLabel="zona" linkTo="/areas/new">
                 Zonas
             </SectionHeading>

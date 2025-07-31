@@ -15,7 +15,7 @@ export default function TasksList(props: Props) {
     const classes = twMerge('grid grid-cols-1 gap-3', className);
 
     return (
-        <section className="flex flex-col gap-4 w-full">
+        <section className="flex flex-col w-full gap-2">
             <SectionHeading buttonLabel="tarea" linkTo="/tasks/new">
                 Mis tareas
             </SectionHeading>
