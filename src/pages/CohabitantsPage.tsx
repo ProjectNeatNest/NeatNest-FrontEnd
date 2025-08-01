@@ -20,6 +20,7 @@ export default function CohabitantsPage() {
             `/housings/${housing?.housing_id}/users`,
             'GET'
         );
+              console.log(data);
         setHousingUsers(data);
     }
 
@@ -34,6 +35,7 @@ export default function CohabitantsPage() {
     useEffect(() => {
         getHousingUsersData();
     }, []);
+
 
     return (
         <div className="flex flex-col gap-3 bg-center bg-no-repeat bg-cover md:w-2/3 md:bg-contain bg-bedroom">

@@ -8,6 +8,7 @@ export interface User {
     password: string;
     created_at: Date;
     updated_at: Date;
+    is_admin?: boolean;
 }
 
 export interface LogInResponse {
