@@ -10,13 +10,22 @@ import HousingList from '../components/molecules/ElementLists/HousingList';
 import Spinner from '../components/Spinner';
 import CustomNavLink from '../components/atoms/CustomNavLink';
 import Title from '../components/typography/Title';
-import HousingForm from '@/components/organisms/HousingForm';
+import EditHousingForm from '@/components/organisms/editHousingForm';
+import { useEffect, useState } from 'react';
 
 export default function MyHousingsPage() {
     const { housing } = useHousingContext();
 
     const { requestData: userHousings, isLoading } =
         useRequest<Housing[]>('/housings');
+
+    const [housingName, setHousingName] = useState<string | null>(
+        housing?.name ?? null
+    );
+
+    useEffect(() => {
+        setHousingName(housing?.name ?? null);
+    }, [housing]);
 
     return (
         <div className="flex flex-col gap-4 bg-center bg-no-repeat bg-cover md:w-2/3 md:bg-contain bg-bedroom">
@@ -33,8 +42,7 @@ export default function MyHousingsPage() {
                         variant="title-small-regular"
                         className="text-neutral-primary"
                     >
-                        Ahora estás viviendo en {housing.name}
-
+                        Ahora estás viviendo en {housingName}
                     </Title>
 
                     <div className={'flex flex-col gap-1'}>
@@ -43,20 +51,14 @@ export default function MyHousingsPage() {
                             variant="title-xsmall-regular"
                             className="text-neutral-secondary"
                         >
-                            Editar {housing.name}
+                            Editar {housingName}
                         </Title>
 
-                        <HousingForm
-                            showCohabitantsInput={false}
-                            className=""
-                            buttonLabel='Guardar'
-                        />
-
-                        {/* {area && <AreaForm areaName={area?.name} />} */}
+                        <EditHousingForm />
                     </div>
                 </div>
             )}
-            <div className='flex flex-col gap-1'>
+            <div className="flex flex-col gap-1">
                 <BodyText
                     as="p"
                     variant="body-large-regular"

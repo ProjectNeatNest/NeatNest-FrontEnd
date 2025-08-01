@@ -10,4 +10,6 @@ export const housingSchema = z.object({
 
 export const cohabitantSchema = housingSchema.pick({ cohabitantEmail: true });
 
-export type HousingFormValues = z.infer<typeof housingSchema>
+export const housingNameSchema = housingSchema.pick({ name: true });
+
+export type HousingFormValues = z.infer<typeof housingSchema>;
