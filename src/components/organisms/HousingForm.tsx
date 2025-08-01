@@ -24,10 +24,11 @@ import useHousingContext from '../../hooks/useHousingContext';
 interface Props {
     className?: string;
     showCohabitantsInput: boolean;
+    buttonLabel?: string;
 }
 
 export default function HousingForm(props: Props) {
-    const { className, showCohabitantsInput = true } = props;
+    const { className, showCohabitantsInput = true, buttonLabel } = props;
 
     // const { requestData: defaultAreas, isLoading: areAreasLoading } =
     //     useRequest<DefaultArea[]>('/defaultAreas', 'GET');
@@ -72,19 +73,18 @@ export default function HousingForm(props: Props) {
         };
         const newHousingBackend = await myRequest<Housing, NewHousing>(
             '/housings',
-            'POST',
-            newHousing
+            { data: newHousing, method: 'POST' }
         );
 
         addHousing(newHousingBackend);
         navigate('/my-tasks');
     }
 
-    const classes = twMerge('flex flex-col gap-6', className);
+    const classes = twMerge('flex flex-col gap-3', className);
 
     return (
         <form className={classes} onSubmit={handleSubmit(onSubmit)}>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2">
                 <InputField
                     type="text"
                     label="Nombre de la vivienda *"
@@ -95,24 +95,26 @@ export default function HousingForm(props: Props) {
                     required
                 />
             </div>
-            {showCohabitantsInput && <div className="flex">
-                <InputField
-                    type="text"
-                    label="Añadir conviviente (opcional)"
-                    leftIcon={<PiUsersLight size={24} />}
-                    placeholder="Escribe el email del conviviente"
-                    errorMessage={errors.cohabitantEmail?.message}
-                    {...register('cohabitantEmail')}
-                />
-                <Button
-                    buttonVariant="secondary"
-                    icon={<PiPlusLight size={24} />}
-                    className="h-[68px]"
-                    onClick={handleAddCohabitant}
-                >
-                    Añadir
-                </Button>
-            </div>}
+            {showCohabitantsInput && (
+                <div className="flex">
+                    <InputField
+                        type="text"
+                        label="Añadir conviviente (opcional)"
+                        leftIcon={<PiUsersLight size={24} />}
+                        placeholder="Escribe el email del conviviente"
+                        errorMessage={errors.cohabitantEmail?.message}
+                        {...register('cohabitantEmail')}
+                    />
+                    <Button
+                        buttonVariant="secondary"
+                        icon={<PiPlusLight size={24} />}
+                        className="h-[68px]"
+                        onClick={handleAddCohabitant}
+                    >
+                        Añadir
+                    </Button>
+                </div>
+            )}
             {cohabitants.length > 0 && (
                 <div className="flex gap-1 wrap">
                     {cohabitants.map((hab, i) => (
@@ -152,7 +154,7 @@ export default function HousingForm(props: Props) {
             </div> */}
 
             <Button buttonVariant="primary" type="submit">
-                Guardar y continuar
+                {buttonLabel ? buttonLabel : 'Guardar y continuar'}
             </Button>
         </form>
     );
