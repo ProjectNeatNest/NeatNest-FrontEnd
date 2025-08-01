@@ -11,14 +11,14 @@ import useHousingContext from '@/hooks/useHousingContext';
 import myRequest from '@/services/myRequest';
 import type { Housing } from '@/config/types';
 import Button from '../atoms/Button';
+import { useEffect, useState } from 'react';
 
 interface Props {
     className?: string;
-    housingName?: string;
 }
 
 export default function EditHousingForm(props: Props) {
-    const { className, housingName } = props;
+    const { className } = props;
 
     const { register, handleSubmit, formState } = useForm<HousingFormValues>({
         resolver: zodResolver(housingNameSchema),
@@ -26,7 +26,12 @@ export default function EditHousingForm(props: Props) {
     });
 
     const { errors } = formState;
+    const [ housingName, setHousingName] = useState<string>();
     const { housing, addHousing } = useHousingContext();
+
+    useEffect(() => {
+        setHousingName(housing?.name || '')
+    }, [housing])
 
     const classes = twMerge('flex flex-col gap-3', className);
 
@@ -59,7 +64,7 @@ export default function EditHousingForm(props: Props) {
                     label="Nombre de la vivienda *"
                     leftIcon={<PiHouseLineLight size={24} />}
                     placeholder="El nombre de tu vivienda"
-                    defaultValue={housingName && housingName}
+                    defaultValue={housingName}
                     errorMessage={errors.name?.message}
                     {...register('name')}
                     required

@@ -2,10 +2,11 @@ import { PiDresserLight } from 'react-icons/pi';
 import CreateHeading from '../components/molecules/headings/CreateHeading';
 import AreaForm from '../components/organisms/AreaForm';
 import useRequest from '../hooks/useRequest';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import type { Area } from '../config/types';
 import { twMerge } from 'tailwind-merge';
 import useHousingContext from '../hooks/useHousingContext';
+import myRequest from '@/services/myRequest';
 
 interface Props {
     className?: string;
@@ -13,6 +14,7 @@ interface Props {
 
 export default function AreaPage(props: Props) {
     const { className } = props;
+    const navigate = useNavigate();
 
     const { areaId } = useParams();
 
@@ -20,13 +22,18 @@ export default function AreaPage(props: Props) {
     // const { user}
 
     const { housing } = useHousingContext();
-    console.log(housing);
 
-    const { requestData: area} = useRequest<Area, Area>(
+    const { requestData: area } = useRequest<Area, Area>(
         `/housings/${housing?.housing_id}/areas/${areaId}`
     );
 
-
+    async function onAreaDelete() {
+        await myRequest(
+            `/housings/${housing?.housing_id}/areas/${areaId}`,
+            { method: 'DELETE' }
+        );
+        navigate('/my-tasks');
+    }
 
     const classes = twMerge(
         'flex flex-col gap-3 bg-center bg-no-repeat bg-cover md:w-1/3 md:bg-contain bg-library',
@@ -37,6 +44,7 @@ export default function AreaPage(props: Props) {
             <CreateHeading
                 leftIcon={<PiDresserLight size={24} />}
                 deleteButton={true}
+                onDelete={onAreaDelete}
             >
                 Editar zona
             </CreateHeading>

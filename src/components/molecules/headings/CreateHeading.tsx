@@ -10,10 +10,11 @@ interface Props {
     className?: string;
     children: ReactNode;
     deleteButton?: boolean;
+    onDelete?: () => void
 }
 
 export default function CreateHeading(props: Props) {
-    const { leftIcon, className, deleteButton = true, children } = props;
+    const { leftIcon, className, deleteButton = true, onDelete, children } = props;
     const classes = twMerge(
         'text-neutral-primary grid grid-cols-[auto_1fr_auto] items-center gap-2',
         className
@@ -32,6 +33,7 @@ export default function CreateHeading(props: Props) {
                     <Button
                         buttonVariant="secondary"
                         className="p-2 rounded-full"
+                        onClick={onDelete}
                     >
                         <PiTrashLight size={24} />
                     </Button>

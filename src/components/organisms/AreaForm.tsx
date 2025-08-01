@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge';
 
 import InputField from '../atoms/InputField';
 import Button from '../atoms/Button';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { areaSchema } from '../../schemas/areaSchema';
 import myRequest from '../../services/myRequest';
@@ -22,6 +22,7 @@ interface AreaFormValues {
 
 export default function AreaForm(props: Props) {
     const { housing } = useHousingContext();
+    const {areaId} = useParams();
     const navigate = useNavigate();
 
     const { register, handleSubmit, formState } = useForm<AreaFormValues>({
@@ -41,11 +42,15 @@ export default function AreaForm(props: Props) {
             name: data.name,
             housing_id: housing?.housing_id,
         };
+        let url = `/housings/${housing.housing_id}/areas`
+        if (areaId) url += `/${areaId}`
 
         await myRequest<Area, NewArea>(
-            `/housings/${housing.housing_id}/areas`,
-            'POST',
-            newArea
+            url,
+            {
+                method: areaId? 'PATCH': 'POST',
+                data: newArea,
+            }
         );
         navigate('/my-tasks');
     }
@@ -60,10 +65,9 @@ export default function AreaForm(props: Props) {
                     type="text"
                     label="Nombre de la zona"
                     leftIcon={<PiDresserLight size={24} />}
-                    placeholder='Escribe el nombre de la zona'
+                    placeholder="Escribe el nombre de la zona"
                     defaultValue={
-                        areaName ? areaName : 'Escribe el nombre de la zona'
-
+                        areaName || ''
                     }
                     errorMessage={errors.name?.message}
                     {...register('name')}
