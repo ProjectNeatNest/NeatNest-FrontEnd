@@ -34,7 +34,7 @@ export default function MyTasksPage() {
     }
 
     async function handleOnComplete(task: Task){
-        task.is_completed = !task.is_completed  
+        task.is_completed = !task.is_completed
         const data = {
             'name': task.name,
             'area_id': task.area_id,
@@ -45,7 +45,12 @@ export default function MyTasksPage() {
         await myRequest <Task[]>(
              `/housings/${housing?.housing_id}/areas/${task.area_id}/tasks/${task.task_id}/`,
             { method: 'PATCH', data: data }
-        ) 
+        )
+        const updatedTaskIdx = userTasks.findIndex(t => t.task_id == task.task_id)
+        if (!updatedTaskIdx) return
+        const newUserTasks = [...userTasks]
+        newUserTasks[updatedTaskIdx] = task
+        setUserTasks(newUserTasks)
     }
 
     useEffect(() => {
@@ -78,6 +83,7 @@ export default function MyTasksPage() {
                     <AreasList
                         areas={areas}
                         isLoading={areAreasLoading}
+                        allTasks={userTasks}
                     ></AreasList>
                     <TasksList tasks={userTasks} onTaskDelete={handleOnDelete} onTaskComplete={handleOnComplete}></TasksList>
                 </>

@@ -7,24 +7,11 @@ import myRequest from '@/services/myRequest';
 
 interface Props {
     area: Area;
+    areaTasks: Task[];
 }
 
 export default function AreaItem(props: Props) {
-    const { area } = props;
-    const {housing} = useHousingContext()
-    const [tasks, setTasks] = useState<Task[]>([])
-
-    async function getTasksFromArea() {
-        const tasks = await myRequest<Task[]>(`/housings/${housing?.housing_id}/areas/${area.area_id}/tasks/`, 
-            {method: 'GET'}
-        )
-        setTasks(tasks)
-    }
-
-    useEffect(()=> {
-        getTasksFromArea()
-    }, [])
-
+    const { area, areaTasks} = props;
 
     return (
         <>
@@ -38,8 +25,8 @@ export default function AreaItem(props: Props) {
                 </Title>
                 <div className="flex items-end gap-1 justify-baseline text-neutral-secondary">
                     <NumberOfTasks
-                        completed={tasks.filter(task => task.is_completed).length}
-                        total={tasks.length}
+                        completed={areaTasks.filter(task => task.is_completed).length}
+                        total={areaTasks.length}
                     ></NumberOfTasks>
                 </div>
             </div>

@@ -21,7 +21,7 @@ export default function TaskItem(props: Props) {
     return (
         <>
             <div className="bg-neutral-secondary px-3 py-3 grid grid-cols-[auto_1fr_auto] items-center gap-2.5 shadow-md group transform transition-transform duration-300 ease-in-out hover:scale-102 rounded-xl">
-                <CheckboxRounded onChange={onComplete}/>
+                <CheckboxRounded isInitiallyChecked={task.is_completed} onChange={onComplete}/>
                 <Link to={`/tasks/${task.task_id}`}>
                     <div className="flex flex-col gap-1 transition-opacity opacity-100 group-has-checked:opacity-50">
                         <BodyText

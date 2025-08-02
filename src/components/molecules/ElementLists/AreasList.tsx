@@ -1,6 +1,6 @@
 import { twMerge } from 'tailwind-merge';
 
-import type { Area } from '../../../config/types';
+import type { Area, Task } from '../../../config/types';
 import SectionHeading from '../headings/SectionHeading';
 import AreaItem from '../AreaItem';
 import Spinner from '../../Spinner';
@@ -11,10 +11,11 @@ import useHousingContext from '@/hooks/useHousingContext';
 interface Props {
     areas: Area[];
     className?: string;
+    allTasks: Task[];
 }
 
 export default function AreasList(props: Props) {
-    const { className } = props;
+    const { className, allTasks } = props;
     const { housing } = useHousingContext();
     const { requestData: areas, isLoading } = useRequest<Area[]>(
         `/housings/${housing?.housing_id}/areas`
@@ -34,7 +35,7 @@ export default function AreasList(props: Props) {
                         const id = area.area_id;
                         return (
                             <NavLink key={id} to={`/areas/${area.area_id}`}>
-                                <AreaItem area={area}></AreaItem>
+                                <AreaItem area={area} areaTasks={allTasks.filter(t => t.area_id == area.area_id)}></AreaItem>
                             </NavLink>
                         );
                     })}
