@@ -12,6 +12,11 @@ interface Props {
 export default function TaskItem(props: Props) {
     const { task, onDelete } = props;
 
+    function prettyDate(dateString: string) {
+        const date = new Date(dateString);
+        return date.toLocaleString().split(',')[0];
+    }
+
     return (
         <>
             <div className="bg-neutral-secondary px-3 py-3 grid grid-cols-[auto_1fr_auto] items-center gap-2.5 shadow-md group transform transition-transform duration-300 ease-in-out hover:scale-102 rounded-xl">
@@ -47,7 +52,7 @@ export default function TaskItem(props: Props) {
                                     as="span"
                                     variant="body-xsmall-regular"
                                 >
-                                    Duración: {task.duration}
+                                    Duración: {task.duration} min
                                 </BodyText>
                             )}
                             {task.limit_date && (
@@ -55,7 +60,7 @@ export default function TaskItem(props: Props) {
                                     as="span"
                                     variant="body-xsmall-regular"
                                 >
-                                    Antes de: {task.limit_date}
+                                    Antes de: {prettyDate(task.limit_date)}
                                 </BodyText>
                             )}
                             {task.created_at && (
@@ -63,7 +68,7 @@ export default function TaskItem(props: Props) {
                                     as="span"
                                     variant="body-xsmall-regular"
                                 >
-                                    Creado: {task.created_at}
+                                    Creado: {prettyDate(task.created_at)}
                                 </BodyText>
                             )}
                         </div>

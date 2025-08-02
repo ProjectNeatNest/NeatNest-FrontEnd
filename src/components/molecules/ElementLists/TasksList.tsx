@@ -6,12 +6,13 @@ import TaskItem from '../TaskItem';
 
 interface Props {
     tasks: Task[];
+    onTaskDelete: (task: Task) => void;
     isLoading?: boolean;
     className?: string;
 }
 
 export default function TasksList(props: Props) {
-    const { tasks, className, isLoading } = props;
+    const { tasks, onTaskDelete, className, isLoading } = props;
     const classes = twMerge('grid grid-cols-1 gap-3', className);
 
     return (
@@ -26,7 +27,7 @@ export default function TasksList(props: Props) {
                 {!isLoading &&
                     tasks.map((task) => {
                         const id = task.task_id;
-                        return <TaskItem key={id} task={task}></TaskItem>;
+                        return <TaskItem key={id} task={task} onDelete={() => {onTaskDelete(task)}}></TaskItem>;
                     })}
             </div>
         </section>

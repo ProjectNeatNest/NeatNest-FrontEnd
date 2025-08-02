@@ -34,7 +34,7 @@ export type DefaultArea = Omit<Area, 'housing_id'>;
 export interface Task {
     task_id: number;
     name: string;
-    area: Area;
+    area_id: number;
     created_at: string;
     duration: string;
     user: User;
