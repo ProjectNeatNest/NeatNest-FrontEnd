@@ -5,15 +5,20 @@ import SectionHeading from '../headings/SectionHeading';
 import AreaItem from '../AreaItem';
 import Spinner from '../../Spinner';
 import { NavLink } from 'react-router';
+import useRequest from '@/hooks/useRequest';
+import useHousingContext from '@/hooks/useHousingContext';
 
 interface Props {
     areas: Area[];
     className?: string;
-    isLoading?: boolean;
 }
 
 export default function AreasList(props: Props) {
-    const { areas, className, isLoading } = props;
+    const { className } = props;
+    const { housing } = useHousingContext();
+    const { requestData: areas, isLoading } = useRequest<Area[]>(
+        `/housings/${housing?.housing_id}/areas`
+    );
 
     const classes = twMerge('flex justify-start  gap-4 w-full', className);
     return (
@@ -24,15 +29,12 @@ export default function AreasList(props: Props) {
             <div className={classes}>
                 {isLoading && <Spinner />}
                 {!isLoading &&
+                    areas &&
                     areas.map((area) => {
                         const id = area.area_id;
                         return (
                             <NavLink key={id} to={`/areas/${area.area_id}`}>
-                                <AreaItem
-                                    area={area}
-                                    completedTasks={2}
-                                    totalTasks={7}
-                                ></AreaItem>
+                                <AreaItem area={area}></AreaItem>
                             </NavLink>
                         );
                     })}
