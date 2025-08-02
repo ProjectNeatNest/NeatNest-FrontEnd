@@ -33,6 +33,21 @@ export default function MyTasksPage() {
         setUserTasks(userTasks.filter(t => t.task_id != task.task_id))
     }
 
+    async function handleOnComplete(task: Task){
+        task.is_completed = !task.is_completed  
+        const data = {
+            'name': task.name,
+            'area_id': task.area_id,
+            'limit_date': task.limit_date,
+            'duration': task.duration,
+            'is_completed': task.is_completed,
+        }
+        await myRequest <Task[]>(
+             `/housings/${housing?.housing_id}/areas/${task.area_id}/tasks/${task.task_id}/`,
+            { method: 'PATCH', data: data }
+        ) 
+    }
+
     useEffect(() => {
         loadUserTasks();
     }, []);
@@ -64,7 +79,7 @@ export default function MyTasksPage() {
                         areas={areas}
                         isLoading={areAreasLoading}
                     ></AreasList>
-                    <TasksList tasks={userTasks} onTaskDelete={handleOnDelete}></TasksList>
+                    <TasksList tasks={userTasks} onTaskDelete={handleOnDelete} onTaskComplete={handleOnComplete}></TasksList>
                 </>
             )}
         </div>
