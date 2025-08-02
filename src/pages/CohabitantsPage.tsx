@@ -15,19 +15,18 @@ export default function CohabitantsPage() {
     const [housingUsers, setHousingUsers] = useState<User[]>([]);
 
     async function getHousingUsersData() {
-        if(!housing) return;
+        if (!housing) return;
         const data = await myRequest<User[]>(
             `/housings/${housing?.housing_id}/users`,
-            'GET'
+            { method: 'GET' }
         );
-              console.log(data);
         setHousingUsers(data);
     }
 
     async function deleteCohabitant(user_id: number) {
         await myRequest(
             `/housings/${housing?.housing_id}/users/${user_id}`,
-            'DELETE'
+            {method: 'DELETE'}
         );
         setHousingUsers(housingUsers.filter((user) => user.user_id != user_id));
     }
@@ -35,7 +34,6 @@ export default function CohabitantsPage() {
     useEffect(() => {
         getHousingUsersData();
     }, []);
-
 
     return (
         <div className="flex flex-col gap-3 bg-center bg-no-repeat bg-cover md:w-2/3 md:bg-contain bg-bedroom">
@@ -53,7 +51,9 @@ export default function CohabitantsPage() {
                         variant="body-large-regular"
                         className="text-neutral-primary"
                     >
-                        {housingUsers.length > 1 ?'Estos son los habitantes que forman parte de ': 'Solo vives tú en '}{' '}
+                        {housingUsers.length > 1
+                            ? 'Estos son los habitantes que forman parte de '
+                            : 'Solo vives tú en '}{' '}
                         {housing.name}
                     </BodyText>
                     <ul>
