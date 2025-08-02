@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import AreasList from '../components/molecules/ElementLists/AreasList';
 import TasksList from '../components/molecules/ElementLists/TasksList';
 import HomePageUserHeading from '../components/molecules/headings/HomePageUserHeading';
@@ -5,14 +6,26 @@ import type { Area, Task } from '../config/types';
 import useHousingContext from '../hooks/useHousingContext';
 import useRequest from '../hooks/useRequest';
 import useUserContext from '../hooks/useUserContext';
+import myRequest from '@/services/myRequest';
 
 export default function MyTasksPage() {
     const { housing } = useHousingContext();
     const { user } = useUserContext();
 
+
+    // const [tasks, setTasks] =useState<Task[]>()
+
     const { requestData: areas, isLoading: areAreasLoading } = useRequest<
         Area[]
     >(`/housings/${housing?.housing_id}/areas`);
+
+    
+    // async function getTasks() {
+    //     for (const area of areas) {
+    //         const tasksListBackend = await myRequest('/')
+            
+    //     }
+    // }
 
     const testTaskListArray: Task[] = [
         {

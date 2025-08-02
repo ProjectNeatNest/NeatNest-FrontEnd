@@ -231,7 +231,7 @@
     --background-brand-secondary: var(--green---30);
     --background-brand-tertiary: var(--green---10);
     --background-neutral-disabled: var(--greyscale---30);
-    --background-semantic-success-subtle: var(--green---10);
+    --background-semantic-success-subtle: var(--green---20);
     --background-semantic-success-bold: var(--green---60);
     --background-semantic-warning-subtle: var(--orange---10);
     --background-semantic-warning-bold: var(--orange---60);
@@ -587,4 +587,8 @@
   body {
     @apply bg-background text-foreground;
     }
+}
+
+.custom-date::-webkit-calendar-picker-indicator {
+  display: none;
 }

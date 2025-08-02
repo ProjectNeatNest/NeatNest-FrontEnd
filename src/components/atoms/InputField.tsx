@@ -25,7 +25,7 @@ export default function InputField(props: Props) {
     const id = useId();
 
     const classes = twMerge(
-        `w-full text-neutral-primary placeholder:text-neutral-tertiary body-large-regular focus:border focus:border-brand-primary focus:rounded-md focus-visible:border-1 focus-visible:border-brand-primary focus-visible:rounded-md focus:outline-none ${errorMessage ? 'focus:border-error-primary focus-visible:border-error-primary' : ''} px-1`,
+        `custom-date appearance-none w-full text-neutral-primary placeholder:text-neutral-tertiary body-large-regular focus:border focus:border-brand-primary focus:rounded-md focus-visible:border-1 focus-visible:border-brand-primary focus-visible:rounded-md focus:outline-none ${errorMessage ? 'focus:border-error-primary focus-visible:border-error-primary' : ''} px-1`,
         className
     );
 
