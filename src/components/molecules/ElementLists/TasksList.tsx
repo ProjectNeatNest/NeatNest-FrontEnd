@@ -3,6 +3,7 @@ import { twMerge } from 'tailwind-merge';
 import type { Area, Task } from '../../../config/types';
 import SectionHeading from '../headings/SectionHeading';
 import TaskItem from '../TaskItem';
+import BodyText from '@/components/typography/BodyText';
 
 interface Props {
     tasks: Task[];
@@ -14,11 +15,12 @@ interface Props {
 }
 
 export default function TasksList(props: Props) {
-    const { tasks, areas, onTaskDelete, onTaskComplete, className, isLoading } = props;
+    const { tasks, areas, onTaskDelete, onTaskComplete, className, isLoading } =
+        props;
     const classes = twMerge('grid grid-cols-1 gap-3', className);
 
-    function getTaskArea(task: Task) {
-        return areas.find((a) => a.area_id === task.area_id)
+    function getTaskArea(task: Task): Area {
+        return areas.find((a) => a.area_id === task.area_id);
     }
 
     return (
@@ -31,16 +33,28 @@ export default function TasksList(props: Props) {
                     <img src="/Loading.gif" alt="Loading spinner"></img>
                 )}
                 {!isLoading &&
+                    tasks &&
                     tasks.map((task) => {
                         const id = task.task_id;
-                        return <TaskItem 
-                                    key={id} 
-                                    task={task} 
-                                    area={getTaskArea(task)}
-                                    onDelete={() => {onTaskDelete(task)}}
-                                    onComplete={() => {onTaskComplete(task)}}
-                                ></TaskItem>;
+                        return (
+                            <TaskItem
+                                key={id}
+                                task={task}
+                                area={getTaskArea(task)}
+                                onDelete={() => {
+                                    onTaskDelete(task);
+                                }}
+                                onComplete={() => {
+                                    onTaskComplete(task);
+                                }}
+                            ></TaskItem>
+                        );
                     })}
+                {!isLoading && !tasks && (
+                    <BodyText as="span" variant="body-large-regular">
+                        Todavía no tienes tareas. Crea una tarea.
+                    </BodyText>
+                )}
             </div>
         </section>
     );

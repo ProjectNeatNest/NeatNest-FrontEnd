@@ -30,7 +30,7 @@ async function publicRouteLoader() {
     const user = getItemFromLocalStorage<User>('neat-nest-user');
 
     if (user) {
-        return redirect('/profile');
+        return redirect('/my-housings');
     }
 }
 

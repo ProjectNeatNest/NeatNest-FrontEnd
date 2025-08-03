@@ -7,6 +7,7 @@ import Spinner from '../../Spinner';
 import { NavLink } from 'react-router';
 import useRequest from '@/hooks/useRequest';
 import useHousingContext from '@/hooks/useHousingContext';
+import BodyText from '@/components/typography/BodyText';
 
 interface Props {
     areas: Area[];
@@ -35,10 +36,21 @@ export default function AreasList(props: Props) {
                         const id = area.area_id;
                         return (
                             <NavLink key={id} to={`/areas/${area.area_id}`}>
-                                <AreaItem area={area} areaTasks={allTasks.filter(t => t.area_id == area.area_id)}></AreaItem>
+                                <AreaItem
+                                    area={area}
+                                    areaTasks={allTasks.filter(
+                                        (t) => t.area_id == area.area_id
+                                    )}
+                                ></AreaItem>
                             </NavLink>
                         );
                     })}
+                {/* TODO: NO funciona */}
+                {!isLoading && !areas && (
+                    <BodyText as="span" variant="body-large-regular">
+                        Todavía no tienes zonas. Crea una zona.
+                    </BodyText>
+                )}
             </div>
         </section>
     );
