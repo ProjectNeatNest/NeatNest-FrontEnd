@@ -1,11 +1,12 @@
 import { twMerge } from 'tailwind-merge';
 
-import type { Task } from '../../../config/types';
+import type { Area, Task } from '../../../config/types';
 import SectionHeading from '../headings/SectionHeading';
 import TaskItem from '../TaskItem';
 
 interface Props {
     tasks: Task[];
+    areas: Area[];
     onTaskDelete: (task: Task) => void;
     onTaskComplete: (task: Task) => void;
     isLoading?: boolean;
@@ -13,8 +14,12 @@ interface Props {
 }
 
 export default function TasksList(props: Props) {
-    const { tasks, onTaskDelete, onTaskComplete, className, isLoading } = props;
+    const { tasks, areas, onTaskDelete, onTaskComplete, className, isLoading } = props;
     const classes = twMerge('grid grid-cols-1 gap-3', className);
+
+    function getTaskArea(task: Task) {
+        return areas.find((a) => a.area_id === task.area_id)
+    }
 
     return (
         <section className="flex flex-col w-full gap-2">
@@ -31,6 +36,7 @@ export default function TasksList(props: Props) {
                         return <TaskItem 
                                     key={id} 
                                     task={task} 
+                                    area={getTaskArea(task)}
                                     onDelete={() => {onTaskDelete(task)}}
                                     onComplete={() => {onTaskComplete(task)}}
                                 ></TaskItem>;

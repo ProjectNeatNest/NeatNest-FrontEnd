@@ -17,19 +17,24 @@ import myRequest from '@/services/myRequest';
 import { useNavigate } from 'react-router';
 
 export default function MyHousingsPage() {
-    const { housing } = useHousingContext();
+    const { housing, addHousing } = useHousingContext();
     const { user } = useUserContext();
-    const navigate = useNavigate();
     const [showDeleteButton, setShowDeleteButton] = useState<boolean>(false)
-
+    const navigate = useNavigate();
     console.log(user);
 
-    const { requestData: userHousings, isLoading } =
-        useRequest<Housing[]>('/housings');
+    // const { requestData: userHousings, isLoading } =
+    //     useRequest<Housing[]>('/housings');
 
+    const [ userHousings, setUserHousings] = useState<Housing[]>([])
     const [housingName, setHousingName] = useState<string | null>(
         housing?.name ?? null
     );
+
+    async function getHousings() {
+         const housings = await myRequest<Housing[]>('/housings', {method:'GET'})
+         setUserHousings(housings)
+    }
 
     async function handleDeleteButton(housing: Housing) {
         const data = await myRequest<User[]>(
@@ -39,17 +44,25 @@ export default function MyHousingsPage() {
         const currentUser = data.find((u) => u.user_id === user?.user_id)
         if(!currentUser) {
             setShowDeleteButton(false)
-        } else { setShowDeleteButton(currentUser?.is_admin || false)}
+        } else { 
+            setShowDeleteButton(currentUser?.is_admin || false)
+        }
     }
 
-        async function onHousingDelete() {
-            await myRequest(
-                `/housings/${housing?.housing_id}`,
-                { method: 'DELETE' }
-            );
-            navigate('/my-tasks');
-        }
+    async function onHousingDelete() {
+        await myRequest(
+            `/housings/${housing?.housing_id}`,
+            { method: 'DELETE' }
+        );
+        setUserHousings(userHousings.filter(h => h.housing_id !== housing?.housing_id))
+        addHousing(userHousings[0])
+        navigate('/my-housings')
+
+    }
     
+    useEffect(()=>{
+        getHousings()
+    }, [])
 
     useEffect(() => {
         setHousingName(housing?.name ?? null);
@@ -100,7 +113,6 @@ export default function MyHousingsPage() {
                 {userHousings && (
                     <HousingList housings={userHousings}></HousingList>
                 )}
-                {isLoading && <Spinner />}
                 <BodyText
                     as="p"
                     variant="body-large-regular"

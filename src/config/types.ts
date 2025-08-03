@@ -37,7 +37,7 @@ export interface Task {
     area_id: number;
     created_at: string;
     duration: string;
-    user: User;
-    limit_date: string | null;
+    user_id: number;
+    limit_date: string;
     is_completed: boolean;
 }

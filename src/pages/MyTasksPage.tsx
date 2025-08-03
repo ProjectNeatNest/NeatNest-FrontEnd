@@ -48,6 +48,7 @@ export default function MyTasksPage() {
         )
         const updatedTaskIdx = userTasks.findIndex(t => t.task_id == task.task_id)
         if (!updatedTaskIdx) return
+        //TODO check (el array de areas debe actualizarse a la vez que se completan las tareas)
         const newUserTasks = [...userTasks]
         newUserTasks[updatedTaskIdx] = task
         setUserTasks(newUserTasks)
@@ -85,7 +86,7 @@ export default function MyTasksPage() {
                         isLoading={areAreasLoading}
                         allTasks={userTasks}
                     ></AreasList>
-                    <TasksList tasks={userTasks} onTaskDelete={handleOnDelete} onTaskComplete={handleOnComplete}></TasksList>
+                    <TasksList tasks={userTasks} areas={areas} onTaskDelete={handleOnDelete} onTaskComplete={handleOnComplete}></TasksList>
                 </>
             )}
         </div>

@@ -2,12 +2,12 @@ import { redirect } from 'react-router';
 import { createBrowserRouter } from 'react-router';
 
 import type { User } from './config/types';
+import { getItemFromLocalStorage } from './services/getItemFromLocalStorage';
 
 import MainLayout from './layouts/MainLayout';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import { getItemFromLocalStorage } from './services/getItemFromLocalStorage';
 import NewHousingPage from './pages/CreationPages/NewHousingPage';
 import NewTaskPage from './pages/CreationPages/NewTaskPage';
 import NewAreaPage from './pages/CreationPages/NewAreaPage';
@@ -16,6 +16,7 @@ import MyHousingsPage from './pages/MyHousingsPage';
 import MyTasksPage from './pages/MyTasksPage';
 import CohabitantsPage from './pages/CohabitantsPage';
 import AreaPage from './pages/AreaPage';
+import TaskPage from './pages/TaskPage';
 
 async function privateRouteLoader() {
     const user = getItemFromLocalStorage<User>('neat-nest-user');
@@ -92,6 +93,12 @@ export const router = createBrowserRouter([
             {
                 path: '/areas/:areaId',
                 element: <AreaPage />,
+                loader: privateRouteLoader,
+            },
+
+            {
+                path: 'areas/:areaId/tasks/:taskId',
+                element: <TaskPage />,
                 loader: privateRouteLoader,
             },
 

@@ -17,7 +17,7 @@ import {
 } from '@/components/ui/select';
 import { useNavigate } from 'react-router';
 
-import type { Area, User } from '../../config/types';
+import type { Area, Task, User } from '../../config/types';
 import useRequest from '../../hooks/useRequest';
 import myRequest from '@/services/myRequest';
 import useHousingContext from '../../hooks/useHousingContext';
@@ -28,10 +28,12 @@ import BodyText from '../typography/BodyText';
 
 interface Props {
     className?: string;
+    buttonLabel?: string;
+    task?: Task | null;
 }
 
 export default function TaskForm(props: Props) {
-    const { className } = props;
+    const { className, buttonLabel, task } = props;
 
     const navigate = useNavigate();
 
@@ -63,9 +65,13 @@ export default function TaskForm(props: Props) {
             limit_date: data.limitDate,
             duration: data.duration,
         };
+
+        let url = `/housings/${housing.housing_id}/areas/${data.areaId}/tasks`
+        if(task) url += `/${task.task_id}`
+
         const backendResponse = await myRequest(
-            `/housings/${housing.housing_id}/areas/${data.areaId}/tasks`,
-            { method: 'POST', data: newTask }
+            url,
+            { method: task ? 'PATCH' : 'POST', data: newTask }
         );
         console.log(backendResponse);
         navigate('/my-tasks');
@@ -81,6 +87,7 @@ export default function TaskForm(props: Props) {
                     label="Nombre de la tarea"
                     leftIcon={<PiCheckCircleLight size={24} />}
                     placeholder="Escribe la tarea"
+                    defaultValue={task ? task.name : ''}
                     required
                     errorMessage={errors.name?.message}
                     {...register('name')}
@@ -111,7 +118,9 @@ export default function TaskForm(props: Props) {
                                 control={control}
                                 name="areaId"
                                 render={({ field }) => (
-                                    <Select onValueChange={field.onChange}>
+                                    <Select
+                                        onValueChange={field.onChange}
+                                    >
                                         <SelectTrigger
                                             className={`w-full text-neutral-primary ${errors.areaId ? 'border-2 border-error-primary' : ''}`}
                                         >
@@ -168,7 +177,9 @@ export default function TaskForm(props: Props) {
                                 control={control}
                                 name="userId"
                                 render={({ field }) => (
-                                    <Select onValueChange={field.onChange}>
+                                    <Select
+                                        onValueChange={field.onChange}
+                                    >
                                         <SelectTrigger
                                             className={`w-full text-neutral-primary ${errors.areaId ? 'border-2 border-error-primary' : ''}`}
                                         >
@@ -206,6 +217,7 @@ export default function TaskForm(props: Props) {
                     label="Duración de la tarea (min)"
                     leftIcon={<PiTimerLight size={24} />}
                     placeholder="Escribe los minutos en números"
+                    defaultValue={task ? task.duration : ''}
                     required
                     {...register('duration')}
                 />
@@ -213,13 +225,13 @@ export default function TaskForm(props: Props) {
                     type="date"
                     label="Fecha límite"
                     leftIcon={<PiCalendarDotLight size={24} />}
-                    placeholder="Fecha límite de realización"
+                    placeholder={task ? task.limit_date.split('T')[0] : 'Fecha límite de realización'}
                     required
                     {...register('limitDate')}
                 />
             </div>
             <Button type="submit" buttonVariant="primary">
-                Guardar y continuar
+                {buttonLabel ? buttonLabel : 'Guardar y continuar'}
             </Button>
         </form>
     );
