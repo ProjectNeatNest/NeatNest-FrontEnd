@@ -2,12 +2,10 @@ import { PiHouseLineLight, PiPlusLight } from 'react-icons/pi';
 
 import type { Housing, User } from '../config/types';
 
-import useRequest from '../hooks/useRequest';
 import useHousingContext from '../hooks/useHousingContext';
 import CreateHeading from '../components/molecules/headings/CreateHeading';
 import BodyText from '../components/typography/BodyText';
 import HousingList from '../components/molecules/ElementLists/HousingList';
-import Spinner from '../components/Spinner';
 import CustomNavLink from '../components/atoms/CustomNavLink';
 import Title from '../components/typography/Title';
 import EditHousingForm from '@/components/organisms/editHousingForm';
@@ -15,6 +13,7 @@ import { useEffect, useState } from 'react';
 import useUserContext from '@/hooks/useUserContext';
 import myRequest from '@/services/myRequest';
 import { useNavigate } from 'react-router';
+import PageLayout from '@/layouts/PageLayout';
 
 export default function MyHousingsPage() {
     const { housing, addHousing } = useHousingContext();
@@ -71,6 +70,7 @@ export default function MyHousingsPage() {
     
 
     return (
+        <PageLayout>
         <div className="flex flex-col gap-4 bg-center bg-no-repeat bg-cover md:w-2/3 md:bg-contain bg-bedroom">
             <CreateHeading
                 leftIcon={<PiHouseLineLight size={24} />}
@@ -129,5 +129,6 @@ export default function MyHousingsPage() {
                 </CustomNavLink>
             </div>
         </div>
+        </PageLayout>
     );
 }

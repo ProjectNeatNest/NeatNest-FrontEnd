@@ -1,30 +1,33 @@
 import Title from '@/components/typography/Title';
 import useUserContext from '../hooks/useUserContext';
+import Button from '@/components/atoms/Button';
 
 export default function HomePage() {
     const { user } = useUserContext();
 
     return (
         <div>
-            <section className='"bg-[#EDFFF6] py-20"'>
-                <div className="container grid items-center grid-cols-1 gap-10 px-6 mx-auto md:grid-cols-2">
-                    {' '}
+            <section className='flex flex-col w-full gap-4 py-20 bg-center bg-no-repeat bg-cover bg-landing'>
+        
+                <div className="flex flex-col gap-2">
+                    <Title
+                        as="h1"
+                        variant="title-large-light"
+                        className="text-neutral-primary"
+                    >
+                        Organiza tu hogar de forma sencilla y sin estrés
+                    </Title>
+                    <Title
+                        as="h2"
+                        variant="title-small-regular"
+                        className="text-neutral-secondary"
+                    >
+                        Planifica, asigna y realiza tareas domésticas en equipo. Tu
+                        casa, tus reglas.
+                    </Title>
                 </div>
-                <Title
-                    as="h1"
-                    variant="title-large-light"
-                    className="text-neutral-primary"
-                >
-                    Organiza tu hogar de forma sencilla y sin estrés
-                </Title>
-                <Title
-                    as="h2"
-                    variant="title-small-regular"
-                    className="text-neutral-secondary"
-                >
-                    Planifica, asigna y realiza tareas domésticas en equipo. Tu
-                    casa, tus reglas.
-                </Title>
+
+                <Button className='self-start'>Empieza gratis</Button>
             </section>
         </div>
     );

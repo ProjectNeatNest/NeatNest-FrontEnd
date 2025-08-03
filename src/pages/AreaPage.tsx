@@ -7,6 +7,7 @@ import type { Area } from '../config/types';
 import { twMerge } from 'tailwind-merge';
 import useHousingContext from '../hooks/useHousingContext';
 import myRequest from '@/services/myRequest';
+import PageLayout from '@/layouts/PageLayout';
 
 interface Props {
     className?: string;
@@ -28,10 +29,9 @@ export default function AreaPage(props: Props) {
     );
 
     async function onAreaDelete() {
-        await myRequest(
-            `/housings/${housing?.housing_id}/areas/${areaId}`,
-            { method: 'DELETE' }
-        );
+        await myRequest(`/housings/${housing?.housing_id}/areas/${areaId}`, {
+            method: 'DELETE',
+        });
         navigate('/my-tasks');
     }
 
@@ -40,16 +40,18 @@ export default function AreaPage(props: Props) {
         className
     );
     return (
-        <div className={classes}>
-            <CreateHeading
-                leftIcon={<PiDresserLight size={24} />}
-                deleteButton={true}
-                onDelete={onAreaDelete}
-            >
-                Editar zona
-            </CreateHeading>
+        <PageLayout>
+            <div className={classes}>
+                <CreateHeading
+                    leftIcon={<PiDresserLight size={24} />}
+                    deleteButton={true}
+                    onDelete={onAreaDelete}
+                >
+                    Editar zona
+                </CreateHeading>
 
-            {area && <AreaForm areaName={area?.name} />}
-        </div>
+                {area && <AreaForm areaName={area?.name} />}
+            </div>
+        </PageLayout>
     );
 }

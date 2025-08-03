@@ -8,6 +8,7 @@ import useUserContext from '../hooks/useUserContext';
 import RemovableItem from '../components/molecules/RemovableItem';
 import myRequest from '../services/myRequest';
 import { useEffect, useState } from 'react';
+import PageLayout from '@/layouts/PageLayout';
 
 export default function CohabitantsPage() {
     const { housing } = useHousingContext();
@@ -24,10 +25,9 @@ export default function CohabitantsPage() {
     }
 
     async function deleteCohabitant(user_id: number) {
-        await myRequest(
-            `/housings/${housing?.housing_id}/users/${user_id}`,
-            {method: 'DELETE'}
-        );
+        await myRequest(`/housings/${housing?.housing_id}/users/${user_id}`, {
+            method: 'DELETE',
+        });
         setHousingUsers(housingUsers.filter((user) => user.user_id != user_id));
     }
 
@@ -36,49 +36,54 @@ export default function CohabitantsPage() {
     }, []);
 
     return (
-        <div className="flex flex-col gap-3 bg-center bg-no-repeat bg-cover md:w-2/3 md:bg-contain bg-bedroom">
-            <CreateHeading
-                leftIcon={<PiUsersLight size={24} />}
-                deleteButton={false}
-            >
-                Habitantes
-            </CreateHeading>
+        <PageLayout>
+            <div className="flex flex-col gap-3 bg-center bg-no-repeat bg-cover md:w-2/3 md:bg-contain bg-bedroom">
+                <CreateHeading
+                    leftIcon={<PiUsersLight size={24} />}
+                    deleteButton={false}
+                >
+                    Habitantes
+                </CreateHeading>
 
-            {housing && (
-                <div>
-                    <BodyText
-                        as="p"
-                        variant="body-large-regular"
-                        className="text-neutral-primary"
-                    >
-                        {housingUsers.length > 1
-                            ? 'Estos son los habitantes que forman parte de '
-                            : 'Solo vives tú en '}{' '}
-                        {housing.name}
-                    </BodyText>
-                    <ul>
-                        {housingUsers
-                            ?.filter(
-                                (user) => user.user_id != currentUser?.user_id
-                            )
-                            .map((user) => {
-                                return (
-                                    <li key={user.user_id}>
-                                        <RemovableItem
-                                            onDelete={() => {
-                                                deleteCohabitant(user.user_id);
-                                            }}
-                                        >
-                                            {user.name}
-                                        </RemovableItem>
-                                    </li>
-                                );
-                            })}
-                    </ul>
-                </div>
-            )}
+                {housing && (
+                    <div>
+                        <BodyText
+                            as="p"
+                            variant="body-large-regular"
+                            className="text-neutral-primary"
+                        >
+                            {housingUsers.length > 1
+                                ? 'Estos son los habitantes que forman parte de '
+                                : 'Solo vives tú en '}{' '}
+                            {housing.name}
+                        </BodyText>
+                        <ul>
+                            {housingUsers
+                                ?.filter(
+                                    (user) =>
+                                        user.user_id != currentUser?.user_id
+                                )
+                                .map((user) => {
+                                    return (
+                                        <li key={user.user_id}>
+                                            <RemovableItem
+                                                onDelete={() => {
+                                                    deleteCohabitant(
+                                                        user.user_id
+                                                    );
+                                                }}
+                                            >
+                                                {user.name}
+                                            </RemovableItem>
+                                        </li>
+                                    );
+                                })}
+                        </ul>
+                    </div>
+                )}
 
-            {/* <CohabitantsForm /> */}
-        </div>
+                {/* <CohabitantsForm /> */}
+            </div>
+        </PageLayout>
     );
 }
