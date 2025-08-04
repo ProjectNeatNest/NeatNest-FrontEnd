@@ -6,7 +6,7 @@ interface Options<K> {
     hasToasts?: boolean;
 }
 
-export default async function myRequest<T, K = null>(
+export default async function myRequest<T, K = unknown>(
     url: string,
     options: Options<K>
     

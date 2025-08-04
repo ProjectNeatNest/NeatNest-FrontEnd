@@ -4,6 +4,7 @@ import type { Area, Task } from '../../../config/types';
 import SectionHeading from '../headings/SectionHeading';
 import TaskItem from '../TaskItem';
 import BodyText from '@/components/typography/BodyText';
+import Spinner from '@/components/Spinner';
 
 interface Props {
     tasks: Task[];
@@ -20,7 +21,7 @@ export default function TasksList(props: Props) {
     const classes = twMerge('grid grid-cols-1 gap-3', className);
 
     function getTaskArea(task: Task): Area {
-        return areas.find((a) => a.area_id === task.area_id);
+        return areas.find((a) => a.area_id === task.area_id) as Area;
     }
 
     return (
@@ -29,9 +30,7 @@ export default function TasksList(props: Props) {
                 Mis tareas
             </SectionHeading>
             <div className={classes}>
-                {isLoading && (
-                    <img src="/Loading.gif" alt="Loading spinner"></img>
-                )}
+                {isLoading && <Spinner />}
                 {!isLoading &&
                     tasks &&
                     tasks.map((task) => {
@@ -50,7 +49,7 @@ export default function TasksList(props: Props) {
                             ></TaskItem>
                         );
                     })}
-                {!isLoading && !tasks && (
+                {!isLoading && tasks?.length === 0 && (
                     <BodyText as="span" variant="body-large-regular">
                         Todavía no tienes tareas. Crea una tarea.
                     </BodyText>

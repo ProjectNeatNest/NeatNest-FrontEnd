@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default function AreaItem(props: Props) {
-    const { area, areaTasks} = props;
+    const { area, areaTasks } = props;
 
     return (
         <>

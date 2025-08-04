@@ -18,13 +18,7 @@ export default function MyTasksPage() {
         Area[]
     >(`/housings/${housing?.housing_id}/areas`);
 
-    async function loadUserTasks() {
-        const userTasks = await myRequest<Task[]>(
-            `/housings/${housing?.housing_id}/users/${user?.user_id}/tasks`,
-            { method: 'GET' }
-        );
-        setUserTasks(userTasks);
-    }
+    
 
     async function handleOnDelete(task: Task) {
         await myRequest<Task[]>(
@@ -35,49 +29,48 @@ export default function MyTasksPage() {
     }
 
     async function handleOnComplete(task: Task) {
-        task.is_completed = !task.is_completed;
+       
         const data = {
             name: task.name,
             area_id: task.area_id,
             limit_date: task.limit_date,
             duration: task.duration,
-            is_completed: task.is_completed,
+            is_completed: !task.is_completed,
         };
         await myRequest<Task[]>(
             `/housings/${housing?.housing_id}/areas/${task.area_id}/tasks/${task.task_id}/`,
             { method: 'PATCH', data: data }
         );
-        const updatedTaskIdx = userTasks.findIndex(
-            (t) => t.task_id == task.task_id
-        );
-        if (!updatedTaskIdx) return;
-        //TODO check (el array de areas debe actualizarse a la vez que se completan las tareas)
-        const newUserTasks = [...userTasks];
-        newUserTasks[updatedTaskIdx] = task;
-        setUserTasks(newUserTasks);
+        // const updatedTaskIdx = userTasks.findIndex(
+        //     (t) => t.task_id == task.task_id
+        // );
+        // // if (updatedTaskIdx === -1) return;
+        // // //TODO check (el array de areas debe actualizarse a la vez que se completan las tareas)
+        // const newUserTasks = [...userTasks];
+        // newUserTasks[updatedTaskIdx] = { ...task, is_completed: !task.is_completed};
+        // setUserTasks(newUserTasks);
+        // const updatedUserTasks = userTasks.map(t => {
+        //     if (t.task_id === task.task_id ) {
+        //         return { ...task, is_completed: !task.is_completed}
+        //     }
+        //     return task;
+        // });
+
+        const updatedUserTasks = userTasks.map(t => t.task_id === task.task_id ? { ...task, is_completed: !task.is_completed} : task);
+        setUserTasks(updatedUserTasks);
     }
 
     useEffect(() => {
+        async function loadUserTasks() {
+        const userTasks = await myRequest<Task[]>(
+            `/housings/${housing?.housing_id}/users/${user?.user_id}/tasks`,
+            { method: 'GET' }
+        );
+        setUserTasks(userTasks);
+    }
         loadUserTasks();
-    }, []);
+    }, [housing?.housing_id, user?.user_id]);
 
-    // const testTaskListArray: Task[] = [
-    //     {
-    //         task_id: 1,
-    //         name: 'Lavar los platos',
-    //         area: {
-    //             area_id: 1,
-    //             name: 'Cocina',
-    //             housing_id: 1,
-    //             created_at: '27/07',
-    //         },
-    //         created_at: '27/07',
-    //         duration: '5min',
-    //         user: user,
-    //         limit_date: null,
-    //         is_completed: false,
-    //     },
-    // ];
 
     return (
         <PageLayout>

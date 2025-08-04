@@ -34,6 +34,7 @@ interface Props {
 
 export default function TaskForm(props: Props) {
     const { className, buttonLabel, task } = props;
+    console.log(task);
 
     const navigate = useNavigate();
 
@@ -51,6 +52,13 @@ export default function TaskForm(props: Props) {
         useForm<TaskFormValues>({
             resolver: zodResolver(taskSchema),
             mode: 'onChange',
+            defaultValues: {
+                name: task?.name,
+                duration: task?.duration,
+                areaId: task?.area_id.toString(),
+                limitDate: task?.limit_date,
+                userId: task?.user_id.toString()
+            }
         });
 
     const { errors } = formState;
@@ -87,7 +95,6 @@ export default function TaskForm(props: Props) {
                     label="Nombre de la tarea"
                     leftIcon={<PiCheckCircleLight size={24} />}
                     placeholder="Escribe la tarea"
-                    defaultValue={task ? task.name : ''}
                     required
                     errorMessage={errors.name?.message}
                     {...register('name')}

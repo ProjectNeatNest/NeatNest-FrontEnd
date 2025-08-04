@@ -5,22 +5,18 @@ import SectionHeading from '../headings/SectionHeading';
 import AreaItem from '../AreaItem';
 import Spinner from '../../Spinner';
 import { NavLink } from 'react-router';
-import useRequest from '@/hooks/useRequest';
-import useHousingContext from '@/hooks/useHousingContext';
 import BodyText from '@/components/typography/BodyText';
 
 interface Props {
     areas: Area[];
     className?: string;
     allTasks: Task[];
+    isLoading?: boolean;
 }
 
 export default function AreasList(props: Props) {
-    const { className, allTasks } = props;
-    const { housing } = useHousingContext();
-    const { requestData: areas, isLoading } = useRequest<Area[]>(
-        `/housings/${housing?.housing_id}/areas`
-    );
+    const { className, allTasks, areas, isLoading = false } = props;
+
 
     const classes = twMerge('flex justify-start  gap-4 w-full', className);
     return (
@@ -46,7 +42,7 @@ export default function AreasList(props: Props) {
                         );
                     })}
                 {/* TODO: NO funciona */}
-                {!isLoading && !areas && (
+                {!isLoading && areas?.length === 0 && (
                     <BodyText as="span" variant="body-large-regular">
                         Todavía no tienes zonas. Crea una zona.
                     </BodyText>
