@@ -3,7 +3,7 @@
 
 @import '@fontsource-variable/nunito';
 @import '@fontsource-variable/arima';
-@import "tw-animate-css";
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -126,6 +126,13 @@
     --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
     --sidebar-border: oklch(0.929 0.013 255.508);
     --sidebar-ring: oklch(0.704 0.04 256.788);
+
+    --toastify-color-success: var(--green---60);
+    --toastify-color-error: var(--red---60);
+    --toastify-color-warning: var(--orange--60);
+    --toastify-color-info: var(--blue--60);
+    --toastify-color-light: var(--greyscale---10);
+    --toastify-color-dark: var(--greyscale--100);
 }
 
 /* Collection name: colorPrimitives */
@@ -287,7 +294,7 @@
     --background-image-studio: url(/studio.svg);
     --background-image-create-house: url(/create-house.svg);
     --background-image-todo: url(/todo.svg);
-    --background-image-landing: url(/gray-sofa.jpg)
+    --background-image-landing: url(/gray-sofa.jpg);
 }
 
 .custom-hamburger .hamburger-react > div {
@@ -369,14 +376,14 @@
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+    * {
+        @apply border-border outline-ring/50;
     }
-  body {
-    @apply bg-background text-foreground;
+    body {
+        @apply bg-background text-foreground;
     }
 }
 
 .custom-date::-webkit-calendar-picker-indicator {
-  display: none;
+    display: none;
 }
