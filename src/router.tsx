@@ -1,7 +1,7 @@
 import { redirect } from 'react-router';
 import { createBrowserRouter } from 'react-router';
 
-import type { User } from './config/types';
+import type { Housing, User } from './config/types';
 import { getItemFromLocalStorage } from './services/getItemFromLocalStorage';
 
 import MainLayout from './layouts/MainLayout';
@@ -34,6 +34,14 @@ async function publicRouteLoader() {
     }
 }
 
+async function userHasHousing() {
+    const housing = getItemFromLocalStorage<Housing>('neat-nest-housing');
+
+    if (!housing) {
+        return redirect('/housings/new');
+    }
+}
+
 export const router = createBrowserRouter([
     {
         path: '/',
@@ -45,61 +53,63 @@ export const router = createBrowserRouter([
             },
 
             {
-                path: '/login',
-                element: <LoginPage />,
                 loader: publicRouteLoader,
+                children: [
+                    {
+                        path: '/login',
+                        element: <LoginPage />,
+                    },
+
+                    {
+                        path: '/register',
+                        element: <RegisterPage />,
+                    },
+                ],
             },
 
             {
-                path: '/register',
-                element: <RegisterPage />,
-                loader: publicRouteLoader,
-            },
+                loader: privateRouteLoader,
+                children: [
+                    {
+                        path: '/my-housings',
+                        element: <MyHousingsPage />,
+                    },
 
-            {
-                path: '/my-housings',
-                element: <MyHousingsPage />,
-                loader: privateRouteLoader,
-            },
+                    {
+                        path: '/my-tasks',
+                        element: <MyTasksPage />,
+                        loader: userHasHousing
+                    },
 
-            {
-                path: '/my-tasks',
-                element: <MyTasksPage />,
-                loader: privateRouteLoader,
-            },
+                    {
+                        path: '/cohabitants',
+                        element: <CohabitantsPage />,
+                        loader: userHasHousing
+                    },
 
-            {
-                path: '/cohabitants',
-                element: <CohabitantsPage />,
-                loader: privateRouteLoader,
-            },
+                    {
+                        path: '/tasks/new',
+                        element: <NewTaskPage />,
+                    },
+                    {
+                        path: '/housings/new',
+                        element: <NewHousingPage />,
+                    },
+                    {
+                        path: '/areas/new',
+                        element: <NewAreaPage />,
+                    },
 
-            {
-                path: '/tasks/new',
-                element: <NewTaskPage />,
-                loader: privateRouteLoader,
-            },
-            {
-                path: '/housings/new',
-                element: <NewHousingPage />,
-                loader: privateRouteLoader,
-            },
-            {
-                path: '/areas/new',
-                element: <NewAreaPage />,
-                loader: privateRouteLoader,
-            },
+                    {
+                        path: '/areas/:areaId',
+                        element: <AreaPage />,
+                    },
 
-            {
-                path: '/areas/:areaId',
-                element: <AreaPage />,
-                loader: privateRouteLoader,
-            },
-
-            {
-                path: 'areas/:areaId/tasks/:taskId',
-                element: <TaskPage />,
-                loader: privateRouteLoader,
+                    {
+                        path: 'areas/:areaId/tasks/:taskId',
+                        element: <TaskPage />,
+                    },
+                ],
             },
 
             {

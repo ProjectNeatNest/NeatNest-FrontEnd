@@ -8,10 +8,13 @@ interface Options<K> {
 
 export default async function myRequest<T, K = unknown>(
     url: string,
-    options: Options<K>
+    options?: Options<K>
     
 ): Promise<T> {
-    const { method = 'GET', data, hasToasts = true } = options;
+    const requestOptions = {
+        method: options?.method || 'GET',
+        hasToasts: options?.hasToasts || true
+    }
     const baseURL = import.meta.env.VITE_SERVER_BASE_URL;
     const token = localStorage.getItem('neat-nest-token');
 
@@ -22,9 +25,9 @@ export default async function myRequest<T, K = unknown>(
 
     try {
         const response = await fetch(`${baseURL}${url}`, {
-            method: method,
+            method: requestOptions.method,
             headers: headers,
-            body: data? JSON.stringify(data):undefined,
+            body: options?.data ? JSON.stringify(options.data) : undefined,
         });
 
         const backendData = await response.json();
@@ -33,11 +36,11 @@ export default async function myRequest<T, K = unknown>(
             throw new Error(backendData.error)
         }
 
-        if (hasToasts) toast.success(backendData.message);
+        if (requestOptions.hasToasts) toast.success(backendData.message);
         return backendData.data;
     } catch (error) {
         if (error instanceof Error) {
-            if (hasToasts) toast.error(error.message);
+            if (requestOptions.hasToasts) toast.error(error.message);
             throw new Error(error.message);
         }
         throw new Error('An Error occurred');

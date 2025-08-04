@@ -10,6 +10,7 @@ import BodyText from '../typography/BodyText';
 import useUserContext from '../../hooks/useUserContext';
 import { logInUserRequest } from '../../services/logInUserRequest';
 import { loginSchema } from '../../schemas/userSchemas';
+import useHousingContext from '@/hooks/useHousingContext';
 
 interface Props {
     className?: string;
@@ -29,6 +30,7 @@ export default function LoginForm(props: Props) {
 
     const navigate = useNavigate();
     const { loginUser } = useUserContext();
+    const { addFirstHousing } = useHousingContext();
 
     async function onSubmit(data: loginFormValues) {
         const response = await logInUserRequest(data.email, data.password);
@@ -36,6 +38,8 @@ export default function LoginForm(props: Props) {
         if (!response) return;
         navigate('/');
         loginUser(response.user, response.token);
+        addFirstHousing();
+
     }
 
     const { className } = props;

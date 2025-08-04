@@ -27,6 +27,7 @@ export default function UserProvider(props: Props) {
     const logoutUser = () => {
         setUser(null);
         localStorage.removeItem('neat-nest-user');
+        localStorage.removeItem('neat-nest-token');
         navigate('/');
     };
 

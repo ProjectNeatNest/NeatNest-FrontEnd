@@ -1,7 +1,7 @@
-import { useState, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import type { Housing } from '../config/types';
 import { HousingContext } from './HousingContext';
-import useRequest from '../hooks/useRequest';
+import myRequest from '@/services/myRequest';
 
 interface Props {
     children: ReactNode;
@@ -31,14 +31,26 @@ export default function HousingProvider(props: Props) {
         localStorage.setItem('neat-nest-housing', JSON.stringify(housing));
     }
 
-    const { requestData: userHousings } =
-        useRequest<Housing[]>('/housings');
-
-    if (userHousings && !housing) {
-        addHousing(userHousings[0]);
+    const addFirstHousing = async () => {
+        const userHousings = await myRequest<Housing[]>('/housings')
+        if (!housing && userHousings.length > 0 ) {
+            addHousing(userHousings[0]);
+        }
     }
+    useEffect(() => {
 
-    const context = { housing, addHousing, deleteHousing, changeHousing };
+        const activeUser = JSON.parse(localStorage.getItem('neat-nest-user')!);
+
+        if (!activeUser) return;
+
+        addFirstHousing();
+        
+
+    }, []);
+
+
+
+    const context = { housing, addHousing, deleteHousing, changeHousing, addFirstHousing };
     return (
         <>
             <HousingContext value={context}>{children}</HousingContext>

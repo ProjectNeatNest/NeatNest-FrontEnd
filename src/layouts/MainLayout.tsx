@@ -10,14 +10,14 @@ export default function MainLayout() {
     return (
         <UserProvider>
             <HousingProvider>
-                <div className="flex flex-col min-h-screen bg-neutral-primary">
-                    <Header />
-                    <main className="">
-                        <Outlet />
-                    </main>
-                    <Footer />
-                    <ToastContainer position="bottom-right" />
-                </div>
+                    <div className="flex flex-col min-h-screen bg-neutral-primary">
+                        <Header />
+                        <main className="">
+                            <Outlet />
+                        </main>
+                        <Footer />
+                        <ToastContainer position="bottom-right" />
+                    </div>
             </HousingProvider>
         </UserProvider>
     );
