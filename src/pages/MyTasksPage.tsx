@@ -18,8 +18,6 @@ export default function MyTasksPage() {
         Area[]
     >(`/housings/${housing?.housing_id}/areas`);
 
-    
-
     async function handleOnDelete(task: Task) {
         await myRequest<Task[]>(
             `/housings/${housing?.housing_id}/areas/${task.area_id}/tasks/${task.task_id}/`,
@@ -29,7 +27,6 @@ export default function MyTasksPage() {
     }
 
     async function handleOnComplete(task: Task) {
-       
         const data = {
             name: task.name,
             area_id: task.area_id,
@@ -45,7 +42,6 @@ export default function MyTasksPage() {
         //     (t) => t.task_id == task.task_id
         // );
         // // if (updatedTaskIdx === -1) return;
-        // // //TODO check (el array de areas debe actualizarse a la vez que se completan las tareas)
         // const newUserTasks = [...userTasks];
         // newUserTasks[updatedTaskIdx] = { ...task, is_completed: !task.is_completed};
         // setUserTasks(newUserTasks);
@@ -56,21 +52,24 @@ export default function MyTasksPage() {
         //     return task;
         // });
 
-        const updatedUserTasks = userTasks.map(t => t.task_id === task.task_id ? { ...task, is_completed: !task.is_completed} : task);
+        const updatedUserTasks = userTasks.map((t) =>
+            t.task_id === task.task_id
+                ? { ...t, is_completed: !t.is_completed }
+                : t
+        );
         setUserTasks(updatedUserTasks);
     }
 
     useEffect(() => {
         async function loadUserTasks() {
-        const userTasks = await myRequest<Task[]>(
-            `/housings/${housing?.housing_id}/users/${user?.user_id}/tasks`,
-            { method: 'GET' }
-        );
-        setUserTasks(userTasks);
-    }
+            const userTasks = await myRequest<Task[]>(
+                `/housings/${housing?.housing_id}/users/${user?.user_id}/tasks`,
+                { method: 'GET' }
+            );
+            setUserTasks(userTasks);
+        }
         loadUserTasks();
     }, [housing?.housing_id, user?.user_id]);
-
 
     return (
         <PageLayout>
