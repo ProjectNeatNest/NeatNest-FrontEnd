@@ -1,15 +1,16 @@
 import Title from '@/components/typography/Title';
-import useUserContext from '../hooks/useUserContext';
-import Button from '@/components/atoms/Button';
+// import useUserContext from '../hooks/useUserContext';
+
+// import CustomNavLink from '@/components/atoms/CustomNavLink';
 
 export default function HomePage() {
-    const { user } = useUserContext();
+    // const { user } = useUserContext();
 
     return (
         <div>
             <section className='flex flex-col w-full gap-4 py-20 bg-center bg-no-repeat bg-cover bg-landing'>
         
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col justify-center gap-2 px-6 text-center lg:px-32">
                     <Title
                         as="h1"
                         variant="title-large-light"
@@ -27,7 +28,8 @@ export default function HomePage() {
                     </Title>
                 </div>
 
-                <Button className='self-start'>Empieza gratis</Button>
+                {/* {!user && <CustomNavLink to={'/register'} className='self-center' appearance='primaryButton' >Empieza gratis</CustomNavLink>}
+                {user && <CustomNavLink to={'/my-tasks'} className='self-center' appearance='primaryButton' >Ir a mis tareas</CustomNavLink>} */}
             </section>
         </div>
     );
