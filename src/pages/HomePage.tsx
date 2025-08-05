@@ -52,7 +52,7 @@ export default function HomePage() {
                         icon={<PiPaintBrushThin 
                         size={30} 
                         className='text-neutral-primary'/>}>
-                            Define las zonas importantes de la casa como la cocina, el baño o el salón, y organiza las tareas por espacios concretos.
+                            Define las zonas importantes de la casa, como la cocina, el baño o el salón, y organiza las tareas por espacios concretos.
                     </BulletHome>
 
                     <BulletHome
@@ -60,7 +60,7 @@ export default function HomePage() {
                         icon={<PiFootprintsThin 
                         size={30} 
                         className='text-neutral-primary'/>}>
-                            Crea tareas, asígnalas a quien corresponda y lleva un seguimiento claro de lo que está hecho y lo que falta.
+                            Crea tareas, asígnalas a quien corresponda y lleva un seguimiento claro de lo que ya está hecho y lo que aún queda por hacer.
                     </BulletHome>
 
                     <BulletHome
