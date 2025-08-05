@@ -1,9 +1,6 @@
-import useHousingContext from '@/hooks/useHousingContext';
 import { type Task, type Area } from '../../config/types';
 import Title from '../typography/Title';
 import NumberOfTasks from './NumberOfTasks';
-import { useEffect, useState } from 'react';
-import myRequest from '@/services/myRequest';
 
 interface Props {
     area: Area;

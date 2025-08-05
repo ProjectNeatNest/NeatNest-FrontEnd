@@ -36,8 +36,8 @@ export default function CohabitantsPage() {
     }, []);
 
     return (
-        <PageLayout>
-            <div className="flex flex-col gap-3 bg-center bg-no-repeat bg-cover md:w-2/3 md:bg-contain bg-bedroom">
+        <PageLayout className='bg-fixed bg-center bg-no-repeat bg-size-[auto_70%] bg-cohabitants'>
+            <div className="flex flex-col gap-3 bg-center ">
                 <CreateHeading
                     leftIcon={<PiUsersLight size={24} />}
                     deleteButton={false}

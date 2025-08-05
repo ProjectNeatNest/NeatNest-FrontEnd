@@ -72,8 +72,8 @@ export default function MyTasksPage() {
     }, [housing?.housing_id, user?.user_id]);
 
     return (
-        <PageLayout>
-            <div className="grid grid-cols-1 gap-3 bg-center bg-no-repeat bg-cover md:w-2/3 md:bg-contain bg-rafiki">
+        <PageLayout className='bg-fixed bg-center bg-no-repeat bg-size-[auto_70%] bg-rafiki'>
+            <div className="grid grid-cols-1 gap-3 md:w-2/3">
                 {housing && areas && (
                     <>
                         <HomePageUserHeading housing={housing} />

@@ -28,11 +28,11 @@ export default function TaskPage(props: Props) {
     }
 
     const classes = twMerge(
-        'flex flex-col gap-3 bg-center bg-no-repeat bg-cover md:w-1/3 md:bg-contain bg-library',
+        'flex flex-col gap-3 md:w-1/3',
         className
     );
     return (
-        <PageLayout>
+        <PageLayout className='bg-fixed bg-center bg-no-repeat bg-size-[auto_70%] bg-todo'>
             <div className={classes}>
                 <CreateHeading
                     leftIcon={<PiCheckCircleLight size={24} />}

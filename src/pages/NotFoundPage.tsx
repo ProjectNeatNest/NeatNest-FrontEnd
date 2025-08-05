@@ -13,8 +13,8 @@ export default function NotFoundPage() {
     }
 
     return (
-        <PageLayout>
-            <div className="flex flex-col gap-6 bg-center bg-no-repeat bg-cover text-neutral-primary md:w-2/3 md:bg-contain bg-rafiki">
+        <PageLayout className='bg-fixed bg-center bg-no-repeat bg-size-[auto_70%] bg-rafiki'>
+            <div className="flex flex-col gap-6 text-neutral-primary md:w-2/3">
                 <Title as="h1" variant="title-large-light">
                     ¡Perdón!🙏
                 </Title>

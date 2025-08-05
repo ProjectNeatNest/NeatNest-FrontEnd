@@ -18,7 +18,7 @@ export default function AreasList(props: Props) {
     const { className, allTasks, areas, isLoading = false } = props;
 
 
-    const classes = twMerge('flex flex-wrap justify-start  gap-4 w-full', className);
+    const classes = twMerge('flex flex-wrap justify-center gap-4 w-full', className);
     return (
         <section className="flex flex-col w-full gap-2">
             <SectionHeading buttonLabel="zona" linkTo="/areas/new">

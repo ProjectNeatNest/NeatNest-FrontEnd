@@ -70,8 +70,8 @@ export default function MyHousingsPage() {
     }, [housing]);
 
     return (
-        <PageLayout>
-            <div className="flex flex-col gap-4 bg-center bg-no-repeat bg-cover md:w-2/3 md:bg-contain bg-bedroom">
+        <PageLayout className='bg-fixed bg-center bg-no-repeat bg-size-[auto_70%] bg-bedroom'>
+            <div className="flex flex-col gap-4 md:w-2/3">
                 <CreateHeading
                     leftIcon={<PiHouseLineLight size={24} />}
                     deleteButton={showDeleteButton}
@@ -79,6 +79,7 @@ export default function MyHousingsPage() {
                 >
                     Mis viviendas
                 </CreateHeading>
+                <BodyText as='p' variant='body-large-regular' className='text-neutral-secondary'>Hola{user ? `, ${user.username}`: ''}</BodyText>
                 {housing && (
                     <div>
                         <Title

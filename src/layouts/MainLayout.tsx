@@ -12,7 +12,7 @@ export default function MainLayout() {
             <HousingProvider>
                     <div className="flex flex-col min-h-screen bg-neutral-primary">
                         <Header />
-                        <main className="">
+                        <main className="grid grow">
                             <Outlet />
                         </main>
                         <Footer />

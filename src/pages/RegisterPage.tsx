@@ -5,8 +5,8 @@ import PageLayout from '@/layouts/PageLayout';
 
 export default function RegisterPage() {
     return (
-        <PageLayout>
-            <div className="flex flex-col items-center gap-8 bg-center bg-no-repeat bg-cover md:w-2/3 md:bg-contain bg-house2">
+        <PageLayout className='bg-fixed bg-center bg-no-repeat bg-size-[auto_70%] bg-house2'>
+            <div className="flex flex-col items-center gap-8 md:w-2/3">
                 <div className="flex flex-col justify-center gap-2">
                     <Title
                         as="h2"

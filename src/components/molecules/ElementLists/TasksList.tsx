@@ -50,13 +50,23 @@ export default function TasksList(props: Props) {
                         );
                     })}
                 {!isLoading && tasks?.length === 0 && (
-                    <BodyText
-                        as="span"
-                        variant="body-large-regular"
-                        className="text-neutral-secondary"
-                    >
-                        Todavía no tienes tareas. Crea una tarea.
-                    </BodyText>
+                    <div className='flex flex-col justify-center'>
+                        <BodyText
+                            as="span"
+                            variant="body-large-regular"
+                            className="text-center text-neutral-secondary"
+                        >
+                            Todavía no tienes tareas.
+                        </BodyText>
+                        <BodyText
+                            as="p"
+                            variant="body-medium-regular"
+                            className="text-center text-neutral-tertiary"
+                        >
+                            Para crear una tarea, crea primero una zona.
+                        </BodyText>
+                        
+                    </div>
                 )}
             </div>
         </section>
