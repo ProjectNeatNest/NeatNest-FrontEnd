@@ -50,6 +50,7 @@ export default function AreaForm(props: Props) {
             {
                 method: areaId? 'PATCH': 'POST',
                 data: newArea,
+                hasToasts: true,
             }
         );
         navigate('/my-tasks');

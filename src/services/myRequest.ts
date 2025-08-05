@@ -13,7 +13,7 @@ export default async function myRequest<T, K = unknown>(
 ): Promise<T> {
     const requestOptions = {
         method: options?.method || 'GET',
-        hasToasts: options?.hasToasts || true
+        hasToasts: options?.hasToasts || false
     }
     const baseURL = import.meta.env.VITE_SERVER_BASE_URL;
     const token = localStorage.getItem('neat-nest-token');

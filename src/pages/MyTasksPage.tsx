@@ -16,7 +16,7 @@ export default function MyTasksPage() {
 
     const { requestData: areas, isLoading: areAreasLoading } = useRequest<
         Area[]
-    >(`/housings/${housing?.housing_id}/areas`);
+    >(`/housings/${housing?.housing_id}/areas`, { hasToasts: false });
 
     async function handleOnDelete(task: Task) {
         await myRequest<Task[]>(

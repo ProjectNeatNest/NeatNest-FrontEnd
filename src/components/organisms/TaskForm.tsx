@@ -79,7 +79,7 @@ export default function TaskForm(props: Props) {
 
         const backendResponse = await myRequest(
             url,
-            { method: task ? 'PATCH' : 'POST', data: newTask }
+            { method: task ? 'PATCH' : 'POST', data: newTask, hasToasts: true }
         );
         console.log(backendResponse);
         navigate('/my-tasks');

@@ -16,6 +16,7 @@ export default function HousingList(props: Props) {
         <section className='flex flex-wrap gap-2 '>
             {housings.map((housing) => (
                 <Button
+                    key={housing.housing_id}
                     buttonVariant="tertiary"
                     onClick={() => {
                         addHousing(housing);
