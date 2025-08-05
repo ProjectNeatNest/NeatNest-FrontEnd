@@ -43,7 +43,7 @@ export default function AreasList(props: Props) {
                     })}
                 {/* TODO: NO funciona */}
                 {!isLoading && areas?.length === 0 && (
-                    <BodyText as="span" variant="body-large-regular">
+                    <BodyText as="span" variant="body-large-regular" className='text-neutral-secondary'>
                         Todavía no tienes zonas. Crea una zona.
                     </BodyText>
                 )}

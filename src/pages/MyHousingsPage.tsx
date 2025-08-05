@@ -90,13 +90,13 @@ export default function MyHousingsPage() {
                     </Title>
 
                     <div className={'flex flex-col gap-1'}>
-                        <Title
-                            as="h4"
-                            variant="title-xsmall-regular"
+                        <BodyText
+                            as="span"
+                            variant="body-large-regular"
                             className="text-neutral-secondary"
                         >
                             Editar {housingName}
-                        </Title>
+                        </BodyText>
 
                         <EditHousingForm />
                     </div>

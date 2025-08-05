@@ -50,7 +50,11 @@ export default function TasksList(props: Props) {
                         );
                     })}
                 {!isLoading && tasks?.length === 0 && (
-                    <BodyText as="span" variant="body-large-regular">
+                    <BodyText
+                        as="span"
+                        variant="body-large-regular"
+                        className="text-neutral-secondary"
+                    >
                         Todavía no tienes tareas. Crea una tarea.
                     </BodyText>
                 )}

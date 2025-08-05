@@ -50,14 +50,14 @@ export default function CohabitantsPage() {
                         <BodyText
                             as="p"
                             variant="body-large-regular"
-                            className="text-neutral-primary"
+                            className="text-neutral-secondary"
                         >
                             {housingUsers.length > 1
                                 ? 'Estos son los habitantes que forman parte de '
                                 : 'Solo vives tú en '}{' '}
                             {housing.name}
                         </BodyText>
-                        <ul>
+                        <ul className='py-2'>
                             {housingUsers
                                 ?.filter(
                                     (user) =>
