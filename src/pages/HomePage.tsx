@@ -74,17 +74,17 @@ export default function HomePage() {
             </section>
 
 
-            <section className='flex flex-col w-full gap-8 px-6 py-10 lg:px-32'>
+            <section className='flex flex-col w-full gap-8 px-6 py-10 bg-center bg-no-repeat bg-cover lg:px-32 bg-rafiki'>
                 <Title
                     as='h2'
-                    variant='title-small-regular'
+                    variant='title-medium-regular'
                     className='text-center text-neutral-primary'
                 >
                     ¿Por qué usar NiuNet?
                 </Title>
 
 
-                <div className="grid grid-cols-1 gap-y-6 gap-x-4 md:grid-cols-2 md:w-2/3 md:bg-contain text-neutral-secondary max-w-[1000px] mx-auto bg-center bg-no-repeat bg-cover bg-rafiki">
+                <div className="grid grid-cols-1 gap-y-6 gap-x-4 md:grid-cols-2 md:w-2/3 md:bg-contain text-neutral-secondary max-w-[1000px] mx-auto">
                     <BulletHome
                         title='Evita malos entendidos'>
                             Cada tarea tiene su responsable asignado. Se acabaron las discusiones por quién tenía que sacar la basura.
