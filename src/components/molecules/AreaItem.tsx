@@ -15,11 +15,12 @@ export default function AreaItem(props: Props) {
 
     return (
         <>
-            <div className="flex flex-col items-center justify-center px-4 py-2 bg-neutral-tertiary rounded-xl min-w-[108px] max-w-[130px] aspect-square shadow-md hover:scale-102">
+            <div className="flex flex-col items-center justify-center px-4 py-2 shadow-md w-35 bg-neutral-tertiary rounded-xl aspect-square hover:scale-102">
                 <Title
                     as="h3"
                     variant="title-xsmall-regular"
-                    className="text-neutral-primary"
+                    className="w-full text-center truncate text-neutborder-r-neutral-primary"
+                    title={area.name}
                 >
                     {area.name}
                 </Title>

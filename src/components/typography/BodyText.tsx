@@ -47,9 +47,9 @@ export default function BodyText<T extends HTMLTag = 'span'>(props: Props<T>) {
 
     return (
         <>
+            {/* eslint-disable-next-line */}
             <Tag className={classes} {...(rest as any)}>
                 {' '}
-                {/* eslint-disable-line */}
                 {children}
             </Tag>
         </>

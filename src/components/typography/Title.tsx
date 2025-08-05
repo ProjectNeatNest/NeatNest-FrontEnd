@@ -1,12 +1,12 @@
-import type { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type HTMLTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'li';
 
-interface Props {
+type Props<T extends HTMLTag = 'span'> = {
     children: ReactNode;
     className?: string;
-    as: HTMLTag;
+    as?: T;
     variant:
         | 'title-xsmall-regular'
         | 'title-xsmall-semibold'
@@ -21,10 +21,12 @@ interface Props {
         | 'title-xlarge-semibold'
         | 'title-2xlarge-light'
         | 'title-2xlarge-semibold';
-}
+} & ComponentPropsWithoutRef<T>;
 
-export default function Title(props: Props) {
-    const { children, className, variant, as: Tag, ...rest } = props;
+export default function Title<T extends HTMLTag = 'span'>(props: Props<T>) {
+    const { children, className, variant, as, ...rest } = props;
+
+    const Tag = as || 'span';
 
     const titleStyles = {
         'title-xsmall-regular': 'text-[1.25rem] font-normal font-nunito',
@@ -46,7 +48,8 @@ export default function Title(props: Props) {
     const classes = twMerge(sharedClasses, titleStyles[variant], className);
     return (
         <>
-            <Tag className={classes} {...rest}>
+            {/* eslint-disable-next-line */}
+            <Tag className={classes} {...(rest as any)}>
                 {children}
             </Tag>
         </>
