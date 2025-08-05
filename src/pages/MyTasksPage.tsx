@@ -77,17 +77,19 @@ export default function MyTasksPage() {
                 {housing && areas && (
                     <>
                         <HomePageUserHeading housing={housing} />
-                        <AreasList
-                            areas={areas}
-                            isLoading={areAreasLoading}
-                            allTasks={userTasks}
-                        ></AreasList>
-                        <TasksList
-                            tasks={userTasks}
-                            areas={areas}
-                            onTaskDelete={handleOnDelete}
-                            onTaskComplete={handleOnComplete}
-                        ></TasksList>
+                        <div className='flex flex-col gap-6'>
+                            <AreasList
+                                areas={areas}
+                                isLoading={areAreasLoading}
+                                allTasks={userTasks}
+                            ></AreasList>
+                            <TasksList
+                                tasks={userTasks}
+                                areas={areas}
+                                onTaskDelete={handleOnDelete}
+                                onTaskComplete={handleOnComplete}
+                            ></TasksList>
+                        </div>
                     </>
                 )}
             </div>
