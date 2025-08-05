@@ -295,6 +295,7 @@
     --background-image-create-house: url(/create-house.svg);
     --background-image-todo: url(/todo.svg);
     --background-image-landing: url(/gray-sofa.jpg);
+    --background-image-cohabitants: url(/cohabitants.svg)
 }
 
 .custom-hamburger .hamburger-react > div {
