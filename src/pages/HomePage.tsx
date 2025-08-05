@@ -37,8 +37,8 @@ export default function HomePage() {
             </section>
 
 
-            <section className='flex flex-col w-full gap-4 px-6 py-20 lg:px-32'>
-                <div className="flex flex-col justify-center gap-12 lg:flex-row">
+            <section className='flex flex-col w-full gap-4 px-6 py-10 lg:px-32'>
+                <div className="flex flex-col justify-center gap-10 lg:flex-row">
                     <BulletHome 
                         title="Organización" 
                         icon={<PiListNumbersThin 
@@ -52,7 +52,7 @@ export default function HomePage() {
                         icon={<PiPaintBrushThin 
                         size={30} 
                         className='text-neutral-primary'/>}>
-                            Define las zonas importantes de la casa como la cocina, el baño o el salón, y organiza las tareas por espacios concretos.
+                            Define las zonas importantes de la casa, como la cocina, el baño o el salón, y organiza las tareas por espacios concretos.
                     </BulletHome>
 
                     <BulletHome
@@ -60,7 +60,7 @@ export default function HomePage() {
                         icon={<PiFootprintsThin 
                         size={30} 
                         className='text-neutral-primary'/>}>
-                            Crea tareas, asígnalas a quien corresponda y lleva un seguimiento claro de lo que está hecho y lo que falta.
+                            Crea tareas, asígnalas a quien corresponda y lleva un seguimiento claro de lo que ya está hecho y lo que aún queda por hacer.
                     </BulletHome>
 
                     <BulletHome
@@ -74,7 +74,7 @@ export default function HomePage() {
             </section>
 
 
-            <section className='flex flex-col w-full gap-8 px-6 py-10 bg-center bg-no-repeat bg-cover lg:px-32 bg-rafiki'>
+            <section className='flex flex-col w-full gap-6 px-6 py-10 bg-center bg-no-repeat bg-cover lg:px-32 bg-rafiki'>
                 <Title
                     as='h2'
                     variant='title-medium-regular'
@@ -97,7 +97,7 @@ export default function HomePage() {
 
                     <BulletHome
                         title='Todo bajo control'>
-                            Consulta qué tareas están hechas, cuáles están pendientes y quién se encarga de qué.
+                            Consulta qué tareas están hechas y cuáles están pendientes.
                     </BulletHome>
 
                     <BulletHome
