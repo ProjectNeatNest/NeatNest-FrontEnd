@@ -32,7 +32,7 @@ export default function TaskItem(props: Props) {
                         >
                             {task.name}
                         </BodyText>
-                        <div className="flex justify-between text-neutral-secondary">
+                        <div className="flex justify-between gap-2 text-neutral-secondary">
                             {area && (
                                 <BodyText
                                     as="span"
