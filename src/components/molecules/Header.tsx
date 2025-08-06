@@ -30,7 +30,7 @@ export default function Header() {
                     aria-label="open menu"
                 >
                     <div className='custom-hamburger'>
-                    <Hamburger size={32} rounded />
+                    <Hamburger toggled={isOpenSideBar} toggle={toggleSideBar} size={32} rounded />
                     </div>
                 </Button>
             </header>
