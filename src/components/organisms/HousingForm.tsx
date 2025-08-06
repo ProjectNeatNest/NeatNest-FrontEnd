@@ -73,7 +73,7 @@ export default function HousingForm(props: Props) {
         };
         const newHousingBackend = await myRequest<Housing, NewHousing>(
             '/housings',
-            { data: newHousing, method: 'POST' }
+            { data: newHousing, method: 'POST', hasToasts: true }
         );
 
         addHousing(newHousingBackend);
