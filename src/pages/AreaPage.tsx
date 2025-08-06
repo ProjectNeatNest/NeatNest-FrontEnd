@@ -30,7 +30,7 @@ export default function AreaPage(props: Props) {
 
     async function onAreaDelete() {
         await myRequest(`/housings/${housing?.housing_id}/areas/${areaId}`, {
-            method: 'DELETE',
+            method: 'DELETE', hasToasts: true
         });
         navigate('/my-tasks');
     }
