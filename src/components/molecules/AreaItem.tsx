@@ -16,7 +16,7 @@ export default function AreaItem(props: Props) {
                 <Title
                     as="h3"
                     variant="title-xsmall-regular"
-                    className="w-full text-center truncate text-neutborder-r-neutral-primary"
+                    className="w-full text-center truncate text-neutral-primary"
                     title={area.name}
                 >
                     {area.name}
