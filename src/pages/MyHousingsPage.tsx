@@ -51,7 +51,7 @@ export default function MyHousingsPage() {
 
     async function onHousingDelete() {
         await myRequest(`/housings/${housing?.housing_id}`, {
-            method: 'DELETE',
+            method: 'DELETE', hasToasts: true
         });
         setUserHousings(
             userHousings.filter((h) => h.housing_id !== housing?.housing_id)
