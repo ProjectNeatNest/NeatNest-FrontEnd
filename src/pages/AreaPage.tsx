@@ -24,7 +24,7 @@ export default function AreaPage(props: Props) {
 
     const { housing } = useHousingContext();
 
-    const { requestData: area } = useRequest<Area, Area>(
+    const { requestData: area } = useRequest<Area>(
         `/housings/${housing?.housing_id}/areas/${areaId}`
     );
 
