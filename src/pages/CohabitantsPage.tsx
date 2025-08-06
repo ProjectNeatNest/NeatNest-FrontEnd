@@ -57,7 +57,7 @@ export default function CohabitantsPage() {
                                 : 'Solo vives tú en '}{' '}
                             {housing.name}
                         </BodyText>
-                        <ul className='py-2'>
+                        <ul className='flex flex-wrap gap-2 py-2'>
                             {housingUsers
                                 ?.filter(
                                     (user) =>
