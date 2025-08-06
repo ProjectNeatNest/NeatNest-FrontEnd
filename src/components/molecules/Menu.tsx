@@ -12,18 +12,20 @@ import useHousingContext from '@/hooks/useHousingContext';
 interface Props {
     isHidden?: boolean;
     direction?: 'horizontal' | 'vertical';
+    toggleSidebar?: () => void;
 }
 
 export default function Menu(props: Props) {
+    const { isHidden = false, direction = 'horizontal', toggleSidebar } = props;
     const { user, logoutUser } = useUserContext();
     const { deleteHousing, housing } = useHousingContext();
-    const { isHidden = false, direction = 'horizontal' } = props;
     const directionClasses = direction === 'vertical' ? 'flex-col' : '';
     const hiddenClasses = isHidden ? 'hidden md:flex' : 'flex';
 
     function handleLogOut () {
         logoutUser();
         deleteHousing();
+        if (toggleSidebar) toggleSidebar();
     }
 
     const classes = `items-center gap-6 ${directionClasses} ${hiddenClasses}`;
@@ -34,6 +36,7 @@ export default function Menu(props: Props) {
                     to="/my-tasks"
                     leftIcon={<PiListChecksLight size={24} />}
                     className="gap-2"
+                    onClick={toggleSidebar}
                 >
                     Mis tareas
                 </CustomNavLink>
@@ -43,6 +46,8 @@ export default function Menu(props: Props) {
                 <CustomNavLink
                     to="/cohabitants"
                     leftIcon={<PiUsersLight size={24} />}
+                    onClick={toggleSidebar}
+
                 >
                     Habitantes
                 </CustomNavLink>
@@ -52,6 +57,8 @@ export default function Menu(props: Props) {
                 <CustomNavLink
                     to="/my-housings"
                     leftIcon={<PiHouseLineLight size={24} />}
+                    onClick={toggleSidebar}
+
                 >
                     Mis viviendas
                 </CustomNavLink>

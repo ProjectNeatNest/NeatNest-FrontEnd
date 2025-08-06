@@ -17,10 +17,10 @@ export default function Header() {
                     <Logo />
                 </Link>
 
-                <Menu isHidden />
+                <Menu isHidden/>
 
                 <AnimatePresence>
-                    {isOpenSideBar && <MenuSidebar />}
+                    {isOpenSideBar && <MenuSidebar toggleSidebar={toggleSideBar} />}
                 </AnimatePresence>
 
                 <Button

@@ -1,8 +1,8 @@
-import type { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { NavLink } from 'react-router';
 import { twMerge } from 'tailwind-merge';
 
-interface Props {
+interface Props extends ComponentPropsWithoutRef<'a'>{
     children: ReactNode;
     to: string;
     leftIcon?: ReactNode;
@@ -11,6 +11,7 @@ interface Props {
 }
 
 export default function CustomNavLink(props: Props) {
+    const { children, to, leftIcon, className, appearance = 'navLink', ...rest } = props;
     const appearanceClasses = {
         primaryButton: `
             inline-flex justify-center items-center gap-2
@@ -43,17 +44,16 @@ export default function CustomNavLink(props: Props) {
   `,
 
         navLink: `
-            text-neutral-primary text-[1rem] font-normal font-arima hover:underline flex gap-1 items-center
+            text-neutral-primary text-[1rem] font-normal font-arima hover:underline flex gap-1 items-center [&.active]:font-semibold
     `,
     };
 
-    const { children, to, leftIcon, className, appearance = 'navLink' } = props;
 
     const classes = twMerge(appearanceClasses[appearance], className);
 
     return (
         <>
-            <NavLink to={to} className={classes}>
+            <NavLink to={to} className={classes} {...rest}>
                 {leftIcon && <span>{leftIcon}</span>}
                 {children}
             </NavLink>
