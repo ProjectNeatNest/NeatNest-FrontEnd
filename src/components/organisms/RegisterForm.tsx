@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { twMerge } from 'tailwind-merge';
 import { PiEnvelopeLight, PiLockLight, PiUserLight } from 'react-icons/pi';
 
@@ -117,14 +117,12 @@ export default function RegisterForm(props: Props) {
                 >
                     ¿Ya tienes cuenta?{' '}
                 </BodyText>
-                <BodyText
-                    as="a"
-                    variant="body-medium-bold"
-                    className="underline text-neutral-primary"
-                    href="/login"
+                <Link
+                    to="/login"
+                    className="font-nunito text-[1rem] font-bold text-neutral-primary underline"
                 >
                     Inicia sesión
-                </BodyText>
+                </Link>
             </div>
         </form>
     );

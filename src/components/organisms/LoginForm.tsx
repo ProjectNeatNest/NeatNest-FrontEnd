@@ -1,7 +1,7 @@
 import { PiEnvelopeLight, PiLockLight } from 'react-icons/pi';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { twMerge } from 'tailwind-merge';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
 
 import InputField from '../atoms/InputField';
@@ -77,14 +77,7 @@ export default function LoginForm(props: Props) {
                 >
                     ¿No tienes cuenta?{' '}
                 </BodyText>
-                <BodyText
-                    as="a"
-                    variant="body-medium-bold"
-                    className="underline text-neutral-primary"
-                    href="/register"
-                >
-                    Regístrate
-                </BodyText>
+                <Link to='/register' className='font-nunito text-[1rem] font-bold text-neutral-primary underline'>Regístrate</Link>
             </div>
         </form>
     );
