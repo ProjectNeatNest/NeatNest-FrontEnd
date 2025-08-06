@@ -121,7 +121,7 @@ export default function RegisterForm(props: Props) {
                     as="a"
                     variant="body-medium-bold"
                     className="underline text-neutral-primary"
-                    href="/register"
+                    href="/login"
                 >
                     Inicia sesión
                 </BodyText>
