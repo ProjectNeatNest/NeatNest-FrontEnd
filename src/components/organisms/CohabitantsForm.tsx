@@ -1,17 +1,16 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router';
+// import { useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { twMerge } from 'tailwind-merge';
-import { PiPlusLight, PiUsersLight } from 'react-icons/pi';
+import { PiUsersLight } from 'react-icons/pi';
 import {
     cohabitantSchema,
-    type HousingFormValues,
+    type CohabitantsFormValues,
+    // type HousingFormValues,
 } from '@/schemas/housingSchema';
 import Button from '#/atoms/Button';
-import type { Housing } from '@/config/types';
 import InputField from '#/atoms/InputField';
-import myRequest from '@/services/myRequest';
+// import myRequest from '@/services/myRequest';
 
 interface Props {
     className?: string;
@@ -20,10 +19,9 @@ interface Props {
 export default function CohabitantsForm(props: Props) {
     const { className } = props;
 
-    const navigate = useNavigate();
 
-    const { register, handleSubmit, formState } =
-        useForm<HousingFormValues>({
+    const { register,  formState } =
+        useForm<CohabitantsFormValues>({
             resolver: zodResolver(cohabitantSchema),
             mode: 'onChange',
         });
@@ -31,25 +29,25 @@ export default function CohabitantsForm(props: Props) {
 
     
 
-    async function onSubmit(data: HousingFormValues) {
+    // async function onSubmit(data: HousingFormValues) {
 
-        interface newCohabitant {
-            cohabitants: string[];
-        }
+    //     interface newCohabitant {
+    //         cohabitants: string[];
+    //     }
 
-        const newMembers = {};
-        await myRequest(
-            '/housings',
-            'PATCH',
-            newMembers
-        );
+    //     const newMembers = {};
+    //     await myRequest(
+    //         '/housings',
+    //         'PATCH',
+    //         newMembers
+    //     );
 
-    }
+    // }
 
     const classes = twMerge('flex flex-col gap-4', className);
 
     return (
-        <form className={classes} onSubmit={handleSubmit(onSubmit)}>
+        <form className={classes} >
             <div className="flex">
                 <InputField
                     type="text"

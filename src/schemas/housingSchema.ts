@@ -13,3 +13,4 @@ export const cohabitantSchema = housingSchema.pick({ cohabitantEmail: true });
 export const housingNameSchema = housingSchema.pick({ name: true });
 
 export type HousingFormValues = z.infer<typeof housingSchema>;
+export type CohabitantsFormValues = z.infer<typeof cohabitantSchema>;
