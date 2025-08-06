@@ -18,7 +18,7 @@ export default function RegisterPage() {
                     <BodyText
                         as="p"
                         variant="body-large-regular"
-                        className="text-neutral-primary"
+                        className="text-neutral-secondary"
                     >
                         Únete a nuestra plataforma para gestionar fácilmente las
                         tareas del día a día en casa. Comparte

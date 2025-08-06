@@ -19,7 +19,7 @@ export default function LoginPage() {
                     <BodyText
                         as="p"
                         variant="body-large-regular"
-                        className="text-neutral-primary"
+                        className="text-neutral-secondary"
                     >
                         Inicia sesión para retomar el control de las tareas
                         domésticas junto a las personas con las que compartes tu
