@@ -28,7 +28,7 @@ export default function TaskPage(props: Props) {
     }
 
     const classes = twMerge(
-        'flex flex-col gap-3 md:w-1/3',
+        'flex flex-col gap-3 md:w-2/3 lg:w-1/3',
         className
     );
     return (
